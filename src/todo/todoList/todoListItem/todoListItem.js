@@ -1,10 +1,12 @@
 import React from "react";
 import "./todoListItem.scss";
 
-const TodoListItem = () => {
+const TodoListItem = ({ label, important }) => {
+  const style = { color: important ? "tomato" : "black" };
+
   return (
-    <div className="todo__item">
-      <span>Drink Coffe</span>
+    <div className="todo__item" style={style}>
+      <span>{label}</span>
       <button className="todo__delete">
         <i className="far fa-bell-slash"></i>
       </button>
