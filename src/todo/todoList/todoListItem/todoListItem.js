@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { todoData } from "../../todo";
 import "./todoListItem.scss";
 
 const TodoListItem = ({ label, listDeleted }) => {
@@ -9,12 +8,6 @@ const TodoListItem = ({ label, listDeleted }) => {
   const classImportant = important ? "todo__change_important" : "";
   const classDone = done ? " todo__change_done" : "";
   const classLabel = classImportant + classDone;
-
-  // const todoDone = ()=>{
-  // setDone(()=>{
-
-  // })
-  // }
 
   return (
     <div className="todo__item">
