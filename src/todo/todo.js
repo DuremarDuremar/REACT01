@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 ////COMPONENTS///
 import TodoHeader from "./todoHeader/todoHeader";
 import TodoSearch from "./todoSearch/todoSearch";
@@ -8,10 +8,12 @@ import "./todo.scss";
 ///////////////////
 const Todo = () => {
   const [dataTodo, setDataTodo] = useState([
-    { label: "Drink cofee", important: false, id: 1 },
-    { label: "Make Awesome App", important: true, id: 2 },
-    { label: "Have a Lunch", important: false, id: 3 },
+    { label: "Drink cofee", id: 1 },
+    { label: "Make Awesome App", id: 2 },
+    { label: "Have a Lunch", id: 3 },
   ]);
+
+  // const { id } = dataTodo;
 
   return (
     <div className="todo">
@@ -19,7 +21,7 @@ const Todo = () => {
         <div className="todo__wrapper">
           <TodoHeader />
           <TodoSearch />
-          <TodoList data={dataTodo} />
+          <TodoList data={dataTodo} todoDeleted={(id) => console.log(44, id)} />
         </div>
       </div>
     </div>
@@ -27,3 +29,5 @@ const Todo = () => {
 };
 
 export default Todo;
+
+export const todoData = React.createContext();

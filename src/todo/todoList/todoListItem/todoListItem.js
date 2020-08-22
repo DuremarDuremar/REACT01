@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import { todoData } from "../../todo";
 import "./todoListItem.scss";
 
-const TodoListItem = ({ label, important }) => {
-  const style = { color: important ? "tomato" : "black" };
+const TodoListItem = ({ label, listDeleted }) => {
+  const [done, setDone] = useState(false);
+  const [important, setImportant] = useState(false);
+
+  const classImportant = important ? "todo__change_important" : "";
+  const classDone = done ? " todo__change_done" : "";
+  const classLabel = classImportant + classDone;
+
+  // const todoDone = ()=>{
+  // setDone(()=>{
+
+  // })
+  // }
 
   return (
-    <div className="todo__item" style={style}>
-      <span>{label}</span>
-      <button className="todo__delete">
+    <div className="todo__item">
+      <span className={classLabel} onClick={() => setDone(!done)}>
+        {label}
+      </span>
+      <button className="todo__delete" onClick={listDeleted}>
         <i className="far fa-bell-slash"></i>
       </button>
-      <button className="todo__important">
+      <button
+        className="todo__important"
+        onClick={() => setImportant(!important)}
+      >
         <i className="fas fa-exclamation"></i>
       </button>
     </div>
