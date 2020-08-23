@@ -9,9 +9,9 @@ import "./todo.scss";
 ///////////////////
 const Todo = () => {
   const [dataTodo, setDataTodo] = useState([
-    { label: "Drink cofee", id: 1 },
-    { label: "Make Awesome App", id: 2 },
-    { label: "Have a Lunch", id: 3 },
+    { label: "Drink cofee", id: 1, done: false, important: false },
+    { label: "Make Awesome App", id: 2, done: false, important: false },
+    { label: "Have a Lunch", id: 3, done: false, important: false },
   ]);
 
   const [maxId, setMaxId] = useState(100);
@@ -19,7 +19,10 @@ const Todo = () => {
   const todoAdd = (text) => {
     console.log(text);
     setMaxId(maxId + 1);
-    const newDataTodo = [...dataTodo, { label: text, id: maxId }];
+    const newDataTodo = [
+      ...dataTodo,
+      { label: text, id: maxId, done: false, important: false },
+    ];
     setDataTodo(newDataTodo);
   };
 
@@ -31,13 +34,40 @@ const Todo = () => {
     );
   };
 
+  const onToogleDone = (id) => {
+    setDataTodo(
+      dataTodo.map(function (item) {
+        if (item.id === id) {
+          item.done = !item.done;
+        }
+        return item;
+      })
+    );
+  };
+
+  const onToogleImportant = (id) => {
+    setDataTodo(
+      dataTodo.map(function (item) {
+        if (item.id === id) {
+          item.important = !item.important;
+        }
+        return item;
+      })
+    );
+  };
+
   return (
     <div className="todo">
       <div className="todo__container">
         <div className="todo__wrapper">
           <TodoHeader />
           <TodoSearch />
-          <TodoList data={dataTodo} todoDeleted={todoDeleted} />
+          <TodoList
+            data={dataTodo}
+            todoDeleted={todoDeleted}
+            onToogleDone={onToogleDone}
+            onToogleImportant={onToogleImportant}
+          />
         </div>
         <TodoAdd todoAdd={todoAdd} />
       </div>
