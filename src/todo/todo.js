@@ -16,9 +16,10 @@ const Todo = () => {
 
   const [maxId, setMaxId] = useState(100);
   const [value, setValue] = useState("");
+  const [todoFilter, setTodoFilter] = useState("all");
 
   //////SEARCH/////////////////////////////////
-  const todoFilter = (items, term) => {
+  const todoSearch = (items, term) => {
     if (term.length === 0) {
       return items;
     }
@@ -27,8 +28,26 @@ const Todo = () => {
       return item.label.toLowerCase().indexOf(term.toLowerCase()) > -1;
     });
   };
-  const newData = todoFilter(dataTodo, value);
 
+  /////////////FILTER/////////////////////////////////////////
+
+  const todoFilters = (arr) => {
+    const arr2 = arr.filter(function (item) {
+      switch (todoFilter) {
+        case "all":
+          return item;
+        case "active":
+          return item.done === false;
+        case "done":
+          return item.done === true;
+        default:
+          return item;
+      }
+    });
+    return arr2;
+  };
+
+  const newData = todoFilters(todoSearch(dataTodo, value));
   //////////////COUNTER////////////////////////////
 
   const counterTodoDone = function () {
@@ -95,7 +114,11 @@ const Todo = () => {
             counterTodo={counterTodo}
             counterTodoDone={counterTodoDone}
           />
-          <TodoSearch value={value} setValue={setValue} />
+          <TodoSearch
+            value={value}
+            setValue={setValue}
+            setTodoFilter={setTodoFilter}
+          />
           <TodoList
             data={newData}
             todoDeleted={todoDeleted}
