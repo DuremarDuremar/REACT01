@@ -15,6 +15,21 @@ const Todo = () => {
   ]);
 
   const [maxId, setMaxId] = useState(100);
+  const [value, setValue] = useState("");
+
+  //////SEARCH/////////////////////////////////
+  const todoFilter = (items, term) => {
+    if (term.length === 0) {
+      return items;
+    }
+
+    return items.filter((item) => {
+      return item.label.toLowerCase().indexOf(term.toLowerCase()) > -1;
+    });
+  };
+  const newData = todoFilter(dataTodo, value);
+
+  //////////////COUNTER////////////////////////////
 
   const counterTodoDone = function () {
     const counter = dataTodo.filter(function (item) {
@@ -25,6 +40,8 @@ const Todo = () => {
 
   const counterTodo = dataTodo.length - counterTodoDone();
 
+  /////////////ADD///////////////////////////
+
   const todoAdd = (text) => {
     setMaxId(maxId + 1);
     const newDataTodo = [
@@ -34,6 +51,8 @@ const Todo = () => {
     setDataTodo(newDataTodo);
   };
 
+  ////////DELETED///////////////////////////////////////
+
   const todoDeleted = (id) => {
     setDataTodo(
       dataTodo.filter(function (item) {
@@ -41,6 +60,8 @@ const Todo = () => {
       })
     );
   };
+
+  ///////////////TOGGLE///////////////////////////////////////
 
   const onToogleDone = (id) => {
     setDataTodo(
@@ -64,6 +85,8 @@ const Todo = () => {
     );
   };
 
+  /////////////////////////////////////////////////
+
   return (
     <div className="todo">
       <div className="todo__container">
@@ -72,9 +95,9 @@ const Todo = () => {
             counterTodo={counterTodo}
             counterTodoDone={counterTodoDone}
           />
-          <TodoSearch />
+          <TodoSearch value={value} setValue={setValue} />
           <TodoList
-            data={dataTodo}
+            data={newData}
             todoDeleted={todoDeleted}
             onToogleDone={onToogleDone}
             onToogleImportant={onToogleImportant}
