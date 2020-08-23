@@ -16,8 +16,16 @@ const Todo = () => {
 
   const [maxId, setMaxId] = useState(100);
 
+  const counterTodoDone = function () {
+    const counter = dataTodo.filter(function (item) {
+      return item.done;
+    });
+    return counter.length;
+  };
+
+  const counterTodo = dataTodo.length - counterTodoDone();
+
   const todoAdd = (text) => {
-    console.log(text);
     setMaxId(maxId + 1);
     const newDataTodo = [
       ...dataTodo,
@@ -60,7 +68,10 @@ const Todo = () => {
     <div className="todo">
       <div className="todo__container">
         <div className="todo__wrapper">
-          <TodoHeader />
+          <TodoHeader
+            counterTodo={counterTodo}
+            counterTodoDone={counterTodoDone}
+          />
           <TodoSearch />
           <TodoList
             data={dataTodo}
