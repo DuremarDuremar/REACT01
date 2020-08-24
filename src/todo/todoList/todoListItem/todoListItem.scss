@@ -1,8 +1,12 @@
 .todo__item {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 400px;
+  justify-content: center;
   span {
-    display: inline-block;
+    overflow: auto;
     font-size: 20px;
-    max-width: 300px;
+    flex-wrap: wrap;
     cursor: pointer;
     &:not(:last-child) {
       margin-bottom: 15px;
@@ -10,12 +14,11 @@
   }
 
   button {
+    // display: block;
     border-radius: 9px;
     width: 35px;
     height: 25px;
     margin-left: 15px;
-    // transition-delay: 0.2s;
-    // transition-duration: 0.3s;
     &:hover {
       box-shadow: inset 0 0 0 2px tomato;
       color: tomato;

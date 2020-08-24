@@ -39,7 +39,7 @@ const TodoSearch = ({ value, setValue, setTodoFilter }) => {
         <div className="todo__search_input">
           <input type="text" onChange={onLabelSearch} value={value}></input>
         </div>
-        <div>
+        <div className="todo__wrapp_btn">
           <button
             className={classBtn[1].className}
             id={classBtn[1].id}

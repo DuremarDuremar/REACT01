@@ -6,6 +6,7 @@ import TodoList from "./todoList/todoList";
 import TodoAdd from "./todoAdd/todoAdd";
 ////STILE/////
 import "./todo.scss";
+import "./todoAdaptive.scss";
 ///////////////////
 const Todo = () => {
   const [dataTodo, setDataTodo] = useState([
