@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./todoSearch.scss";
 
-const TodoSearch = ({ value, setValue, todoFilter, setTodoFilter }) => {
+const TodoSearch = ({ value, setValue, setTodoFilter }) => {
   const [classBtn, setClassBtn] = useState([
     { id: "all", className: "todo__btn_active" },
     { id: "active", className: "" },

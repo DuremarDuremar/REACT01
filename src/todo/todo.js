@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 ////COMPONENTS///
 import TodoHeader from "./todoHeader/todoHeader";
 import TodoSearch from "./todoSearch/todoSearch";
@@ -17,6 +17,17 @@ const Todo = () => {
   const [maxId, setMaxId] = useState(100);
   const [value, setValue] = useState("");
   const [todoFilter, setTodoFilter] = useState("all");
+
+  //////////////LOCAL STORAGE//////////////////////
+
+  useEffect(() => {
+    const localTodo = localStorage.getItem("dataTodo") || "[]";
+    setDataTodo(JSON.parse(localTodo));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("dataTodo", JSON.stringify(dataTodo));
+  }, [dataTodo]);
 
   //////SEARCH/////////////////////////////////
   const todoSearch = (items, term) => {
