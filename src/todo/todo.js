@@ -17,12 +17,11 @@ const Todo = () => {
     { label: "Have a Lunch", id: 3, done: false, important: false },
   ]);
 
-  const [maxId, setMaxId] = useState(100);
+  // const [maxId, setMaxId] = useState(100);
   const [value, setValue] = useState("");
   const [todoFilter, setTodoFilter] = useState("all");
 
   //////////////LOCAL STORAGE//////////////////////
-
   useEffect(() => {
     const localTodo = localStorage.getItem("dataTodo") || "[]";
     setDataTodo(JSON.parse(localTodo));
@@ -75,11 +74,21 @@ const Todo = () => {
 
   /////////////ADD///////////////////////////
 
+  const getRandomInt = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  };
+
   const todoAdd = (text) => {
-    setMaxId(maxId + 1);
     const newDataTodo = [
       ...dataTodo,
-      { label: text, id: maxId, done: false, important: false },
+      {
+        label: text,
+        id: getRandomInt(4, 3400) + getRandomInt(2, 3400),
+        done: false,
+        important: false,
+      },
     ];
     setDataTodo(newDataTodo);
   };
