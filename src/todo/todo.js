@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+////ROUTER/////
+import { Link } from "react-router-dom";
 ////COMPONENTS///
 import TodoHeader from "./todoHeader/todoHeader";
 import TodoSearch from "./todoSearch/todoSearch";
@@ -139,6 +141,9 @@ const Todo = () => {
           />
         </div>
         <TodoAdd todoAdd={todoAdd} />
+        <Link className="todo__exit" to="/">
+          <i className="fas fa-external-link-alt fa-4x"></i>
+        </Link>
       </div>
     </div>
   );

@@ -27,8 +27,8 @@ class Home extends React.Component {
         <div className="home__main">
           <div className="home__container">
             <div className="home__main_wrapper">
-              <Link className="home__main_block" to="/todo">
-                <p>1</p>
+              <Link className="home__main_block todo__main_block" to="/todo">
+                <p>Todo List</p>
               </Link>
               <Link className="home__main_block" to="/star">
                 <p>2</p>

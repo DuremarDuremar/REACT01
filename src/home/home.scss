@@ -318,3 +318,66 @@
     font-size: 24px;
   }
 }
+
+.todo__main_block {
+  p {
+    border-bottom: 8px double rgba(123, 145, 24, 1);
+    border-radius: 10%;
+  }
+  background: -webkit-gradient(
+    radial,
+    center center,
+    0px,
+    center center,
+    100%,
+    color-stop(0%, rgba(77, 28, 25, 1)),
+    color-stop(17%, rgba(105, 17, 29, 1)),
+    color-stop(40%, rgba(143, 2, 34, 1)),
+    color-stop(54%, rgba(143, 2, 34, 1)),
+    color-stop(81%, rgba(77, 17, 30, 1)),
+    color-stop(100%, rgba(31, 28, 28, 1))
+  );
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(77, 28, 25, 1) 0%,
+    rgba(105, 17, 29, 1) 17%,
+    rgba(143, 2, 34, 1) 40%,
+    rgba(143, 2, 34, 1) 54%,
+    rgba(77, 17, 30, 1) 81%,
+    rgba(31, 28, 28, 1) 100%
+  );
+  background: -o-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(77, 28, 25, 1) 0%,
+    rgba(105, 17, 29, 1) 17%,
+    rgba(143, 2, 34, 1) 40%,
+    rgba(143, 2, 34, 1) 54%,
+    rgba(77, 17, 30, 1) 81%,
+    rgba(31, 28, 28, 1) 100%
+  );
+  background: -ms-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(77, 28, 25, 1) 0%,
+    rgba(105, 17, 29, 1) 17%,
+    rgba(143, 2, 34, 1) 40%,
+    rgba(143, 2, 34, 1) 54%,
+    rgba(77, 17, 30, 1) 81%,
+    rgba(31, 28, 28, 1) 100%
+  );
+  background: radial-gradient(
+    ellipse at center,
+    rgba(77, 28, 25, 1) 0%,
+    rgba(105, 17, 29, 1) 17%,
+    rgba(143, 2, 34, 1) 40%,
+    rgba(143, 2, 34, 1) 54%,
+    rgba(77, 17, 30, 1) 81%,
+    rgba(31, 28, 28, 1) 100%
+  );
+  color: rgba(123, 145, 24, 1);
+  font-weight: 700;
+  font-style: italic;
+  font-family: Consolas;
+}
