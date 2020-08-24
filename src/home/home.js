@@ -30,7 +30,7 @@ class Home extends React.Component {
               <Link className="home__main_block todo__main_block" to="/todo">
                 <p>Todo List</p>
               </Link>
-              <Link className="home__main_block" to="/star">
+              <Link className="home__main_block" to="/feed">
                 <p>2</p>
               </Link>
 
