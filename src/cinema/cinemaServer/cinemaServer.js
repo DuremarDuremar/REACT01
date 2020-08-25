@@ -1,5 +1,8 @@
+const cinemaUrl =
+  "https://kinopoiskapiunofficial.tech/api/v2.1/films/top?listId=";
+
 const getSend = async (url) => {
-  const res = await fetch(url, {
+  const res = await fetch(`${cinemaUrl}${url}`, {
     method: "GET",
     headers: {
       "X-API-KEY": "9fbbb1e4-8c01-4ed2-ac4c-9d8a1ac83e48",
@@ -9,23 +12,29 @@ const getSend = async (url) => {
     throw new Error(`could not fetch ${res}`);
   }
   const resJson = await res.json();
+
   const films = resJson.films;
-  const transformCinema = (film) => {
-    return {
-      filmId: film.filmId,
-      name: film.nameRu,
-      nameEn: film.nameEn,
-      year: film.year,
-    };
-  };
+
   const newFilms = films.map(function (film) {
     return transformCinema(film);
   });
-
+  console.log(newFilms);
   return newFilms;
 };
 
-export default getSend;
+const transformCinema = (film) => {
+  return {
+    filmId: film.filmId,
+    name: film.nameRu,
+    nameEn: film.nameEn,
+    year: film.year,
+  };
+};
 
-export const cinemaUrl =
-  "https://kinopoiskapiunofficial.tech/api/v2.1/films/top?listId=";
+// console.log(getSend("20&page=1"));
+
+// const cinemaCann = {
+//   getSend(`${cinemaUrl}`)
+// };
+
+export default getSend;

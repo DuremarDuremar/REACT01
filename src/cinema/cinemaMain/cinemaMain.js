@@ -1,24 +1,19 @@
 import React, { useState, useEffect } from "react";
 import CinemaPage from "./cinemaPage/cinemaPage";
-import getSend, { cinemaUrl } from "../cinemaServer/cinemaServer";
+import getSend from "../cinemaServer/cinemaServer";
 import "./cinemaMain.scss";
 
 const CinemaMain = () => {
   const [cinemaItem, setCinemaItem] = useState(null);
 
-  useEffect(() => {
-    cinemaCann();
-  }, []);
-
-  const cinemaCann = () => {
-    setCinemaItem(getSend(`${cinemaUrl}20&page=1`));
+  const Start = async () => {
+    console.log(await getSend("20&page=1"));
   };
-
-  console.log(cinemaItem);
 
   return (
     <div className="cinema__main">
-      <CinemaPage />
+      <button onClick={Start}>ggggggggggggggggg</button>
+      <CinemaPage dataCinema={cinemaItem} />
     </div>
   );
 };
