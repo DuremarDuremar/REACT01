@@ -7,14 +7,10 @@ const CinemaHeader = () => {
     <header className="cinema__header">
       <div className="cinema__container cinema__header_wrapper">
         <div className="cinema__titls">
-          <h2>Fellini</h2>
-          <h2>Bergman</h2>
-          <h2>Antonioni</h2>
-          <h2>Lynch</h2>
-          <h2>Tarr</h2>
-          <h2>Ceylan</h2>
-          <h2>Haneke</h2>
-          <h2>Coen brothers</h2>
+          <h2>Sundance</h2>
+          <h2>Venice</h2>
+          <h2>Cannes</h2>
+          <h2>Berlin</h2>
         </div>
         <div className="cinema__logo">
           <img src={logo} alt="logo"></img>

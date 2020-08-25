@@ -1,7 +1,7 @@
 .cinema__header {
   background-image: url(../cinemaImages/danse-macabre.png);
   background-size: (700px 300px);
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-color: #2f3542;
   height: 100%;
 
@@ -11,38 +11,44 @@
     justify-content: space-between;
     text-align: center;
     .cinema__titls {
+      padding: 20px 0;
       display: grid;
-      grid-template: 1fr / repeat(4, 150px);
-      grid-auto-flow: row;
-      font-family: Ubuntu;
+      grid-template: 1fr / repeat(4, 180px);
+      align-items: start;
+      justify-items: center;
+
       h2 {
         position: relative;
         cursor: pointer;
-        &:nth-child(odd) {
+        font-family: monospace;
+        font-style: italic;
+        border: 5px solid #353b48;
+        border-radius: 30px;
+
+        &:hover {
           color: #dfe4ea;
-        }
-        &:nth-child(ever) {
-          color: #2f3640;
+          border: 5px solid #dfe4ea;
         }
       }
     }
     .cinema__logo {
       position: relative;
-
+      padding-top: 5px;
       img {
-        max-width: 560px;
+        width: 360px;
+        height: 150px;
         border-radius: 50px;
         border: 7px solid black;
       }
       &:before {
         content: "Cinema Collection";
         display: block;
-        font-size: 35px;
+        font-size: 30px;
         color: #dfe4ea;
         font-family: Fira Sans;
         transform: translate(-50%, -50%);
         position: absolute;
-        top: 35px;
+        top: 38px;
         left: 50%;
       }
     }
