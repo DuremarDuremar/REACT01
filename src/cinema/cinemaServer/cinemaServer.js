@@ -18,7 +18,6 @@ const getSend = async (url) => {
   const newFilms = films.map(function (film) {
     return transformCinema(film);
   });
-  console.log(newFilms);
   return newFilms;
 };
 
@@ -31,10 +30,8 @@ const transformCinema = (film) => {
   };
 };
 
-// console.log(getSend("20&page=1"));
-
-// const cinemaCann = {
-//   getSend(`${cinemaUrl}`)
-// };
+export const cinemaCann = async () => {
+  return await getSend("20&page=1");
+};
 
 export default getSend;
