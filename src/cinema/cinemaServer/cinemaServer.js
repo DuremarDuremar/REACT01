@@ -18,7 +18,8 @@ const getSend = async (url) => {
   const newFilms = films.map(function (film) {
     return transformCinema(film);
   });
-  return newFilms;
+  // console.log(newFilms);
+  return films;
 };
 
 const transformCinema = (film) => {
@@ -31,7 +32,24 @@ const transformCinema = (film) => {
 };
 
 export const cinemaCann = async () => {
-  return await getSend("20&page=1");
+  const result = await getSend("20&page=1");
+  // console.log(result);
+  return result.map(function (film) {
+    return transformCinema(film);
+  });
 };
 
 export default getSend;
+
+// const tre = [];
+
+// fetch(`${cinemaUrl}20&page=1`, {
+//   method: "GET",
+//   headers: {
+//     "X-API-KEY": "9fbbb1e4-8c01-4ed2-ac4c-9d8a1ac83e48",
+//   },
+// })
+//   .then((response) => response.json())
+//   .then((json) => tre.push(json.films[2]));
+
+// console.log(tre);

@@ -1,33 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useReducer, useState, useEffect } from "react";
 import CinemaPage from "./cinemaPage/cinemaPage";
-import getSend, { cinemaCann } from "../cinemaServer/cinemaServer";
+import { cinemaCann } from "../cinemaServer/cinemaServer";
 import "./cinemaMain.scss";
 
-const StartCinema = () => {
-  let cinema = [];
-  cinemaCann().then((res) => {
-    cinema.push(res);
-  });
-  return cinema;
+const CinemaMain = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    cinemaCann().then((response) => {
+      setData(response);
+    });
+  }, []);
+
+  console.log(data);
+  console.log(44);
+  if (!data) return null;
+  return <CinemaRender data={data} />;
 };
 
-// console.log(vvv());
+// const StartCinema = async (func) => {
+//   const result = await func();
+//   console.log(result);
+//   return result;
+// };
 
-const CinemaMain = () => {
-  const [cinemaData, setCinemaData] = useState(StartCinema());
+const CinemaRender = ({ data }) => {
+  const reducer = (state, action) => {
+    switch (action.type) {
+      default:
+        return state;
+    }
+  };
 
-  // useEffect(() => {
-  //   cinemaCann().then((res) => {
-  //     setCinemaData(res);
-  //   });
-  // }, []);
+  const [state, dispatch] = useReducer(reducer, data);
 
-  console.log(cinemaData);
+  console.log(state);
 
   return (
     <div className="cinema__main">
       <button onClick={cinemaCann}>ggggggggggggggggg</button>
-      <CinemaPage dataCinema={cinemaData} />
+      <CinemaPage dataCinema={state} />
     </div>
   );
 };
