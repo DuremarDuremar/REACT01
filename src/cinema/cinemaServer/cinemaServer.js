@@ -13,8 +13,6 @@ const getSend = async (url) => {
   }
   const resJson = await res.json();
 
-  console.log(resJson);
-
   const films = resJson.films;
 
   return films;

@@ -15,7 +15,7 @@ const CinemaMain = () => {
     cinemaCann().then((response) => dispatch(response));
   }, []);
 
-  console.log(state);
+  // console.log(state);
 
   if (!state) return null;
   return (
