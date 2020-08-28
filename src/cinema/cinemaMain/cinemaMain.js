@@ -1,45 +1,31 @@
-import React, { useReducer, useState, useEffect } from "react";
+import React, { useReducer, useEffect } from "react";
 import CinemaPage from "./cinemaPage/cinemaPage";
 import { cinemaCann } from "../cinemaServer/cinemaServer";
+import cannes from "../cinemaImages/cannes.jpg";
 import "./cinemaMain.scss";
 
 const CinemaMain = () => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    cinemaCann().then((response) => {
-      setData(response);
-    });
-  }, []);
-
-  console.log(data);
-  console.log(44);
-  if (!data) return null;
-  return <CinemaRender data={data} />;
-};
-
-// const StartCinema = async (func) => {
-//   const result = await func();
-//   console.log(result);
-//   return result;
-// };
-
-const CinemaRender = ({ data }) => {
   const reducer = (state, action) => {
-    switch (action.type) {
-      default:
-        return state;
-    }
+    return action;
   };
 
-  const [state, dispatch] = useReducer(reducer, data);
+  const [state, dispatch] = useReducer(reducer, null);
+
+  useEffect(() => {
+    cinemaCann().then((response) => dispatch(response));
+  }, []);
 
   console.log(state);
 
+  if (!state) return null;
   return (
     <div className="cinema__main">
-      <button onClick={cinemaCann}>ggggggggggggggggg</button>
-      <CinemaPage dataCinema={state} />
+      <div className="cinema__container">
+        <div className="cinema__festival">
+          <h1>Cannes</h1> <img src={cannes}></img>
+        </div>
+        <CinemaPage dataCinema={state} />
+      </div>
     </div>
   );
 };

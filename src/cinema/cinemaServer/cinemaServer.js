@@ -13,12 +13,10 @@ const getSend = async (url) => {
   }
   const resJson = await res.json();
 
+  console.log(resJson);
+
   const films = resJson.films;
 
-  const newFilms = films.map(function (film) {
-    return transformCinema(film);
-  });
-  // console.log(newFilms);
   return films;
 };
 
@@ -28,12 +26,12 @@ const transformCinema = (film) => {
     name: film.nameRu,
     nameEn: film.nameEn,
     year: film.year,
+    url: film.posterUrlPreview,
   };
 };
 
 export const cinemaCann = async () => {
   const result = await getSend("20&page=1");
-  // console.log(result);
   return result.map(function (film) {
     return transformCinema(film);
   });
