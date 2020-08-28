@@ -13,14 +13,14 @@ const CinemaPage = ({ dataCinema }) => {
 
   const cinemaList = dataCinema.map(function (item) {
     const { filmId } = item;
-    let cla = null;
-    if (item.filmId == cinemaLiActive) {
-      cla = "cinema__li_active";
-    }
+
+    let classActive =
+      item.filmId === Number(cinemaLiActive) ? "cinema__li_active" : null;
+
     return (
       <li key={filmId}>
         <CinemaListItem
-          classActive={cla}
+          classActive={classActive}
           item={item}
           setCinemaItem={setCinemaItem}
           cinemaActive={cinemaActive}
