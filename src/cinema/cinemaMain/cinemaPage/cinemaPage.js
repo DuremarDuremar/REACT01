@@ -5,7 +5,7 @@ import CinemaListItem from "./cinemaListItem";
 
 const CinemaPage = ({ dataCinema }) => {
   const [cinemaItem, setCinemaItem] = useState(dataCinema[0]);
-  const [cinemaLiActive, setCinemaLiActive] = useState(null);
+  const [cinemaLiActive, setCinemaLiActive] = useState(dataCinema[0].filmId);
 
   const cinemaActive = (event) => {
     setCinemaLiActive(event.id);
