@@ -5,23 +5,29 @@ import CinemaListItem from "./cinemaListItem";
 
 const CinemaPage = ({ dataCinema }) => {
   const [cinemaItem, setCinemaItem] = useState(dataCinema[0]);
+  const [cinemaLiActive, setCinemaLiActive] = useState(null);
+
+  const cinemaActive = (event) => {
+    setCinemaLiActive(event.id);
+  };
 
   const cinemaList = dataCinema.map(function (item) {
     const { filmId } = item;
+    let cla = null;
+    if (item.filmId == cinemaLiActive) {
+      cla = "cinema__li_active";
+    }
     return (
       <li key={filmId}>
-        <CinemaListItem item={item} setCinemaItem={setCinemaItem} />
+        <CinemaListItem
+          classActive={cla}
+          item={item}
+          setCinemaItem={setCinemaItem}
+          cinemaActive={cinemaActive}
+        />
       </li>
     );
   });
-
-  // const cinemaActive = (event) => {
-  //   console.log(event);
-  //   event.classList.add("cinema__li_active");
-  // };
-
-  // "cinema__btn_active"
-  // console.log(dataCinema);
 
   return (
     <div className="cinema__content">
