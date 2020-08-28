@@ -22,7 +22,7 @@ const CinemaMain = () => {
     <div className="cinema__main">
       <div className="cinema__container">
         <div className="cinema__festival">
-          <h1>Cannes</h1> <img src={cannes}></img>
+          <h1>Cannes</h1> <img src={cannes} alt="cannes"></img>
         </div>
         <CinemaPage dataCinema={state} />
       </div>

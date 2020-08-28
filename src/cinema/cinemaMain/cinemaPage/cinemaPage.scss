@@ -1,0 +1,24 @@
+.cinema__content {
+  display: flex;
+  padding: 20px 0;
+  justify-content: space-between;
+  .cinema__list {
+    li {
+      cursor: pointer;
+      max-width: 400px;
+      &:not(:last-child) {
+        margin-bottom: 12px;
+      }
+      h3 {
+        display: inline;
+      }
+      .cinema__item_year {
+        padding-left: 6px;
+      }
+    }
+  }
+}
+
+.cinema__li_active {
+  color: gray;
+}

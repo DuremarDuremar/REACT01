@@ -1,38 +1,31 @@
 import React, { useState } from "react";
 import "./cinemaPage.scss";
 import CinemaItem from "./cinemaItem";
+import CinemaListItem from "./cinemaListItem";
 
 const CinemaPage = ({ dataCinema }) => {
-  const [cinemaItem, setCinemaItem] = useState({
-    filmId: 1043758,
-    name: "Паразиты",
-    nameEn: "Gisaengchung",
-    url:
-      "https://kinopoiskapiunofficial.tech/images/posters/kp_small/1043758.jpg",
-    year: "2019",
-  });
+  const [cinemaItem, setCinemaItem] = useState(dataCinema[0]);
 
   const cinemaList = dataCinema.map(function (item) {
-    const { url, filmId, name, nameEn, year } = item;
+    const { filmId } = item;
     return (
-      <li className="cinema__page" key={filmId}>
-        <span onClick={() => setCinemaItem(item)}>
-          <h3>{name}</h3>
-          <p>{year}</p>
-        </span>
+      <li key={filmId}>
+        <CinemaListItem item={item} setCinemaItem={setCinemaItem} />
       </li>
     );
   });
 
-  const cinemaDetal = (item) => {
-    return item;
-  };
+  // const cinemaActive = (event) => {
+  //   console.log(event);
+  //   event.classList.add("cinema__li_active");
+  // };
 
-  console.log(cinemaItem);
+  // "cinema__btn_active"
+  // console.log(dataCinema);
 
   return (
-    <div>
-      <ul>{cinemaList}</ul>
+    <div className="cinema__content">
+      <ul className="cinema__list">{cinemaList}</ul>
       <CinemaItem item={cinemaItem} />
     </div>
   );

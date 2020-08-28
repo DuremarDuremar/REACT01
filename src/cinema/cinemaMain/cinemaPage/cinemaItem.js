@@ -1,13 +1,17 @@
 import React from "react";
 
 const CinemaItem = ({ item }) => {
-  const { url, filmId, name, nameEn, year } = item;
+  const { url, nameEn } = item;
+
+  //   console.log(index);
 
   return (
-    <div>
-      <img src={url}></img>
+    <div className="cinemaItem">
+      <img src={url} alt={nameEn}></img>
     </div>
   );
 };
 
 export default CinemaItem;
+
+// const { url, filmId, name, nameEn, year } = item;
