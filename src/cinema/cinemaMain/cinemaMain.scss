@@ -1,9 +1,12 @@
 .cinema__main {
   background-color: #2f3542;
   .cinema__festival {
-    padding-top: 20px;
+    padding: 20px 0;
     display: flex;
     justify-content: space-between;
+    z-index: 2;
+    position: relative;
+    background-color: #2f3542;
     img {
       max-width: 300px;
       max-height: 100px;

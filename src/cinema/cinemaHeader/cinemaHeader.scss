@@ -4,6 +4,8 @@
   background-repeat: no-repeat;
   background-color: #2f3542;
   height: 100%;
+  z-index: 2;
+  position: relative;
 
   .cinema__header_wrapper {
     padding-top: 5px;
@@ -53,4 +55,8 @@
       }
     }
   }
+}
+
+.cinema__active_fest {
+  color: darkgoldenrod;
 }

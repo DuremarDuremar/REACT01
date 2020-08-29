@@ -20,12 +20,15 @@
   .cinema__item {
     display: flex;
     align-items: center;
+    position: relative;
 
     img {
-      width: 400px;
-      height: 570px;
-      // top: 100px;
-      // position: relative;
+      width: 250px;
+      height: 380px;
+      position: fixed;
+      right: 25%;
+      bottom: 5%;
+      z-index: 1;
     }
   }
 }
