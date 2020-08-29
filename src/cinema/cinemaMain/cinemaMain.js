@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect } from "react";
 import CinemaPage from "./cinemaPage/cinemaPage";
+import CinemaSpinner from "../cinemaServer/cinemaSpinner";
 import { cinemaCann } from "../cinemaServer/cinemaServer";
 import cannes from "../cinemaImages/cannes.jpg";
 import "./cinemaMain.scss";
@@ -17,7 +18,7 @@ const CinemaMain = () => {
 
   // console.log(state);
 
-  if (!state) return null;
+  if (!state) return <CinemaSpinner />;
   return (
     <div className="cinema__main">
       <div className="cinema__container">
