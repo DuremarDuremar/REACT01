@@ -2,7 +2,7 @@ import React, { useReducer, useEffect } from "react";
 import CinemaPage from "./cinemaPage/cinemaPage";
 import CinemaSpinner from "../cinemaServer/cinemaSpinner";
 import { cinemaCann } from "../cinemaServer/cinemaServer";
-import cannes from "../cinemaImages/cannes.jpg";
+import cannes from "../cinemaImages/cannes.png";
 import "./cinemaMain.scss";
 
 const CinemaMain = () => {
@@ -23,7 +23,13 @@ const CinemaMain = () => {
     <div className="cinema__main">
       <div className="cinema__container">
         <div className="cinema__festival">
-          <h1>Cannes</h1> <img src={cannes} alt="cannes"></img>
+          <p>
+            Луис Бунюэль, Робер Брессон, Ингмар Бергман, Терренс Малик, Вернер
+            Херцог, Андрей Тарковский, Вим Вендерс, Мартин Скорсезе, Роберт
+            Олтмен, Братья Коэн, Михаэль Ханеке, Гас Ван Сент
+          </p>
+          <img src={cannes} alt="cannes"></img>
+          <h1>Festival international du film de Cannes</h1>
         </div>
         <CinemaPage dataCinema={state} />
       </div>

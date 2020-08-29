@@ -4,7 +4,7 @@ const CinemaItem = ({ item }) => {
   const { url, nameEn } = item;
 
   return (
-    <div className="cinemaItem">
+    <div className="cinema__item">
       <img src={url} alt={nameEn}></img>
     </div>
   );

@@ -17,6 +17,17 @@
       }
     }
   }
+  .cinema__item {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 400px;
+      height: 570px;
+      // top: 100px;
+      // position: relative;
+    }
+  }
 }
 
 .cinema__li_active {
