@@ -11,7 +11,7 @@ const Cinema = () => {
     return item;
   };
 
-  console.log(cinemaFest);
+  // console.log(cinemaFest);
 
   return (
     <div className="cinema">
@@ -19,7 +19,7 @@ const Cinema = () => {
         cinemaFestActive={cinemaFestActive}
         cinemaFest={cinemaFest}
       />
-      <CinemaMain />
+      <CinemaMain cinemaFest={cinemaFest} />
       <footer className="cinema__footer"></footer>
     </div>
   );

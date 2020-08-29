@@ -3,9 +3,6 @@ import "./cinemaHeader.scss";
 import logo from "../cinemaImages/cinemaLogo.jpg";
 
 const CinemaHeader = ({ cinemaFestActive, cinemaFest }) => {
-  // let classActiveFest = "cinema__active_fest";
-  // // item.id === Number(cinemaFest) ? "cinema__active_fest" : null;
-
   const btnFest = [
     {
       id: "Sundance",
@@ -30,7 +27,7 @@ const CinemaHeader = ({ cinemaFestActive, cinemaFest }) => {
   ];
 
   const festBtn = btnFest.map(function (item) {
-    if (item.id == cinemaFest) {
+    if (item.id === cinemaFest) {
       item.classNames += "cinema__active_fest";
     }
     return (

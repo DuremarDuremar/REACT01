@@ -1,11 +1,11 @@
 import React, { useReducer, useEffect } from "react";
 import CinemaPage from "./cinemaPage/cinemaPage";
 import CinemaSpinner from "../cinemaServer/cinemaSpinner";
-import { cinemaCann } from "../cinemaServer/cinemaServer";
+import { cinemaCannes } from "../cinemaServer/cinemaServer";
 import cannes from "../cinemaImages/cannes.png";
 import "./cinemaMain.scss";
 
-const CinemaMain = () => {
+const CinemaMain = (cinemaFest) => {
   const reducer = (state, action) => {
     return action;
   };
@@ -13,10 +13,10 @@ const CinemaMain = () => {
   const [state, dispatch] = useReducer(reducer, null);
 
   useEffect(() => {
-    cinemaCann().then((response) => dispatch(response));
+    cinemaCannes().then((response) => dispatch(response));
   }, []);
 
-  // console.log(state);
+  // console.log();
 
   if (!state) return <CinemaSpinner />;
   return (
