@@ -3,12 +3,13 @@ import CinemaPage from "./cinemaPage/cinemaPage";
 import CinemaSpinner from "../cinemaServer/cinemaSpinner";
 
 import cannes from "../cinemaImages/cannes.png";
+import berlin from "../cinemaImages/berlin.png";
 import "./cinemaMain.scss";
 
 const CinemaMain = ({ stateCinema, cinemaFest, cinemaInfo }) => {
   // useEffect(() => {}, [cinemaFest]);
 
-  console.log(cinemaInfo);
+  // console.log(cinemaInfo);
 
   if (!stateCinema) return <CinemaSpinner />;
   return (

@@ -8,8 +8,10 @@
     position: relative;
     background-color: #2f3542;
     img {
+      // min-width: 120px;
       max-width: 300px;
-      max-height: 100px;
+      // min-height: 140px;
+      max-height: 170px;
     }
     h1 {
       font-style: italic;
