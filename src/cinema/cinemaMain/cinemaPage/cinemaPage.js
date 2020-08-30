@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./cinemaPage.scss";
 import CinemaItem from "./cinemaItem";
 import CinemaListItem from "./cinemaListItem";
@@ -10,6 +10,11 @@ const CinemaPage = ({ dataCinema }) => {
   const cinemaActive = (event) => {
     setCinemaLiActive(event.id);
   };
+
+  useEffect(() => {
+    setCinemaItem(dataCinema[0]);
+    setCinemaLiActive(dataCinema[0].filmId);
+  }, [dataCinema]);
 
   const cinemaList = dataCinema.map(function (item) {
     const { filmId } = item;

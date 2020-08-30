@@ -1,24 +1,14 @@
-import React, { useReducer, useEffect } from "react";
+import React from "react";
 import CinemaPage from "./cinemaPage/cinemaPage";
 import CinemaSpinner from "../cinemaServer/cinemaSpinner";
-import { cinemaCannes } from "../cinemaServer/cinemaServer";
+
 import cannes from "../cinemaImages/cannes.png";
 import "./cinemaMain.scss";
 
-const CinemaMain = (cinemaFest) => {
-  const reducer = (state, action) => {
-    return action;
-  };
+const CinemaMain = ({ stateCinema }) => {
+  // console.log(stateCinema);
 
-  const [state, dispatch] = useReducer(reducer, null);
-
-  useEffect(() => {
-    cinemaCannes().then((response) => dispatch(response));
-  }, []);
-
-  // console.log();
-
-  if (!state) return <CinemaSpinner />;
+  if (!stateCinema) return <CinemaSpinner />;
   return (
     <div className="cinema__main">
       <div className="cinema__container">
@@ -31,7 +21,7 @@ const CinemaMain = (cinemaFest) => {
           <img src={cannes} alt="cannes"></img>
           <h1>Festival international du film de Cannes</h1>
         </div>
-        <CinemaPage dataCinema={state} />
+        <CinemaPage dataCinema={stateCinema} />
       </div>
     </div>
   );

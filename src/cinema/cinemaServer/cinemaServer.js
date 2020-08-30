@@ -42,6 +42,20 @@ export const cinemaBerlin = async () => {
   });
 };
 
+export const cinemaVenice = async () => {
+  const result = await getSend("22&page=1");
+  return result.map(function (film) {
+    return transformCinema(film);
+  });
+};
+
+export const cinemaSundance = async () => {
+  const result = await getSend("21&page=1");
+  return result.map(function (film) {
+    return transformCinema(film);
+  });
+};
+
 export default getSend;
 
 // const getSend2 = async (url) => {
