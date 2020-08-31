@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./cinemaPage.scss";
 import CinemaItem from "./cinemaItem";
 import CinemaListItem from "./cinemaListItem";
+import CinemaSpinner from "../../cinemaServer/cinemaSpinner";
 import { cinemaDirector } from "../../cinemaServer/cinemaServer";
 
 const CinemaPage = ({ dataCinema }) => {
@@ -22,8 +23,6 @@ const CinemaPage = ({ dataCinema }) => {
     );
   }, [dataCinema]);
 
-  // console.log(cinemaFeed);
-
   const cinemaList = dataCinema.map(function (item) {
     const { filmId } = item;
 
@@ -41,6 +40,8 @@ const CinemaPage = ({ dataCinema }) => {
       </li>
     );
   });
+
+  if (!cinemaFeed) return <CinemaSpinner />;
 
   return (
     <div className="cinema__content">

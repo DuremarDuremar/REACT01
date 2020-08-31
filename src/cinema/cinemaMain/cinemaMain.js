@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import CinemaPage from "./cinemaPage/cinemaPage";
 import CinemaSpinner from "../cinemaServer/cinemaSpinner";
 
