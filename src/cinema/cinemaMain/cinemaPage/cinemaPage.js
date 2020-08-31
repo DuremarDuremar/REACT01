@@ -8,18 +8,23 @@ import { cinemaDirector } from "../../cinemaServer/cinemaServer";
 const CinemaPage = ({ dataCinema }) => {
   const [cinemaItem, setCinemaItem] = useState(dataCinema[0]);
   const [cinemaLiActive, setCinemaLiActive] = useState(dataCinema[0].filmId);
+  const [prevCinemaFeed, setPrevCinemaFeed] = useState(null);
   const [cinemaFeed, setCinemaFeed] = useState(null);
 
   const cinemaActive = (event) => {
-    cinemaDirector(event.title).then((response) => setCinemaFeed(response));
+    cinemaDirector(event.title).then(
+      (response) => setCinemaFeed(response),
+      setPrevCinemaFeed(cinemaFeed)
+    );
     setCinemaLiActive(event.id);
   };
 
   useEffect(() => {
     setCinemaItem(dataCinema[0]);
     setCinemaLiActive(dataCinema[0].filmId);
-    cinemaDirector(dataCinema[0].nameEn).then((response) =>
-      setCinemaFeed(response)
+    cinemaDirector(dataCinema[0].nameEn).then(
+      (response) => setCinemaFeed(response),
+      setPrevCinemaFeed(cinemaFeed)
     );
   }, [dataCinema]);
 
@@ -42,6 +47,7 @@ const CinemaPage = ({ dataCinema }) => {
   });
 
   if (!cinemaFeed) return <CinemaSpinner />;
+  if (cinemaFeed === prevCinemaFeed) return <CinemaSpinner />;
 
   return (
     <div className="cinema__content">

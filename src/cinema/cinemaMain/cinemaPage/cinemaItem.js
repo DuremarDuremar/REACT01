@@ -8,7 +8,7 @@ const CinemaItem = ({ item, feed }) => {
   const feedAll2 = feedAll[1].split("(");
   const feedName = feedAll2[0];
 
-  console.log(feedCountry);
+  // console.log(feedCountry);
 
   return (
     <div className="cinema__item">
