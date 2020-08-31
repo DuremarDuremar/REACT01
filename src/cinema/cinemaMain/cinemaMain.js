@@ -9,7 +9,7 @@ import sundance from "../cinemaImages/sundance.png";
 import "./cinemaMain.scss";
 
 const CinemaMain = ({ stateCinema, cinemaFest, cinemaInfo }) => {
-  // console.log(cinemaInfo);
+  // console.log(stateCinema);
 
   const images = () => {
     switch (cinemaFest) {

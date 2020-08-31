@@ -1,7 +1,7 @@
 import React from "react";
 
 const CinemaListItem = ({ item, setCinemaItem, cinemaActive, classActive }) => {
-  const { name, year, filmId } = item;
+  const { name, year, filmId, nameEn } = item;
 
   const cinemaSet = () => {
     setCinemaItem(item);
@@ -10,6 +10,7 @@ const CinemaListItem = ({ item, setCinemaItem, cinemaActive, classActive }) => {
   return (
     <span
       id={filmId}
+      title={nameEn}
       className={classActive}
       onClick={(event) => cinemaActive(event.currentTarget)}
     >
