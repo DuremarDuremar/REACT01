@@ -10,7 +10,7 @@ const CinemaListItem = ({ item, setCinemaItem, cinemaActive, classActive }) => {
   return (
     <span
       id={filmId}
-      title={nameEn}
+      title={nameEn || name}
       className={classActive}
       onClick={(event) => cinemaActive(event.currentTarget)}
     >

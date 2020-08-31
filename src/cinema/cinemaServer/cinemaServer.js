@@ -108,5 +108,5 @@ export const cinemaDirector = async (cinemaFeed) => {
   const result = await getDirector(
     ` https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${cinemaFeed}&page=1`
   );
-  return result[0];
+  return result[0].description;
 };
