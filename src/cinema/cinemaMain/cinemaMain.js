@@ -4,12 +4,31 @@ import CinemaSpinner from "../cinemaServer/cinemaSpinner";
 
 import cannes from "../cinemaImages/cannes.png";
 import berlin from "../cinemaImages/berlin.png";
+import venice from "../cinemaImages/venice.png";
+import sundance from "../cinemaImages/sundance.png";
 import "./cinemaMain.scss";
 
 const CinemaMain = ({ stateCinema, cinemaFest, cinemaInfo }) => {
-  // useEffect(() => {}, [cinemaFest]);
-
   // console.log(cinemaInfo);
+
+  const images = () => {
+    switch (cinemaFest) {
+      case "Berlin":
+        return berlin;
+
+      case "Cannes":
+        return cannes;
+
+      case "Venice":
+        return venice;
+
+      case "Sundance":
+        return sundance;
+
+      default:
+        return cannes;
+    }
+  };
 
   if (!stateCinema) return <CinemaSpinner />;
   return (
@@ -17,7 +36,7 @@ const CinemaMain = ({ stateCinema, cinemaFest, cinemaInfo }) => {
       <div className="cinema__container">
         <div className="cinema__festival">
           <p>{cinemaInfo.festStars}</p>
-          <img src={cannes} alt="cannes"></img>
+          <img src={images()} alt="cannes"></img>
           <h1>{cinemaInfo.festName}</h1>
         </div>
         <CinemaPage dataCinema={stateCinema} />
