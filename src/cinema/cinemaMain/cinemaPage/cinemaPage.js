@@ -22,9 +22,8 @@ const CinemaPage = ({ dataCinema }) => {
   useEffect(() => {
     setCinemaItem(dataCinema[0]);
     setCinemaLiActive(dataCinema[0].filmId);
-    cinemaDirector(dataCinema[0].nameEn).then(
-      (response) => setCinemaFeed(response),
-      setPrevCinemaFeed(cinemaFeed)
+    cinemaDirector(dataCinema[0].nameEn).then((response) =>
+      setCinemaFeed(response)
     );
   }, [dataCinema]);
 
@@ -47,12 +46,15 @@ const CinemaPage = ({ dataCinema }) => {
   });
 
   if (!cinemaFeed) return <CinemaSpinner />;
-  if (cinemaFeed === prevCinemaFeed) return <CinemaSpinner />;
 
   return (
     <div className="cinema__content">
       <ul className="cinema__list">{cinemaList}</ul>
-      <CinemaItem item={cinemaItem} feed={cinemaFeed} />
+      <CinemaItem
+        item={cinemaItem}
+        feed={cinemaFeed}
+        prevFeed={prevCinemaFeed}
+      />
     </div>
   );
 };

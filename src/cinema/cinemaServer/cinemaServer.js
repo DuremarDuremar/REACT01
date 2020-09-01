@@ -1,5 +1,3 @@
-import Cinema from "../cinema";
-
 const cinemaUrl =
   "https://kinopoiskapiunofficial.tech/api/v2.1/films/top?listId=";
 
@@ -31,21 +29,27 @@ const transformCinema = (film) => {
 };
 
 export const cinemaCannes = async () => {
-  const result = await getSend("20&page=1");
+  const page = await getSend("20&page=1");
+  const page2 = await getSend("20&page=2");
+  const result = [...page, ...page2];
   return result.map(function (film) {
     return transformCinema(film);
   });
 };
 
 export const cinemaBerlin = async () => {
-  const result = await getSend("19&page=1");
+  const page = await getSend("19&page=1");
+  const page2 = await getSend("19&page=2");
+  const result = [...page, ...page2];
   return result.map(function (film) {
     return transformCinema(film);
   });
 };
 
 export const cinemaVenice = async () => {
-  const result = await getSend("22&page=1");
+  const page = await getSend("22&page=1");
+  const page2 = await getSend("22&page=2");
+  const result = [...page, ...page2];
   return result.map(function (film) {
     return transformCinema(film);
   });
@@ -104,9 +108,43 @@ const getDirector = async (url) => {
   return films;
 };
 
+export const getFrames = async (url) => {
+  const res = await fetch(url, {
+    method: "GET",
+    headers: {
+      "X-API-KEY": "9fbbb1e4-8c01-4ed2-ac4c-9d8a1ac83e48",
+    },
+  });
+  if (!res.ok) {
+    throw new Error(`could not fetch ${res}`);
+  }
+  const resJson = await res.json();
+  const framesAll = resJson.frames;
+  if (!framesAll[0]) {
+    framesAll[0] +=
+      "https://miro.medium.com/max/978/1*pUEZd8z__1p-7ICIO1NZFA.png";
+    framesAll[1] +=
+      "https://miro.medium.com/max/978/1*pUEZd8z__1p-7ICIO1NZFA.png";
+    framesAll[2] +=
+      "https://miro.medium.com/max/978/1*pUEZd8z__1p-7ICIO1NZFA.png";
+  }
+  const frames = [framesAll[0].image, framesAll[1].image, framesAll[2].image];
+  return frames;
+};
+
+// console.log(
+//   getFrames("https://kinopoiskapiunofficial.tech/api/v2.1/films/1043758/frames")
+// );
+
 export const cinemaDirector = async (cinemaFeed) => {
-  const result = await getDirector(
+  const feed = await getDirector(
     ` https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${cinemaFeed}&page=1`
   );
-  return result[0].description;
+  const idFrames = feed[0].filmId;
+  const frames = await getFrames(
+    `https://kinopoiskapiunofficial.tech/api/v2.1/films/${idFrames}/frames`
+  );
+  const result = [feed[0].description, frames];
+  // console.log(result);
+  return result;
 };
