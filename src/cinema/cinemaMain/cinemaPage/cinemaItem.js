@@ -1,18 +1,13 @@
 import React from "react";
 import CinemaSpinner from "../../cinemaServer/cinemaSpinner";
 
-const CinemaItem = ({ item, feed, prevFeed }) => {
+const CinemaItem = ({ item, feed, prevFeed, cinemaDeleteClass }) => {
   const { url, nameEn } = item;
 
   const feedAll = feed[0].split(",");
   const feedCountry = feedAll[0];
   const feedAll2 = feedAll[1].split("(");
   const feedName = feedAll2[0];
-
-  const cinemaDeleteClass = (item) => {
-    item.classList.add("cinema__exit_active");
-    item.classList.remove("cinema__item-wrap");
-  };
 
   const cinemaItem = () => {
     const frame1 = feed[1][0];

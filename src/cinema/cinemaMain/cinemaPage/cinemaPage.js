@@ -10,6 +10,7 @@ const CinemaPage = ({ dataCinema }) => {
   const [cinemaLiActive, setCinemaLiActive] = useState(dataCinema[0].filmId);
   const [prevCinemaFeed, setPrevCinemaFeed] = useState(null);
   const [cinemaFeed, setCinemaFeed] = useState(null);
+  const [classExit, setClassExit] = useState(null);
 
   const cinemaActive = (event) => {
     cinemaDirector(event.title).then(
@@ -17,6 +18,7 @@ const CinemaPage = ({ dataCinema }) => {
       setPrevCinemaFeed(cinemaFeed)
     );
     setCinemaLiActive(event.id);
+    classExit.classList.add("cinema__item-wrap");
   };
 
   useEffect(() => {
@@ -26,6 +28,12 @@ const CinemaPage = ({ dataCinema }) => {
       setCinemaFeed(response)
     );
   }, [dataCinema]);
+
+  const cinemaDeleteClass = (item) => {
+    item.classList.add("cinema__exit_active");
+    item.classList.remove("cinema__item-wrap");
+    setClassExit(item);
+  };
 
   const cinemaList = dataCinema.map(function (item) {
     const { filmId } = item;
@@ -54,6 +62,7 @@ const CinemaPage = ({ dataCinema }) => {
         item={cinemaItem}
         feed={cinemaFeed}
         prevFeed={prevCinemaFeed}
+        cinemaDeleteClass={cinemaDeleteClass}
       />
     </div>
   );
