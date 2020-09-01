@@ -123,18 +123,18 @@ export const getFrames = async (url) => {
   if (!framesAll[0]) {
     framesAll[0] +=
       "https://miro.medium.com/max/978/1*pUEZd8z__1p-7ICIO1NZFA.png";
+  }
+  if (!framesAll[1]) {
     framesAll[1] +=
       "https://miro.medium.com/max/978/1*pUEZd8z__1p-7ICIO1NZFA.png";
+  }
+  if (!framesAll[2]) {
     framesAll[2] +=
       "https://miro.medium.com/max/978/1*pUEZd8z__1p-7ICIO1NZFA.png";
   }
   const frames = [framesAll[0].image, framesAll[1].image, framesAll[2].image];
   return frames;
 };
-
-// console.log(
-//   getFrames("https://kinopoiskapiunofficial.tech/api/v2.1/films/1043758/frames")
-// );
 
 export const cinemaDirector = async (cinemaFeed) => {
   const feed = await getDirector(

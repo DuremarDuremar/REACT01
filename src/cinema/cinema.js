@@ -8,6 +8,7 @@ import {
   cinemaSundance,
 } from "./cinemaServer/cinemaServer";
 import "./cinema.scss";
+import "./cinemaAdaptive.scss";
 
 const Cinema = () => {
   const [cinemaFest, setCinemaFest] = useState("Cannes");

@@ -3,6 +3,7 @@
   padding: 20px 0;
   justify-content: space-between;
   .cinema__list {
+    padding-left: 8px;
     li {
       cursor: pointer;
       max-width: 400px;
@@ -18,19 +19,19 @@
     }
   }
   .cinema__item {
-    // display: flex;
-    // align-items: center;
-    // position: relative;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
 
     .cinema__item-wrap {
-      // bottom: 20px;
-      // z-index: 1;
-      // position: fixed;
+      border-radius: 30px;
+      bottom: 20px;
+      // margin-left: 140px;
+      z-index: 1;
+      position: fixed;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -39,11 +40,12 @@
       background-color: black;
       // padding-top: 180px;
       // padding-bottom: 30px;
+      padding: 0 8px;
 
       .cinema__frames {
         padding-right: 5px;
         img {
-          max-width: 260px;
+          width: 240px;
           max-height: 180px;
           display: block;
         }
@@ -51,7 +53,7 @@
 
       .cinema__poster {
         img {
-          max-width: 300px;
+          width: 300px;
           max-height: 430px;
           // display: block;
           // margin: 0px auto;
@@ -61,6 +63,7 @@
         h1 {
           color: #dfe4ea;
           text-align: center;
+          font-family: Fira Sans;
         }
         h2 {
           color: #dfe4ea;
