@@ -9,6 +9,11 @@ const CinemaItem = ({ item, feed, prevFeed }) => {
   const feedAll2 = feedAll[1].split("(");
   const feedName = feedAll2[0];
 
+  const cinemaDeleteClass = (item) => {
+    item.classList.add("cinema__exit_active");
+    item.classList.remove("cinema__item-wrap");
+  };
+
   const cinemaItem = () => {
     const frame1 = feed[1][0];
     const frame2 = feed[1][1];
@@ -40,7 +45,15 @@ const CinemaItem = ({ item, feed, prevFeed }) => {
 
   return (
     <div className="cinema__item">
-      <div className="cinema__item-wrap">{cinemaItemContent}</div>
+      <div className="cinema__item-wrap">
+        <div
+          className="cinema__exit"
+          onClick={(event) => cinemaDeleteClass(event.currentTarget.parentNode)}
+        >
+          <i className="fas fa-times-circle fa-2x"></i>
+        </div>
+        {cinemaItemContent}
+      </div>
     </div>
   );
 };

@@ -42,6 +42,14 @@
       // padding-bottom: 30px;
       padding: 0 8px;
 
+      .cinema__exit {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: #fff;
+        cursor: pointer;
+      }
+
       .cinema__frames {
         padding-right: 5px;
         img {
@@ -78,4 +86,9 @@
 
 .cinema__li_active {
   color: gray;
+}
+
+.cinema__exit_active {
+  display: none;
+  background-color: brown;
 }

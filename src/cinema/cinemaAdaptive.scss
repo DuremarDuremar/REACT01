@@ -22,8 +22,39 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 990px) {
   .cinema__main {
     background-color: #fff;
+  }
+  .cinema__header {
+    background-color: #2f3542;
+    .cinema__header_wrapper {
+      .cinema__titls {
+        grid-template: 1fr / repeat(2, 140px);
+        grid-gap: 5px;
+        margin: 0px auto;
+        color: #dfe4ea;
+        h2 {
+          padding: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 880px) {
+  .cinema__main {
+    background-color: #2f3542;
+    .cinema__content {
+      .cinema__list {
+        display: grid;
+        grid-template-columns: 6fr 6fr;
+      }
+      .cinema__item {
+        display: none;
+        .cinema__item-wrap {
+        }
+      }
+    }
   }
 }
