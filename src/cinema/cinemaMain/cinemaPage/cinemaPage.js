@@ -11,6 +11,7 @@ const CinemaPage = ({ dataCinema }) => {
   const [prevCinemaFeed, setPrevCinemaFeed] = useState(null);
   const [cinemaFeed, setCinemaFeed] = useState(null);
   const [classExit, setClassExit] = useState(null);
+  const [cinemaWindow, setCinemaWindow] = useState(document.body.clientWidth);
 
   const cinemaActive = (event) => {
     cinemaDirector(event.title).then(
@@ -18,7 +19,10 @@ const CinemaPage = ({ dataCinema }) => {
       setPrevCinemaFeed(cinemaFeed)
     );
     setCinemaLiActive(event.id);
-    classExit.classList.add("cinema__item-wrap");
+
+    if (classExit) {
+      classExit.classList.add("cinema__item-wrap");
+    }
   };
 
   useEffect(() => {
@@ -53,17 +57,29 @@ const CinemaPage = ({ dataCinema }) => {
     );
   });
 
-  if (!cinemaFeed) return <CinemaSpinner />;
+  window.addEventListener("resize", function () {
+    setCinemaWindow(document.body.clientWidth);
+  });
 
-  return (
-    <div className="cinema__content">
-      <ul className="cinema__list">{cinemaList}</ul>
+  // console.log(cinemaWindow);
+
+  const cinemaItemContent =
+    cinemaWindow < 865 ? null : (
       <CinemaItem
         item={cinemaItem}
         feed={cinemaFeed}
         prevFeed={prevCinemaFeed}
         cinemaDeleteClass={cinemaDeleteClass}
+        setClassExit={setClassExit}
       />
+    );
+
+  if (!cinemaFeed) return <CinemaSpinner />;
+
+  return (
+    <div className="cinema__content">
+      <ul className="cinema__list">{cinemaList}</ul>
+      {cinemaItemContent}
     </div>
   );
 };

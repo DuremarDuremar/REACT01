@@ -30,12 +30,13 @@
     background-color: #2f3542;
     .cinema__header_wrapper {
       .cinema__titls {
-        grid-template: 1fr / repeat(2, 140px);
-        grid-gap: 5px;
+        grid-template: repeat(2, 60px) / repeat(2, 140px);
+        // grid-gap: 5px;
+        // align-content: space-around;
         margin: 0px auto;
         color: #dfe4ea;
         h2 {
-          padding: 20px;
+          padding: 10px;
         }
       }
     }
@@ -51,7 +52,6 @@
         grid-template-columns: 6fr 6fr;
       }
       .cinema__item {
-        display: none;
         .cinema__item-wrap {
         }
       }
