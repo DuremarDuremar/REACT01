@@ -33,6 +33,8 @@ const CinemaPage = ({ dataCinema }) => {
     );
   }, [dataCinema]);
 
+  console.log(cinemaItem);
+
   const cinemaDeleteClass = (item) => {
     item.classList.add("cinema__exit_active");
     item.classList.remove("cinema__item-wrap");
@@ -40,6 +42,18 @@ const CinemaPage = ({ dataCinema }) => {
   };
 
   const cinemaItemContentDecstop = () => {
+    return (
+      <CinemaItem
+        item={cinemaItem}
+        feed={cinemaFeed}
+        prevFeed={prevCinemaFeed}
+        cinemaDeleteClass={cinemaDeleteClass}
+        setClassExit={setClassExit}
+      />
+    );
+  };
+
+  const cinemaItemContentAdap = () => {
     return (
       <CinemaItem
         item={cinemaItem}
@@ -63,12 +77,14 @@ const CinemaPage = ({ dataCinema }) => {
     return (
       <li key={filmId}>
         <CinemaListItem
-          cinemaItemContentDecstop={cinemaItemContentDecstop}
+          cinemaItemContentAdap={cinemaItemContentAdap}
           classActive={classActive}
           item={item}
           setCinemaItem={setCinemaItem}
           cinemaActive={cinemaActive}
           cinemaWindow={cinemaWindow}
+          classExit={classExit}
+          numId={cinemaItem.filmId}
         />
       </li>
     );

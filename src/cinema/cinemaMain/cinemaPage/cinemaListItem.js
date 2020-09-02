@@ -6,13 +6,17 @@ const CinemaListItem = ({
   cinemaActive,
   classActive,
   cinemaWindow,
-  cinemaItemContentDecstop,
+  cinemaItemContentAdap,
+  classExit,
+  numId,
 }) => {
   const { name, year, filmId, nameEn } = item;
 
   const cinemaSet = () => {
     setCinemaItem(item);
   };
+
+  console.log(numId);
 
   const cinemaDecst = () => {
     return (
@@ -31,6 +35,12 @@ const CinemaListItem = ({
   };
 
   const cinemaAdap = () => {
+    if (classExit) {
+      classExit.classList.add("cinema__exit_active");
+      classExit.classList.remove("cinema__item-wrap");
+    }
+
+    const contentItem = filmId == numId ? cinemaItemContentAdap() : null;
     return (
       <>
         <span
@@ -42,7 +52,7 @@ const CinemaListItem = ({
           <span onClick={cinemaSet}>
             <h3>{name}</h3>
             <span className="cinema__item_year">{year}</span>
-            <div> {cinemaItemContentDecstop()}</div>
+            {contentItem}
           </span>
         </span>
       </>
