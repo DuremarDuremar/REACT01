@@ -39,6 +39,21 @@ const CinemaPage = ({ dataCinema }) => {
     setClassExit(item);
   };
 
+  const cinemaItemContentDecstop = () => {
+    return (
+      <CinemaItem
+        item={cinemaItem}
+        feed={cinemaFeed}
+        prevFeed={prevCinemaFeed}
+        cinemaDeleteClass={cinemaDeleteClass}
+        setClassExit={setClassExit}
+      />
+    );
+  };
+
+  const cinemaItemContent =
+    cinemaWindow < 865 ? null : cinemaItemContentDecstop();
+
   const cinemaList = dataCinema.map(function (item) {
     const { filmId } = item;
 
@@ -48,10 +63,12 @@ const CinemaPage = ({ dataCinema }) => {
     return (
       <li key={filmId}>
         <CinemaListItem
+          cinemaItemContentDecstop={cinemaItemContentDecstop}
           classActive={classActive}
           item={item}
           setCinemaItem={setCinemaItem}
           cinemaActive={cinemaActive}
+          cinemaWindow={cinemaWindow}
         />
       </li>
     );
@@ -62,17 +79,6 @@ const CinemaPage = ({ dataCinema }) => {
   });
 
   // console.log(cinemaWindow);
-
-  const cinemaItemContent =
-    cinemaWindow < 865 ? null : (
-      <CinemaItem
-        item={cinemaItem}
-        feed={cinemaFeed}
-        prevFeed={prevCinemaFeed}
-        cinemaDeleteClass={cinemaDeleteClass}
-        setClassExit={setClassExit}
-      />
-    );
 
   if (!cinemaFeed) return <CinemaSpinner />;
 
