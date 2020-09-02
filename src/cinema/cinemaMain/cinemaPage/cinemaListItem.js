@@ -7,7 +7,6 @@ const CinemaListItem = ({
   classActive,
   cinemaWindow,
   cinemaItemContentAdap,
-  classExit,
   numId,
 }) => {
   const { name, year, filmId, nameEn } = item;
@@ -15,8 +14,6 @@ const CinemaListItem = ({
   const cinemaSet = () => {
     setCinemaItem(item);
   };
-
-  console.log(numId);
 
   const cinemaDecst = () => {
     return (
@@ -35,11 +32,6 @@ const CinemaListItem = ({
   };
 
   const cinemaAdap = () => {
-    if (classExit) {
-      classExit.classList.add("cinema__exit_active");
-      classExit.classList.remove("cinema__item-wrap");
-    }
-
     const contentItem = filmId == numId ? cinemaItemContentAdap() : null;
     return (
       <>

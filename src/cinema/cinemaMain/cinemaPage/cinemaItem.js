@@ -1,7 +1,7 @@
 import React from "react";
 import CinemaSpinner from "../../cinemaServer/cinemaSpinner";
 
-const CinemaItem = ({ item, feed, prevFeed, cinemaDeleteClass }) => {
+const CinemaItem = ({ item, feed, prevFeed }) => {
   const { url, nameEn } = item;
 
   const feedAll = feed[0].split(",");
@@ -40,15 +40,7 @@ const CinemaItem = ({ item, feed, prevFeed, cinemaDeleteClass }) => {
 
   return (
     <div className="cinema__item">
-      <div className="cinema__item-wrap">
-        <div
-          className="cinema__exit"
-          onClick={(event) => cinemaDeleteClass(event.currentTarget.parentNode)}
-        >
-          <i className="fas fa-times-circle fa-2x"></i>
-        </div>
-        {cinemaItemContent}
-      </div>
+      <div className="cinema__item-wrap">{cinemaItemContent}</div>
     </div>
   );
 };
