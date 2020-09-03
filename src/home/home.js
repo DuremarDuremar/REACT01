@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./home.scss";
+import photo from "./Ivan.jpg";
 
 class Home extends React.Component {
   render() {
@@ -10,15 +11,12 @@ class Home extends React.Component {
           <div className="home__container">
             <div className="home__header_wrapper">
               <div className="home__header_photo">
-                <img
-                  src="https://vokrug.tv/pic/person/d/6/0/b/d60b454e66cfbe063274067ec900946b.jpg"
-                  alt="22"
-                />
+                <img src={photo} alt="22" />
               </div>
               <div className="home__header_info">
-                <div className="home__header_name">Рутгер Хауэр</div>
-                <a className="home__header_phone" href="tel:895674666">
-                  8 (956) 746 66
+                <div className="home__header_name">Куляпин Иван</div>
+                <a className="home__header_phone" href="tel:89262844577">
+                  8 (926) 284 45 77
                 </a>
               </div>
             </div>
@@ -30,8 +28,11 @@ class Home extends React.Component {
               <Link className="home__main_block todo__main_block" to="/todo">
                 <p>Todo List</p>
               </Link>
-              <Link className="home__main_block" to="/feed">
-                <p>2</p>
+              <Link
+                className="home__main_block cinema__main_block"
+                to="/cinema"
+              >
+                <p>Cinema Festivals</p>
               </Link>
 
               <a

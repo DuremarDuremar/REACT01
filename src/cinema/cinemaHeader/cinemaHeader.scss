@@ -44,11 +44,12 @@
         border: 7px solid black;
       }
       &:before {
-        content: "Cinema Collection";
+        content: "Cinema Festivals";
         display: block;
         font-size: 30px;
         color: #dfe4ea;
-        font-family: Fira Sans;
+        font-family: Consolas;
+        font-style: italic;
         transform: translate(-50%, -50%);
         position: absolute;
         top: 38px;

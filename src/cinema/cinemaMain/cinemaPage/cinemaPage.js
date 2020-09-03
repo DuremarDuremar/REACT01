@@ -3,6 +3,7 @@ import "./cinemaPage.scss";
 import CinemaItem from "./cinemaItem";
 import CinemaListItem from "./cinemaListItem";
 import CinemaSpinner from "../../cinemaServer/cinemaSpinner";
+import ErrorBoundry from "../../../error/error-boundry";
 import { cinemaDirector } from "../../cinemaServer/cinemaServer";
 
 const CinemaPage = ({ dataCinema }) => {
@@ -29,9 +30,7 @@ const CinemaPage = ({ dataCinema }) => {
     );
   }, [dataCinema]);
 
-  // console.log(cinemaWindow);
-
-  const cinemaItemContentDecstop = () => {
+  const cinemaItemContent = () => {
     return (
       <CinemaItem
         item={cinemaItem}
@@ -43,20 +42,7 @@ const CinemaPage = ({ dataCinema }) => {
     );
   };
 
-  const cinemaItemContentAdap = () => {
-    return (
-      <CinemaItem
-        item={cinemaItem}
-        feed={cinemaFeed}
-        prevFeed={prevCinemaFeed}
-        posterWidth={posterWidth}
-        setPosterWidth={setPosterWidth}
-      />
-    );
-  };
-
-  const cinemaItemContent =
-    cinemaWindow < 865 ? null : cinemaItemContentDecstop();
+  const cinemaItemRes = cinemaWindow < 865 ? null : cinemaItemContent();
 
   const cinemaList = dataCinema.map(function (item) {
     const { filmId } = item;
@@ -67,7 +53,7 @@ const CinemaPage = ({ dataCinema }) => {
     return (
       <li key={filmId}>
         <CinemaListItem
-          cinemaItemContentAdap={cinemaItemContentAdap}
+          cinemaItemContentAdap={cinemaItemContent}
           classActive={classActive}
           item={item}
           setCinemaItem={setCinemaItem}
@@ -83,15 +69,15 @@ const CinemaPage = ({ dataCinema }) => {
     setCinemaWindow(document.body.clientWidth);
   });
 
-  // console.log(cinemaWindow);
-
   if (!cinemaFeed) return <CinemaSpinner />;
 
   return (
-    <div className="cinema__content">
-      <ul className="cinema__list">{cinemaList}</ul>
-      {cinemaItemContent}
-    </div>
+    <ErrorBoundry>
+      <div className="cinema__content">
+        <ul className="cinema__list">{cinemaList}</ul>
+        {cinemaItemRes}
+      </div>
+    </ErrorBoundry>
   );
 };
 export default CinemaPage;

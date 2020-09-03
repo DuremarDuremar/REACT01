@@ -1,7 +1,6 @@
 import React from "react";
 import CinemaPage from "./cinemaPage/cinemaPage";
 import CinemaSpinner from "../cinemaServer/cinemaSpinner";
-
 import cannes from "../cinemaImages/cannes.png";
 import berlin from "../cinemaImages/berlin.png";
 import venice from "../cinemaImages/venice.png";

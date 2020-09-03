@@ -381,3 +381,14 @@
   font-style: italic;
   font-family: Consolas;
 }
+
+.cinema__main_block {
+  background-color: #2f3542;
+  color: #dfe4ea;
+  font-family: Consolas;
+  p {
+    -webkit-box-shadow: 19px 14px 0px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 19px 14px 0px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 19px 14px 0px 1px rgba(0, 0, 0, 0.75);
+  }
+}
