@@ -32,7 +32,7 @@ const CinemaListItem = ({
   };
 
   const cinemaAdap = () => {
-    const contentItem = filmId == numId ? cinemaItemContentAdap() : null;
+    const contentItem = filmId === numId ? cinemaItemContentAdap() : null;
     return (
       <>
         <span

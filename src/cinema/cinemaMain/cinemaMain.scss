@@ -8,6 +8,11 @@
     z-index: 2;
     position: relative;
     background-color: #2f3542;
+
+    .cinema__arrow {
+      display: none;
+    }
+
     img {
       // min-width: 120px;
       max-width: 300px;

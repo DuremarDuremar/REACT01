@@ -50,6 +50,7 @@ const Cinema = () => {
       <CinemaMain
         stateCinema={stateCinema}
         cinemaFest={cinemaFest}
+        setCinemaFest={setCinemaFest}
         cinemaInfo={cinemaInfo}
       />
       <footer className="cinema__footer">2</footer>

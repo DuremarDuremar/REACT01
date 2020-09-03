@@ -148,6 +148,12 @@
   .cinema__main {
     background-color: #fff;
     .cinema__festival {
+      .cinema__arrow {
+        display: inline;
+        padding: 0 20px;
+        font-size: 30px;
+        cursor: pointer;
+      }
       img {
         max-width: 200px;
         max-height: 90px;
