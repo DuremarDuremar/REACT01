@@ -11,6 +11,7 @@ const CinemaPage = ({ dataCinema }) => {
   const [prevCinemaFeed, setPrevCinemaFeed] = useState(null);
   const [cinemaFeed, setCinemaFeed] = useState(null);
   const [cinemaWindow, setCinemaWindow] = useState(document.body.clientWidth);
+  const [posterWidth, setPosterWidth] = useState(false);
 
   const cinemaActive = (event) => {
     cinemaDirector(event.title).then(
@@ -36,6 +37,8 @@ const CinemaPage = ({ dataCinema }) => {
         item={cinemaItem}
         feed={cinemaFeed}
         prevFeed={prevCinemaFeed}
+        posterWidth={posterWidth}
+        setPosterWidth={setPosterWidth}
       />
     );
   };
@@ -46,6 +49,8 @@ const CinemaPage = ({ dataCinema }) => {
         item={cinemaItem}
         feed={cinemaFeed}
         prevFeed={prevCinemaFeed}
+        posterWidth={posterWidth}
+        setPosterWidth={setPosterWidth}
       />
     );
   };

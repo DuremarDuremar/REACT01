@@ -1,8 +1,34 @@
 import React from "react";
 import CinemaSpinner from "../../cinemaServer/cinemaSpinner";
 
-const CinemaItem = ({ item, feed, prevFeed }) => {
+const CinemaItem = ({ item, feed, prevFeed, posterWidth, setPosterWidth }) => {
   const { url, nameEn } = item;
+
+  const cinemaPosterWidth = (e) => {
+    setPosterWidth(!posterWidth);
+
+    if (posterWidth === false) {
+      e.classList.add("cinema__poster_width");
+      e.classList.remove("cinema__poster");
+    }
+    if (posterWidth === true) {
+      e.classList.remove("cinema__poster_width");
+      e.classList.add("cinema__poster");
+    }
+  };
+
+  const cinemaFramesWidth = (e) => {
+    setPosterWidth(!posterWidth);
+
+    if (posterWidth === false) {
+      e.classList.add("cinema__frames_width");
+      e.classList.remove("cinema__frames");
+    }
+    if (posterWidth === true) {
+      e.classList.remove("cinema__frames_width");
+      e.classList.add("cinema__frames");
+    }
+  };
 
   const feedAll = feed[0].split(",");
   const feedCountry = feedAll[0];
@@ -16,14 +42,23 @@ const CinemaItem = ({ item, feed, prevFeed }) => {
 
     return (
       <>
-        <div className="cinema__frames">
+        <div
+          className="cinema__frames"
+          onClick={(event) => cinemaFramesWidth(event.currentTarget)}
+        >
           <img src={frame1} alt={nameEn}></img>
           <img src={frame2} alt={nameEn}></img>
           <img src={frame3} alt={nameEn}></img>
         </div>
         <div className="cinema__right">
           <div className="cinema__poster">
-            <img src={url} alt={nameEn}></img>
+            <img
+              onClick={(event) =>
+                cinemaPosterWidth(event.currentTarget.parentNode)
+              }
+              src={url}
+              alt={nameEn}
+            ></img>
           </div>
 
           <div className="cinema__feed">

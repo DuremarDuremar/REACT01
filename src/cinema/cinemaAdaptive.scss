@@ -148,6 +148,31 @@
             }
           }
         }
+        .cinema__poster_width {
+          width: 100%;
+          height: auto;
+          z-index: 3;
+          position: absolute;
+          display: block;
+          right: 10%;
+          bottom: 0;
+          background-color: black;
+        }
+
+        .cinema__poster_width ~ .cinema__feed {
+          display: none;
+        }
+        .cinema__frames_width {
+          padding-right: 5px;
+          img {
+            max-width: 340px;
+            max-height: 280px;
+            display: block;
+          }
+        }
+        .cinema__frames_width ~ .cinema__right {
+          display: none;
+        }
       }
     }
   }

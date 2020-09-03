@@ -46,9 +46,9 @@ const CinemaListItem = ({
               <h3>{name}</h3>
               <p>{year}</p>
             </span>
-            {contentItem}
           </span>
         </span>
+        {contentItem}
       </>
     );
   };

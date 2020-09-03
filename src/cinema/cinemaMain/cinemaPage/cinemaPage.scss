@@ -88,6 +88,11 @@
   }
 }
 
-.cinema__exit_active {
-  display: none;
+.cinema__frames_width {
+  padding-right: 5px;
+  img {
+    max-width: 340px;
+    max-height: 210px;
+    display: block;
+  }
 }
