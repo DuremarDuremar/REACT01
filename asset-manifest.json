@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/REACT01.git/static/css/main.0929c788.chunk.css",
+    "main.js": "/REACT01.git/static/js/main.5d06a990.chunk.js",
+    "main.js.map": "/REACT01.git/static/js/main.5d06a990.chunk.js.map",
+    "runtime-main.js": "/REACT01.git/static/js/runtime-main.8ae68432.js",
+    "runtime-main.js.map": "/REACT01.git/static/js/runtime-main.8ae68432.js.map",
+    "static/js/2.7425dff9.chunk.js": "/REACT01.git/static/js/2.7425dff9.chunk.js",
+    "static/js/2.7425dff9.chunk.js.map": "/REACT01.git/static/js/2.7425dff9.chunk.js.map",
+    "index.html": "/REACT01.git/index.html",
+    "precache-manifest.98c36c340f89f040c7253e37cb9a5d74.js": "/REACT01.git/precache-manifest.98c36c340f89f040c7253e37cb9a5d74.js",
+    "service-worker.js": "/REACT01.git/service-worker.js",
+    "static/css/main.0929c788.chunk.css.map": "/REACT01.git/static/css/main.0929c788.chunk.css.map",
+    "static/js/2.7425dff9.chunk.js.LICENSE.txt": "/REACT01.git/static/js/2.7425dff9.chunk.js.LICENSE.txt",
+    "static/media/Ivan.jpg": "/REACT01.git/static/media/Ivan.748b8ccd.jpg",
+    "static/media/cannes.png": "/REACT01.git/static/media/cannes.9b75234f.png",
+    "static/media/cinemaLogo.jpg": "/REACT01.git/static/media/cinemaLogo.0d64a45e.jpg",
+    "static/media/cinemaHeader.scss": "/REACT01.git/static/media/danse-macabre.63638e8a.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8ae68432.js",
+    "static/js/2.7425dff9.chunk.js",
+    "static/css/main.0929c788.chunk.css",
+    "static/js/main.5d06a990.chunk.js"
+  ]
+}
