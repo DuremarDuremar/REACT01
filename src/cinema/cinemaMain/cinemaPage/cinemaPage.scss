@@ -13,8 +13,11 @@
       h3 {
         display: inline;
       }
-      .cinema__item_year {
-        padding-left: 6px;
+      .cinema__item_info {
+        p {
+          display: inline;
+          padding-left: 6px;
+        }
       }
     }
   }
@@ -45,7 +48,7 @@
       .cinema__frames {
         padding-right: 5px;
         img {
-          width: 240px;
+          max-width: 240px;
           max-height: 180px;
           display: block;
         }
@@ -78,6 +81,11 @@
 
 .cinema__li_active {
   color: gray;
+  .cinema__item_info {
+    border-top: 1px solid #fff;
+    padding: 5px;
+    font-size: 1.3em;
+  }
 }
 
 .cinema__exit_active {

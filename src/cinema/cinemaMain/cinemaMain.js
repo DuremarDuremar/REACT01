@@ -59,14 +59,14 @@ const CinemaMain = ({ stateCinema, cinemaFest, setCinemaFest, cinemaInfo }) => {
             className="cinema__arrow cinema__arrow_left"
             onClick={() => cinemaFestActiveAdap("dec")}
           >
-            &#8592;
+            <i className="fas fa-angle-double-left"></i>
           </span>
           <img src={images()} alt="cannes"></img>
           <span
             className="cinema__arrow cinema__arrow_right"
             onClick={() => cinemaFestActiveAdap("inc")}
           >
-            &#8594;
+            <i className="fas fa-angle-double-right"></i>
           </span>
           <h1>{cinemaInfo.festName}</h1>
         </div>

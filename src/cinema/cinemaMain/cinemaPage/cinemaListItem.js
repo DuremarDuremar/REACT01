@@ -42,8 +42,10 @@ const CinemaListItem = ({
           onClick={(event) => cinemaActive(event.currentTarget)}
         >
           <span onClick={cinemaSet}>
-            <h3>{name}</h3>
-            <span className="cinema__item_year">{year}</span>
+            <span className="cinema__item_info">
+              <h3>{name}</h3>
+              <p>{year}</p>
+            </span>
             {contentItem}
           </span>
         </span>
