@@ -32,10 +32,6 @@ const CinemaMain = ({ stateCinema, cinemaFest, setCinemaFest, cinemaInfo }) => {
     const festArray = ["Berlin", "Cannes", "Venice", "Sundance"];
     festArray.forEach(function (item, index) {
       if (item === cinemaFest) {
-        console.log(n);
-        // let inc =
-        //   index + 1 === festArray.length ? festArray[0] : festArray[index + 1];
-        // let dec = index === 0 ? festArray[3] : festArray[index - 1];
         setCinemaFest(
           n === "inc"
             ? index + 1 === festArray.length

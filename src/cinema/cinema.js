@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import CinemaHeader from "./cinemaHeader/cinemaHeader";
 import CinemaMain from "./cinemaMain/cinemaMain";
 import {
@@ -36,8 +37,8 @@ const Cinema = () => {
         cinemaSundance().then((response) => setStateCinema(response));
         setCinemaInfo(CinemaInformation[3]);
         break;
-      // default:
-      //   cinemaCannes().then((response) => setStateCinema(prevState));
+      default:
+        console.log("error");
     }
   }, [cinemaFest]);
 
@@ -53,7 +54,11 @@ const Cinema = () => {
         setCinemaFest={setCinemaFest}
         cinemaInfo={cinemaInfo}
       />
-      <footer className="cinema__footer">2</footer>
+      <footer className="cinema__footer">
+        <Link to="/">
+          <i className="far fa-arrow-alt-circle-down fa-3x"></i>
+        </Link>
+      </footer>
     </div>
   );
 };
