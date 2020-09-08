@@ -133,6 +133,7 @@ export const getFrames = async (url) => {
       "https://miro.medium.com/max/978/1*pUEZd8z__1p-7ICIO1NZFA.png";
   }
   const frames = [framesAll[0].image, framesAll[1].image, framesAll[2].image];
+  console.log(frames);
   return frames;
 };
 
@@ -141,9 +142,13 @@ export const cinemaDirector = async (cinemaFeed) => {
     ` https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${cinemaFeed}&page=1`
   );
   const idFrames = feed[0].filmId;
-  const frames = await getFrames(
+  const framesAwait = await getFrames(
     `https://kinopoiskapiunofficial.tech/api/v2.1/films/${idFrames}/frames`
   );
+  const frames = framesAwait.map(function (id) {
+    return `https://kinopoiskapiunofficial.tech/images/frames/kp/${id}`;
+  });
+  console.log(frames);
   const result = [feed[0].description, frames];
   // console.log(result);
   return result;

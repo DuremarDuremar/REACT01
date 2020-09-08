@@ -12,13 +12,18 @@
 //   }
 
 @media (max-width: 768px) {
+  .todo__container {
+    height: 100%;
+    max-width: 700px;
+  }
+
   .todo__search {
     margin-bottom: 20px;
     .todo__search_form {
       display: flex;
       flex-direction: column;
 
-      button #all {
+      #all {
         display: block;
         width: 40px;
         height: 40px;
@@ -26,14 +31,7 @@
         transition-duration: 0.3s;
         // margin: auto;
         &:hover:before {
-          content: "All";
-          display: block;
-          font-size: 35px;
-          color: #800000;
-          transform: translate(-50%, -50%);
-          position: absolute;
-          top: 35px;
-          left: 50%;
+          display: none;
         }
       }
 
@@ -64,28 +62,14 @@
         &:first-child {
           margin-bottom: 15px;
           &:hover:before {
-            content: "Active";
-            display: block;
-            font-size: 35px;
-            color: #800000;
-            transform: translate(-50%, -50%);
-            position: absolute;
-            top: 35px;
-            left: 50%;
+            display: none;
           }
         }
 
         &:last-child {
           margin-bottom: 15px;
           &:hover:before {
-            content: "Done";
-            display: block;
-            font-size: 35px;
-            color: #800000;
-            transform: translate(-50%, -50%);
-            position: absolute;
-            top: 35px;
-            left: 50%;
+            display: none;
           }
         }
 
@@ -113,11 +97,34 @@
     }
   }
   .todo__wrapper {
-    padding-bottom: 18px;
+    border: 8px solid #453138;
+    padding: 18px;
   }
 
   .todo__add {
     margin-top: 10px;
+    .todo__add_form {
+      display: flex;
+      input {
+        font-size: 15px;
+        padding: 0 20px;
+        border-radius: 3px;
+      }
+    }
+  }
+
+  .todo__item {
+    .todo__delete {
+      &:hover:before {
+        display: none;
+      }
+    }
+
+    .todo__important {
+      &:hover:before {
+        display: none;
+      }
+    }
   }
 }
 
@@ -125,8 +132,8 @@
   .todo__item {
     span {
       display: inline-block;
-      font-size: 15px;
-      max-width: 200px;
+      font-size: 20px;
+      max-width: 220px;
       cursor: pointer;
       &:not(:last-child) {
         margin-bottom: 15px;
@@ -138,40 +145,19 @@
       width: 35px;
       height: 25px;
       margin-left: 15px;
+
       &:hover {
         box-shadow: inset 0 0 0 2px tomato;
         color: tomato;
       }
     }
-
-    .todo__delete {
-      &:hover:before {
-        content: "Delete";
-        display: block;
-        font-size: 35px;
-        color: #800000;
-        transform: translate(-50%, -50%);
-        position: absolute;
-        top: 35px;
-        left: 50%;
-      }
-    }
-
     .todo__important {
-      &:hover:before {
-        content: "Important";
-        display: block;
-        font-size: 35px;
-        color: #800000;
-        transform: translate(-50%, -50%);
-        position: absolute;
-        top: 35px;
-        left: 50%;
-        font-weight: normal;
-      }
+      margin-bottom: 25px;
     }
   }
   .todo__wrapper {
     padding: 25px;
+    border: 6px solid #453138;
+    padding: 8px 18px;
   }
 }
