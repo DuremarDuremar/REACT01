@@ -12,7 +12,7 @@
       &:hover:before {
         content: "All";
         display: block;
-        font-size: 35px;
+        font-size: 25px;
         color: #800000;
         transform: translate(-50%, -50%);
         position: absolute;
@@ -45,7 +45,7 @@
         &:hover:before {
           content: "Active";
           display: block;
-          font-size: 35px;
+          font-size: 25px;
           color: #800000;
           transform: translate(-50%, -50%);
           position: absolute;
@@ -59,7 +59,7 @@
         &:hover:before {
           content: "Done";
           display: block;
-          font-size: 35px;
+          font-size: 25px;
           color: #800000;
           transform: translate(-50%, -50%);
           position: absolute;
