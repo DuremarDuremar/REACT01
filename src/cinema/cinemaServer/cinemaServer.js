@@ -133,7 +133,7 @@ export const getFrames = async (url) => {
       "https://miro.medium.com/max/978/1*pUEZd8z__1p-7ICIO1NZFA.png";
   }
   const frames = [framesAll[0].image, framesAll[1].image, framesAll[2].image];
-  console.log(frames);
+
   return frames;
 };
 
@@ -148,7 +148,7 @@ export const cinemaDirector = async (cinemaFeed) => {
   const frames = framesAwait.map(function (id) {
     return `https://kinopoiskapiunofficial.tech/images/frames/kp/${id}`;
   });
-  console.log(frames);
+
   const result = [feed[0].description, frames];
   // console.log(result);
   return result;

@@ -1,0 +1,19 @@
+.todo__pagination {
+  display: flex;
+  justify-content: center;
+
+  .todo__page_item {
+    &:not(:last-child) {
+      padding-right: 10px;
+    }
+    .todo__page_link {
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+  }
+}
+
+.todo__link_active {
+  color: red;
+}

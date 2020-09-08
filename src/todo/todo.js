@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import TodoHeader from "./todoHeader/todoHeader";
 import TodoSearch from "./todoSearch/todoSearch";
 import TodoList from "./todoList/todoList";
+import TodoPagination from "./todoPagination/todoPagination";
 import TodoAdd from "./todoAdd/todoAdd";
 ////STILE/////
 import "./todo.scss";
@@ -12,9 +13,9 @@ import "./todoAdaptive.scss";
 ///////////////////
 const Todo = () => {
   const [dataTodo, setDataTodo] = useState([
-    { label: "Drink cofee", id: 1, done: false, important: false },
-    { label: "Make Awesome App", id: 2, done: false, important: false },
-    { label: "Have a Lunch", id: 3, done: false, important: false },
+    // { label: "Drink cofee", id: 1, done: false, important: false },
+    // { label: "Make Awesome App", id: 2, done: false, important: false },
+    // { label: "Have a Lunch", id: 3, done: false, important: false },
   ]);
 
   // const [maxId, setMaxId] = useState(100);
@@ -93,6 +94,17 @@ const Todo = () => {
     setDataTodo(newDataTodo);
   };
 
+  ////////PAGINATION///////////////////
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(4);
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = newData.slice(indexOfFirstPost, indexOfLastPost);
+
+  // console.log(currentPost);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   ////////DELETED///////////////////////////////////////
 
   const todoDeleted = (id) => {
@@ -143,10 +155,16 @@ const Todo = () => {
             setTodoFilter={setTodoFilter}
           />
           <TodoList
-            data={newData}
             todoDeleted={todoDeleted}
             onToogleDone={onToogleDone}
             onToogleImportant={onToogleImportant}
+            currentPosts={currentPosts}
+          />
+          <TodoPagination
+            postsPerPage={postsPerPage}
+            totalPosts={dataTodo.length}
+            currentPage={currentPage}
+            paginate={paginate}
           />
         </div>
         <TodoAdd todoAdd={todoAdd} />
