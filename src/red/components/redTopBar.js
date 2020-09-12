@@ -5,7 +5,7 @@ import "./redTopBar.scss";
 const RedTopBar = () => {
   return (
     <nav className="red__top-bar">
-      <div className="red__container">
+      <div className="red__top-bar_container">
         <Link to="/">
           <h2>Medium</h2>
         </Link>

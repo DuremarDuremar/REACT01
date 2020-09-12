@@ -1,7 +1,7 @@
 .red__top-bar {
-  background-color: silver;
+  background-color: #dfe4ea;
   min-height: 100px;
-  .red__container {
+  .red__top-bar_container {
     padding-top: 20px;
     max-width: 1180px;
     display: flex;
@@ -9,7 +9,7 @@
     margin: 0px auto;
     h2 {
       font-size: 40px;
-      color: lightgreen;
+      color: #2ed573;
     }
     ul {
       display: flex;

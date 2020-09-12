@@ -1,0 +1,45 @@
+.red__authentication {
+  padding-top: 30px;
+  .red__authentication_container {
+    max-width: 800px;
+    margin: 0px auto;
+    .authentication__title {
+      font-size: 40px;
+      font-weight: 600;
+      text-align: center;
+    }
+    div {
+      text-align: center;
+      margin-top: 12px;
+      .authentication__link {
+        color: #2ed573;
+      }
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 450px;
+      margin: auto;
+      input {
+        border: 1px solid black;
+        width: 400px;
+        height: 40px;
+        margin: 12px auto 0;
+        font-size: 18px;
+        padding: 5px 25px;
+      }
+      button {
+        margin-top: 12px;
+        border-radius: 5px;
+        font-size: 18px;
+        color: #fff;
+        width: 100px;
+        height: 50px;
+        display: block;
+        margin-left: auto;
+        margin-right: 0;
+        background-color: #2ed573;
+      }
+    }
+  }
+}
