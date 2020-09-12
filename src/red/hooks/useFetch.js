@@ -20,13 +20,13 @@ export default (url) => {
     axios(url, options)
       .then((res) => {
         console.log("succses", res);
-        setIsLoading(false);
         setResponse(res.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log("error", error);
-        setIsLoading(false);
         setError(error.response.data);
+        setIsLoading(false);
       });
   }, [isLoading]);
 
