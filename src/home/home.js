@@ -42,7 +42,7 @@ class Home extends React.Component {
                 <p>3 site Toxin</p>
               </a>
 
-              <Link className="home__main_block" to="/hooks">
+              <Link className="home__main_block" to="/red">
                 <p>4</p>
               </Link>
 

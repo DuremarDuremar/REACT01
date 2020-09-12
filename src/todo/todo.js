@@ -75,18 +75,18 @@ const Todo = () => {
 
   /////////////ADD///////////////////////////
 
-  const getRandomInt = (min, max) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-  };
+  // const getRandomInt = (min, max) => {
+  //   min = Math.ceil(min);
+  //   max = Math.floor(max);
+  //   return Math.floor(Math.random() * (max - min)) + min;
+  // };
 
   const todoAdd = (text) => {
     const newDataTodo = [
       ...dataTodo,
       {
         label: text,
-        id: getRandomInt(4, 3400) + getRandomInt(2, 3400),
+        id: Date.now().toString(),
         done: false,
         important: false,
       },
@@ -162,7 +162,7 @@ const Todo = () => {
           />
           <TodoPagination
             postsPerPage={postsPerPage}
-            totalPosts={dataTodo.length}
+            totalPosts={newData.length}
             currentPage={currentPage}
             paginate={paginate}
           />
