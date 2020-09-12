@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import "./authentication.scss";
 
 const Authentication = (props) => {
@@ -30,9 +31,14 @@ const Authentication = (props) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
+
+  const [token, setToken] = useLocalStorage("token");
+
   const [{ isLoading, response, error }, doFetch] = useFetch(
     `https://conduit.productionready.io/api${apiUrl}`
   );
+
+  console.log(token);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -50,11 +56,11 @@ const Authentication = (props) => {
     if (!response) {
       return;
     }
-    localStorage.setItem("token", response.user.token);
+    setToken(response.user.token);
     setIsSuccess(true);
   }, [response]);
 
-  if (setIsSuccess) {
+  if (isSuccess) {
     return <Redirect to="/red" />;
   }
 
