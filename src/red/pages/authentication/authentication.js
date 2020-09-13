@@ -32,16 +32,19 @@ const Authentication = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  //провкрка на успешный сабмит (16)
   const [isSuccess, setIsSuccess] = useState(false);
-  const [, setCurrentUserState] = useContext(CurrentUserContext);
+  const [currentUserState, setCurrentUserState] = useContext(
+    CurrentUserContext
+  );
+
+  console.log(currentUserState);
 
   const [, setToken] = useLocalStorage("token");
 
   const [{ isLoading, response, error }, doFetch] = useFetch(
     `https://conduit.productionready.io/api${apiUrl}`
   );
-
-  // console.log("dd", currentUserState);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,11 +58,13 @@ const Authentication = (props) => {
     });
   };
 
+  ///сохраняем token в LocalStorage (16)
   useEffect(() => {
     if (!response) {
       return;
     }
     setToken(response.user.token);
+    //подтверждение успешного сабмита (16)
     setIsSuccess(true);
     setCurrentUserState((state) => ({
       ...state,
@@ -69,6 +74,7 @@ const Authentication = (props) => {
     }));
   }, [response, setToken, setCurrentUserState]);
 
+  //проверка на успешный сабмит, при успехи редеректим на главную страницу (16)
   if (isSuccess) {
     return <Redirect to="/red" />;
   }
