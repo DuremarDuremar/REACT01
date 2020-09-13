@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, Redirect } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import { CurrentUserContext } from "../../contexts/currentUser";
+import BackendErrorMessages from "../../components/backendErrorMessages";
 import "./authentication.scss";
 
 const Authentication = (props) => {
@@ -31,14 +33,15 @@ const Authentication = (props) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
+  const [, setCurrentUserState] = useContext(CurrentUserContext);
 
-  const [token, setToken] = useLocalStorage("token");
+  const [, setToken] = useLocalStorage("token");
 
   const [{ isLoading, response, error }, doFetch] = useFetch(
     `https://conduit.productionready.io/api${apiUrl}`
   );
 
-  console.log(token);
+  // console.log("dd", currentUserState);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -58,7 +61,13 @@ const Authentication = (props) => {
     }
     setToken(response.user.token);
     setIsSuccess(true);
-  }, [response]);
+    setCurrentUserState((state) => ({
+      ...state,
+      isLoggedIn: true,
+      isLoading: false,
+      currentUser: response.user,
+    }));
+  }, [response, setToken, setCurrentUserState]);
 
   if (isSuccess) {
     return <Redirect to="/red" />;
@@ -74,6 +83,7 @@ const Authentication = (props) => {
           </Link>
         </div>
         <form onSubmit={handleSubmit}>
+          {error && <BackendErrorMessages backendErrors={error.errors} />}
           {userInput()}
           <input
             type="email"
