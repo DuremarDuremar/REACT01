@@ -32,14 +32,10 @@ const Authentication = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  //провкрка на успешный сабмит (16)
+  //проверка на успешный сабмит (16)
   const [isSuccess, setIsSuccess] = useState(false);
-  const [currentUserState, setCurrentUserState] = useContext(
-    CurrentUserContext
-  );
-
-  console.log(currentUserState);
-
+  const [, setCurrentUserState] = useContext(CurrentUserContext);
+  //стэйт для взаимодействия с useLocalStorage (17)
   const [, setToken] = useLocalStorage("token");
 
   const [{ isLoading, response, error }, doFetch] = useFetch(
@@ -48,7 +44,6 @@ const Authentication = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("data", password, email);
     const user = isLogin ? { email, password } : { email, password, username };
     doFetch({
       method: "post",
@@ -63,9 +58,11 @@ const Authentication = (props) => {
     if (!response) {
       return;
     }
+    //передаем значение токена в наш useLocalStorage (17)
     setToken(response.user.token);
     //подтверждение успешного сабмита (16)
     setIsSuccess(true);
+    //иеняем информацию в управляющим стэйте о состоянии загрузки юзера (19)
     setCurrentUserState((state) => ({
       ...state,
       isLoggedIn: true,

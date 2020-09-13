@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 import useLocalStorage from "../hooks/useLocalStorage";
@@ -9,17 +9,20 @@ export default (url) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
   const [options, setOptions] = useState({});
+  //берем токен из LocalStorage (21)
   const [token] = useLocalStorage("token");
 
-  const doFetch = (options = {}) => {
+  //завернули в useCallback, чтоб можно было добовлять в зависемость (22)
+  const doFetch = useCallback((options = {}) => {
     setOptions(options);
     setIsLoading(true);
-  };
+  }, []);
 
   useEffect(() => {
     const requestOption = {
       ...options,
       ...{
+        //проверка токеном залогинин ли пользователь при загрузке страницы (21)
         headers: {
           authorization: token ? `Token ${token}` : "",
         },
@@ -38,7 +41,7 @@ export default (url) => {
         setError(error.response.data);
         setIsLoading(false);
       });
-  }, [isLoading, options, url]);
+  }, [isLoading, options, url, token]);
 
   return [{ isLoading, response, error }, doFetch];
 };
