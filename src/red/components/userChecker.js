@@ -17,7 +17,7 @@ const UserChecker = ({ children }) => {
     if (!token) {
       setCurrentUserState((state) => ({
         ...state,
-        isLoggenId: false,
+        isLoggedIn: false,
       }));
       return;
     }
