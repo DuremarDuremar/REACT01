@@ -7,8 +7,6 @@ import no_avatar from "../redImages/no-avatar.png";
 const RedTopBar = () => {
   const [currentUserState] = useContext(CurrentUserContext);
 
-  console.log(currentUserState);
-
   return (
     <nav className="red__top-bar">
       <div className="red__top-bar_container">

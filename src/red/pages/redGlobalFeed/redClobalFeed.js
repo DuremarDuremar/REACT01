@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import RedFeed from "../../components/redFeed";
+import RedPagination from "../../components/redPagination";
+import "./redGlobalFeed.scss";
+import RedPaginations from "../../components/redPagination";
 
 const RedGlobalFeed = () => {
   const [{ isLoading, response, error }, doFetch] = useFetch(
@@ -13,16 +16,21 @@ const RedGlobalFeed = () => {
 
   return (
     <div className="red__feed">
+      <div className="red__feed_top">
+        <h1>Clone Medium</h1>
+        <p>A plase to share knowledge</p>
+      </div>
       <div className="red__feed_container">
-        <div className="red__feed_top">
-          <h1>Clone Medium</h1>
-          <p>A plase to share knowledge</p>
-        </div>
         <div className="red__feed_wrapp">
           <div className="red__feed_main">
             {isLoading && <p>is loading...</p>}
             {error && <p>Some error happened</p>}
-            {!isLoading && response && <RedFeed articles={response.articles} />}
+            {!isLoading && response && (
+              <>
+                <RedFeed articles={response.articles} />
+                <RedPaginations total={500} current={1} url="/" limit={10} />
+              </>
+            )}
           </div>
           <div className="red__feed_side">Popular tags</div>
         </div>

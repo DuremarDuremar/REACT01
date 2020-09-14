@@ -1,0 +1,28 @@
+.red__feed {
+  margin-bottom: 30px;
+  .red__feed_top {
+    text-align: center;
+    background-color: #2ed573;
+    padding: 10px 0;
+    p {
+      font-style: italic;
+    }
+  }
+  .red__feed_container {
+    margin: 0px auto;
+    padding-top: 20px;
+    max-width: 1180px;
+
+    .red__feed_wrapp {
+      display: flex;
+      margin-top: 40px;
+      justify-content: space-between;
+
+      .red__feed_main {
+      }
+      .red__feed_side {
+        background-color: #dfe4ea;
+      }
+    }
+  }
+}
