@@ -39,7 +39,7 @@ const UserChecker = ({ children }) => {
       ...state,
       //пользователь зарегестрирован, меняем управляющий стэйт на юзер залогинин,
       //загрузка закончена, и получаем данные юзера (21)
-      isLoggenId: true,
+      isLoggedIn: true,
       isLoading: false,
       currentUser: response.user,
     }));
