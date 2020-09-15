@@ -12,8 +12,10 @@ const RedFeed = ({ articles }) => {
             <Link to={`/red/profiles/${article.author.username}`}>
               <img src={no_avatar} alt="" />
             </Link>
+            <Link to={`/red/profiles/${article.author.username}`}>
+              <p>{article.author.username}</p>
+            </Link>
             <div className="red__item_info">
-              <p>ggggg</p>
               <span>{article.createdAt}</span>
             </div>
           </div>

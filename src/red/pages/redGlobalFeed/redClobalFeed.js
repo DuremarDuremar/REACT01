@@ -30,7 +30,7 @@ const RedGlobalFeed = () => {
                 <RedPaginations
                   total={500}
                   currentPage={1}
-                  url="/"
+                  url="/red/"
                   limit={10}
                 />
               </>

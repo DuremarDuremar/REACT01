@@ -1,12 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { range } from "../utils/range";
+import { range } from "../utils/utils";
+import classNames from "classnames";
 import "./redPagination.scss";
 
 const PaginationItem = ({ page, currentPage, url }) => {
+  const liClasses = classNames({
+    red__pagination_item: true,
+    active: currentPage === page,
+  });
+
+  console.log(liClasses);
+  console.log(currentPage);
+
   return (
-    <li className="red__pagination_item">
-      <Link className="red__pagination_link" to={`${url}?=${page}`}>
+    <li className={liClasses}>
+      <Link to={`${url}?=${page}`} className="red__pagination_link">
         {page}
       </Link>
     </li>
@@ -15,7 +24,7 @@ const PaginationItem = ({ page, currentPage, url }) => {
 
 const RedPaginations = ({ total, limit, url, currentPage }) => {
   const pagesCount = Math.ceil(total / limit);
-  const pages = range(1, 50);
+  const pages = range(1, pagesCount);
   return (
     <ul className="red__pagination">
       {pages.map((page) => (
