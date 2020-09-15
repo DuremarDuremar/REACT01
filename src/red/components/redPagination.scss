@@ -1,0 +1,12 @@
+.red__pagination {
+  margin-top: 30px;
+  display: inline-grid;
+  grid-template-columns: repeat(25, 1fr);
+  grid-gap: 5px 8px;
+  //   flex-wrap: wrap;
+  .red__pagination_item {
+    .red__pagination_link {
+      color: black;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import no_avatar from "../redImages/no-avatar.png";
 import "./redFeed.scss";
 
 const RedFeed = ({ articles }) => {
@@ -9,7 +10,7 @@ const RedFeed = ({ articles }) => {
         <div className="red__item_feed" key={index}>
           <div className="red__item_main">
             <Link to={`/red/profiles/${article.author.username}`}>
-              <img src={article.author.image} alt="" />
+              <img src={no_avatar} alt="" />
             </Link>
             <div className="red__item_info">
               <p>ggggg</p>
