@@ -2,16 +2,27 @@ import React, { useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import RedFeed from "../../components/redFeed";
 import RedPaginations from "../../components/redPagination";
+import { stringify } from "query-string";
+import { getPaginator, limit } from "../../utils/utils";
 import "./redGlobalFeed.scss";
 
-const RedGlobalFeed = () => {
+const RedGlobalFeed = ({ location, match }) => {
+  const { offset, currentPage } = getPaginator(location.search);
+  const url = match.url;
+  const stringifyParams = stringify({
+    limit,
+    offset,
+  });
   const [{ isLoading, response, error }, doFetch] = useFetch(
-    "https://conduit.productionready.io/api/articles?limit=10&offset=0"
+    `https://conduit.productionready.io/api/articles?${stringifyParams}`
   );
+
+  // console.log(match);
+  console.log(stringifyParams);
 
   useEffect(() => {
     doFetch();
-  }, [doFetch]);
+  }, [doFetch, currentPage]);
 
   return (
     <div className="red__feed">
@@ -28,10 +39,10 @@ const RedGlobalFeed = () => {
               <>
                 <RedFeed articles={response.articles} />
                 <RedPaginations
-                  total={500}
-                  currentPage={1}
-                  url="/red/"
-                  limit={10}
+                  total={response.articlesCount}
+                  currentPage={currentPage}
+                  url={url}
+                  limit={limit}
                 />
               </>
             )}
