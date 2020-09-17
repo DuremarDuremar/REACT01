@@ -1,0 +1,18 @@
+.red__feedToggle {
+  background-color: #dfe4ea;
+  ul {
+    display: flex;
+    li {
+      padding: 10px;
+      //   &:last-child {
+      //     padding-right: 0;
+      //   }
+      .red__feedToggle_link {
+        color: black;
+      }
+      .red__feedToggle_link.active {
+        color: brown;
+      }
+    }
+  }
+}

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import RedLoading from "./redLoading";
 import RedError from "./redError";
+import "./redPopulTags.scss";
 
 const RedPopTag = () => {
   const [{ isLoading, response, error }, doFetch] = useFetch(
@@ -22,16 +23,16 @@ const RedPopTag = () => {
   }
 
   return (
-    <div>
-      <p>Popular tag</p>
-      <div>
+    <>
+      <p className="red__pop-title">Popular tag</p>
+      <div className="red__pop-tags">
         {response.tags.map((tag) => (
-          <Link to={`/red/tags/${tag}`} key={tag}>
+          <Link to={`/red/tags/${tag}`} key={tag} className="red__pop-tag">
             {tag}
           </Link>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

@@ -8,9 +8,9 @@ import RedPopTag from "../../components/redPopulTags";
 import RedLoading from "../../components/redLoading";
 import RedError from "../../components/redError";
 import RedFeedToggle from "../../components/redFeedToggle";
-import "./redGlobalFeed.scss";
+import "../redGlobalFeed/redGlobalFeed.scss";
 
-const RedGlobalFeed = ({ location, match }) => {
+const RedYourFeed = ({ location, match }) => {
   const { offset, currentPage } = getPaginator(location.search);
   const url = match.url;
   const stringifyParams = stringify({
@@ -18,7 +18,7 @@ const RedGlobalFeed = ({ location, match }) => {
     offset,
   });
   const [{ isLoading, response, error }, doFetch] = useFetch(
-    `https://conduit.productionready.io/api/articles?${stringifyParams}`
+    `https://conduit.productionready.io/api/articles/feed?${stringifyParams}`
   );
 
   // console.log(match);
@@ -61,4 +61,4 @@ const RedGlobalFeed = ({ location, match }) => {
   );
 };
 
-export default RedGlobalFeed;
+export default RedYourFeed;

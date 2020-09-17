@@ -19,9 +19,13 @@
       justify-content: space-between;
 
       .red__feed_main {
+        max-width: 700px;
       }
       .red__feed_side {
+        max-width: 300px;
         background-color: #dfe4ea;
+        margin-left: 20px;
+        height: 100%;
       }
     }
   }

@@ -1,0 +1,15 @@
+.red__pop-title {
+  font-size: 22px;
+}
+
+.red__pop-tags {
+  display: flex;
+  flex-wrap: wrap;
+
+  .red__pop-tag {
+    padding: 0 5px;
+    &:not(:first-child) {
+      margin-top: 10px;
+    }
+  }
+}
