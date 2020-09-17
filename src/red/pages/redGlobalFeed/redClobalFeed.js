@@ -4,6 +4,9 @@ import RedFeed from "../../components/redFeed";
 import RedPaginations from "../../components/redPagination";
 import { stringify } from "query-string";
 import { getPaginator, limit } from "../../utils/utils";
+import RedPopTag from "../../components/redPopulTags";
+import RedLoading from "../../components/redLoading";
+import RedError from "../../components/redError";
 import "./redGlobalFeed.scss";
 
 const RedGlobalFeed = ({ location, match }) => {
@@ -33,8 +36,8 @@ const RedGlobalFeed = ({ location, match }) => {
       <div className="red__feed_container">
         <div className="red__feed_wrapp">
           <div className="red__feed_main">
-            {isLoading && <p>is loading...</p>}
-            {error && <p>Some error happened</p>}
+            {isLoading && <RedLoading />}
+            {error && <RedError />}
             {!isLoading && response && (
               <>
                 <RedFeed articles={response.articles} />
@@ -47,7 +50,9 @@ const RedGlobalFeed = ({ location, match }) => {
               </>
             )}
           </div>
-          <div className="red__feed_side">Popular tags</div>
+          <div className="red__feed_side">
+            <RedPopTag />
+          </div>
         </div>
       </div>
     </div>
