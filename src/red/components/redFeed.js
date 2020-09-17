@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import no_avatar from "../redImages/no-avatar.png";
+import RedTagList from "../components/redTagList";
 import "./redFeed.scss";
 
 const RedFeed = ({ articles }) => {
@@ -25,11 +26,7 @@ const RedFeed = ({ articles }) => {
               <p>{article.description}</p>
               <span>Reed more...</span>
             </div>
-            <ul>
-              {article.tagList.map((tag) => (
-                <li key={tag}>{tag}</li>
-              ))}
-            </ul>
+            <RedTagList tagList={article.tagList} />
           </Link>
         </div>
       ))}
