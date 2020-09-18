@@ -1,0 +1,39 @@
+.red__article {
+  background-color: #dfe4ea;
+  .red__article_container {
+    margin: 0px auto;
+    padding-top: 20px;
+    max-width: 1180px;
+    h1 {
+      font-size: 30px;
+      text-align: center;
+    }
+    .red__article_meta {
+      padding-top: 30px;
+      display: inline-flex;
+      justify-content: space-between;
+      min-width: 400px;
+
+      img {
+        max-width: 200px;
+        // margin: 0px auto;
+        // margin-right: 20px;
+      }
+    }
+
+    p {
+      font-style: italic;
+      font-size: 15px;
+    }
+
+    ul {
+      display: flex;
+      margin-top: 10px;
+      li {
+        &:not(:last-child) {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

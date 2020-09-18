@@ -34,7 +34,7 @@ const Authentication = (props) => {
   const [username, setUsername] = useState("");
   //проверка на успешный сабмит (16)
   const [isSuccess, setIsSuccess] = useState(false);
-  const [, setCurrentUserState] = useContext(CurrentUserContext);
+  const [, dispatch] = useContext(CurrentUserContext);
   //стэйт для взаимодействия с useLocalStorage (17)
   const [, setToken] = useLocalStorage("token");
 
@@ -63,13 +63,8 @@ const Authentication = (props) => {
     //подтверждение успешного сабмита (16)
     setIsSuccess(true);
     //иеняем информацию в управляющим стэйте о состоянии загрузки юзера (19)
-    setCurrentUserState((state) => ({
-      ...state,
-      isLoggedIn: true,
-      isLoading: false,
-      currentUser: response.user,
-    }));
-  }, [response, setToken, setCurrentUserState]);
+    dispatch({ type: "SET_AUTHOREZ", payload: response.user });
+  }, [response, setToken, dispatch]);
 
   //проверка на успешный сабмит, при успехи редеректим на главную страницу (16)
   if (isSuccess) {
