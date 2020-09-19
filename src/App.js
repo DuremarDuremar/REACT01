@@ -11,6 +11,7 @@ import Home from "./home/home";
 import Todo from "./todo/todo";
 import Cinema from "./cinema/cinema";
 import Red from "./red/red";
+import Store from "./store/store";
 //////////////////////////
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/todo" component={Todo} exact />
           <Route path="/cinema" component={Cinema} exact />
           <Route path="/red" component={Red} />
+          <Route path="/store" component={Store} />
           <Redirect to="/" />
         </Switch>
       </div>

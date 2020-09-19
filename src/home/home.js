@@ -35,15 +35,12 @@ class Home extends React.Component {
                 <p>Cinema Festivals</p>
               </Link>
 
-              <a
-                className="home__main_block"
-                href="https://duremarduremar.github.io/gulpmaxgraph/app/#"
-              >
-                <p>3 site Toxin</p>
-              </a>
+              <Link className="home__main_block" to="/store">
+                <p>Store</p>
+              </Link>
 
               <Link className="home__main_block" to="/red">
-                <p>4</p>
+                <p>red</p>
               </Link>
 
               <Link className="home__main_block" to="/vlad">
