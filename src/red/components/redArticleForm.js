@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./redArticleForm.scss";
+import BackendErrorMessages from "./backendErrorMessages";
 
 const RedArticleForm = ({ onSubmit, errors, initialValues }) => {
   const [title, setTitle] = useState("");
@@ -7,14 +8,28 @@ const RedArticleForm = ({ onSubmit, errors, initialValues }) => {
   const [description, setDescription] = useState("");
   const [tagList, setTagList] = useState("");
 
+  console.log("errors2", errors);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit("foo");
-    console.log("dd", body);
+    console.log("dd", errors);
   };
+
+  useEffect(() => {
+    if (!initialValues) {
+      return;
+    }
+    setTitle(initialValues.title);
+    setBody(initialValues.body);
+    setDescription(initialValues.description);
+    setTagList(initialValues.tagList.join(" "));
+    console.log("dd2", errors);
+  }, [initialValues]);
 
   return (
     <div className="red__form">
+      {errors && <BackendErrorMessages backendErrors={errors} />}
       <form onSubmit={handleSubmit}>
         <fieldset>
           <input
