@@ -1,5 +1,5 @@
 export default class StoreServer {
-  getBooks() {
+  getStoreServer() {
     return [
       {
         id: 1,
