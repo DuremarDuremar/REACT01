@@ -2,9 +2,8 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import StoreHome from "./storeHome";
 import StoreCart from "./storeCart";
-import StoreHOC from "../context/storeHOC";
 
-const StoreMain = ({ StoreServer }) => {
+const StoreMain = () => {
   return (
     <div>
       <Switch>
@@ -15,4 +14,4 @@ const StoreMain = ({ StoreServer }) => {
   );
 };
 
-export default StoreHOC()(StoreMain);
+export default StoreMain;

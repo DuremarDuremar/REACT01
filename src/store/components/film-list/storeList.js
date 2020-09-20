@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { filmLoaded } from "../../reducer/action";
+import StoreHOC from "../../context/storeHOC";
 import StoreItem from "../film-item/storeItem";
 
-const StoreList = ({ films }) => {
-  console.log(films);
+const StoreList = ({ films, StoreServer, filmLoaded }) => {
+  useEffect(() => {
+    const data = StoreServer.getStoreServer();
+    filmLoaded(data);
+  }, [StoreServer, filmLoaded]);
 
   return (
     <ul>
@@ -22,4 +27,10 @@ const mapStateToProps = ({ films }) => {
   return { films };
 };
 
-export default connect(mapStateToProps)(StoreList);
+const mapDispatchToProps = {
+  filmLoaded,
+};
+
+export default StoreHOC()(
+  connect(mapStateToProps, mapDispatchToProps)(StoreList)
+);
