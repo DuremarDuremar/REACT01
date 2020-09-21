@@ -1,0 +1,12 @@
+.store__header {
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid black;
+  .store__header_cart {
+    display: flex;
+    p {
+      margin-left: 1rem;
+    }
+  }
+}

@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { StoreProvider } from "./context/storeContext";
 import StoreServer from "./services/storeServer";
-import StoreMain from "./page/storeMain";
+import StoreMain from "./page/storeMain/storeMain";
 
 import store from "./reducer/createStore";
 
