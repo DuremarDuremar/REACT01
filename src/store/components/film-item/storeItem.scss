@@ -1,0 +1,26 @@
+.store__home_item {
+  margin-top: 1rem;
+  display: inline-flex;
+  font-family: "Playfair Display", serif;
+  width: 500px;
+
+  img {
+    width: 200px;
+    height: 280px;
+  }
+  .store__home_info {
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: start;
+    margin-left: 1rem;
+    .store__home_btn-item {
+      width: 100px;
+      padding: 10px 0;
+      font-family: "Playfair Display", serif;
+      background-color: #f7f1e3;
+      border: 2px solid #d1ccc0;
+    }
+  }
+}

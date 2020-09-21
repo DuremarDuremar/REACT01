@@ -1,22 +1,10 @@
 import React from "react";
 import StoreList from "../../components/film-list/storeList";
+import "./storeHome";
 
 const StoreHome = () => {
-  // const films = [
-  //   {
-  //     id: 1,
-  //     title: "Бойцовая рыбка",
-  //     author: "Фрэнсис Форд Коппола",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Седьмая печать",
-  //     author: "Ингмар Бергман",
-  //   },
-  // ];
-
   return (
-    <div>
+    <div className="store__home">
       <StoreList />
     </div>
   );
