@@ -3,7 +3,7 @@ import RedArticleForm from "../../components/redArticleForm";
 import useFetch from "../../hooks/useFetch";
 
 const RedCreate = () => {
-  const [{ error, response }, doFetch] = useFetch(
+  const [{ error }, doFetch] = useFetch(
     "https://conduit.productionready.io/api/articles"
   );
 

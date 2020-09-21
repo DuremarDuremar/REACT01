@@ -1,5 +1,6 @@
 const initialState = {
   films: [],
+  loading: true,
 };
 
 const reducer = (state = initialState, action) => {
@@ -7,6 +8,7 @@ const reducer = (state = initialState, action) => {
     case "FILMS_LOADED":
       return {
         films: action.payload,
+        loading: false,
       };
 
     default:

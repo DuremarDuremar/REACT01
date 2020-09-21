@@ -25,7 +25,7 @@ const RedArticleForm = ({ onSubmit, errors, initialValues }) => {
     setDescription(initialValues.description);
     setTagList(initialValues.tagList.join(" "));
     console.log("dd2", errors);
-  }, [initialValues]);
+  }, [initialValues, errors]);
 
   return (
     <div className="red__form">

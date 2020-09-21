@@ -8,7 +8,7 @@ const UserChecker = ({ children }) => {
   const [{ response }, doFetch] = useFetch(
     "https://conduit.productionready.io/api/user"
   );
-  const [dis, dispatch] = useContext(CurrentUserContext);
+  const [, dispatch] = useContext(CurrentUserContext);
   // смотрим токен пользователя (21)
   const [token] = useLocalStorage("token");
 

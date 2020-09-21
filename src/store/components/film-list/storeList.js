@@ -5,11 +5,18 @@ import StoreHOC from "../../context/storeHOC";
 import { StoreItem1, StoreItem2 } from "../film-item/storeItem";
 import "./storeList.scss";
 
-const StoreList = ({ films, StoreServer, filmLoaded }) => {
+const StoreList = ({ films, loading, StoreServer, filmLoaded }) => {
   useEffect(() => {
-    const data = StoreServer.getStoreServer();
-    filmLoaded(data);
+    StoreServer.getStoreServer().then((data) => {
+      filmLoaded(data);
+    });
   }, [StoreServer, filmLoaded]);
+
+  console.log(films);
+
+  if (loading) {
+    return <div>Loaded</div>;
+  }
 
   return (
     <>
@@ -62,14 +69,18 @@ const StoreList = ({ films, StoreServer, filmLoaded }) => {
               <button>3</button>
             </span>
           </li>
+          <div className="store__home_total">
+            <h5>$213</h5>
+            <button>Checkout</button>
+          </div>
         </ul>
       </div>
     </>
   );
 };
 
-const mapStateToProps = ({ films }) => {
-  return { films };
+const mapStateToProps = ({ films, loading }) => {
+  return { films, loading };
 };
 
 const mapDispatchToProps = {
