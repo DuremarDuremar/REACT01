@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { filmLoaded } from "../../reducer/action";
 import StoreHOC from "../../context/storeHOC";
-import StoreItem from "../film-item/storeItem";
+import { StoreItem1, StoreItem2 } from "../film-item/storeItem";
 import "./storeList.scss";
 
 const StoreList = ({ films, StoreServer, filmLoaded }) => {
@@ -14,12 +14,20 @@ const StoreList = ({ films, StoreServer, filmLoaded }) => {
   return (
     <>
       <ul className="store__home_list">
-        {films.map((film) => {
-          return (
-            <li key={film.id} className="store__home_item">
-              <StoreItem film={film} />
-            </li>
-          );
+        {films.map((film, index) => {
+          if (index % 2 !== 0) {
+            return (
+              <li key={film.id} className="store__home_item1">
+                <StoreItem1 film={film} />
+              </li>
+            );
+          } else {
+            return (
+              <li key={film.id} className="store__home_item2">
+                <StoreItem2 film={film} />
+              </li>
+            );
+          }
         })}
       </ul>
       <div className="store__home_scroll">
@@ -37,7 +45,7 @@ const StoreList = ({ films, StoreServer, filmLoaded }) => {
             <span>Бойцовая рыбка</span>
             <span>2</span>
             <span>$10</span>
-            <span>
+            <span className="store__home_wrap-btn">
               <button>1</button>
               <button>2</button>
               <button>3</button>
@@ -48,7 +56,7 @@ const StoreList = ({ films, StoreServer, filmLoaded }) => {
             <span>Седьмая печать</span>
             <span>1</span>
             <span>$12</span>
-            <span>
+            <span className="store__home_wrap-btn">
               <button>1</button>
               <button>2</button>
               <button>3</button>
