@@ -18,4 +18,11 @@ const filmError = (error) => {
   };
 };
 
-export { filmLoaded, filmRequested, filmError };
+const filmDecrease = (n) => {
+  return {
+    type: "FILM_DECREASE",
+    payload: console.log(n),
+  };
+};
+
+export { filmLoaded, filmRequested, filmError, filmDecrease };

@@ -4,6 +4,7 @@ import { filmLoaded, filmRequested, filmError } from "../../reducer/action";
 import StoreHOC from "../../context/storeHOC";
 import { StoreItem1, StoreItem2 } from "../film-item/storeItem";
 import ErrorIndicator from "../../../error/error-indicator";
+import StoreTable from "../film-table/storeTable";
 import "./storeList.scss";
 
 const StoreList = ({
@@ -54,44 +55,7 @@ const StoreList = ({
           })}
         </ul>
       )}
-      <div className="store__home_scroll">
-        <h3 className="store__home_title">Your Order</h3>
-        <ul className="store__home_table">
-          <li>
-            <span>#</span>
-            <span>Item</span>
-            <span>Count</span>
-            <span>Price</span>
-            <span>Action</span>
-          </li>
-          <li>
-            <span>1</span>
-            <span>Бойцовая рыбка</span>
-            <span>2</span>
-            <span>$10</span>
-            <span className="store__home_wrap-btn">
-              <button>1</button>
-              <button>2</button>
-              <button>3</button>
-            </span>
-          </li>
-          <li>
-            <span>2</span>
-            <span>Седьмая печать</span>
-            <span>1</span>
-            <span>$12</span>
-            <span className="store__home_wrap-btn">
-              <button>1</button>
-              <button>2</button>
-              <button>3</button>
-            </span>
-          </li>
-          <div className="store__home_total">
-            <h5>$213</h5>
-            <button>Checkout</button>
-          </div>
-        </ul>
-      </div>
+      <StoreTable />
     </>
   );
 };
