@@ -1,42 +1,59 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { filmLoaded } from "../../reducer/action";
+import { filmLoaded, filmRequested, filmError } from "../../reducer/action";
 import StoreHOC from "../../context/storeHOC";
 import { StoreItem1, StoreItem2 } from "../film-item/storeItem";
+import ErrorIndicator from "../../../error/error-indicator";
 import "./storeList.scss";
 
-const StoreList = ({ films, loading, StoreServer, filmLoaded }) => {
+const StoreList = ({
+  films,
+  loading,
+  error,
+  StoreServer,
+  filmLoaded,
+  filmRequested,
+  filmError,
+}) => {
   useEffect(() => {
-    StoreServer.getStoreServer().then((data) => {
-      filmLoaded(data);
-    });
-  }, [StoreServer, filmLoaded]);
+    filmRequested();
+    StoreServer.getStoreServer()
+      .then((data) => {
+        filmLoaded(data);
+      })
+      .catch((err) => {
+        filmError(err);
+      });
+  }, [StoreServer, filmLoaded, filmRequested, filmError]);
 
-  console.log(films);
-
-  if (loading) {
-    return <div>Loaded</div>;
+  if (error) {
+    console.log(error);
+    return <ErrorIndicator />;
   }
 
   return (
     <>
-      <ul className="store__home_list">
-        {films.map((film, index) => {
-          if (index % 2 !== 0) {
-            return (
-              <li key={film.id} className="store__home_item1">
-                <StoreItem1 film={film} />
-              </li>
-            );
-          } else {
-            return (
-              <li key={film.id} className="store__home_item2">
-                <StoreItem2 film={film} />
-              </li>
-            );
-          }
-        })}
-      </ul>
+      {loading ? (
+        <div>Loaded</div>
+      ) : (
+        <ul className="store__home_list">
+          {films.map((film, index) => {
+            if (index % 2 !== 0) {
+              return (
+                <li key={film.id} className="store__home_item1">
+                  <StoreItem1 film={film} />
+                </li>
+              );
+            } else {
+              return (
+                <li key={film.id} className="store__home_item2">
+                  <StoreItem2 film={film} />
+                </li>
+              );
+            }
+          })}
+        </ul>
+      )}
       <div className="store__home_scroll">
         <h3 className="store__home_title">Your Order</h3>
         <ul className="store__home_table">
@@ -79,12 +96,14 @@ const StoreList = ({ films, loading, StoreServer, filmLoaded }) => {
   );
 };
 
-const mapStateToProps = ({ films, loading }) => {
-  return { films, loading };
+const mapStateToProps = ({ films, loading, error }) => {
+  return { films, loading, error };
 };
 
 const mapDispatchToProps = {
   filmLoaded,
+  filmRequested,
+  filmError,
 };
 
 export default StoreHOC()(

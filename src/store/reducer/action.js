@@ -5,4 +5,17 @@ const filmLoaded = (newFilm) => {
   };
 };
 
-export { filmLoaded };
+const filmRequested = () => {
+  return {
+    type: "FILMS_REQUESTED",
+  };
+};
+
+const filmError = (error) => {
+  return {
+    type: "FILMS_ERROR",
+    payload: error,
+  };
+};
+
+export { filmLoaded, filmRequested, filmError };

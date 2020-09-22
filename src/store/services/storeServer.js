@@ -23,9 +23,13 @@ export default class StoreServer {
   ];
 
   getStoreServer() {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(this.data);
+        if (Math.random() > 0.8) {
+          reject(new Error("ssss"));
+        } else {
+          resolve(this.data);
+        }
       }, 1000);
     });
   }
