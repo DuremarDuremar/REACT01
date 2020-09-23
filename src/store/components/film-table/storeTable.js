@@ -1,10 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
-import { filmDecrease } from "../../reducer/action";
+import { filmDecrease, filmIncrease, filmDelete } from "../../reducer/action";
 import StoreHOC from "../../context/storeHOC";
 import "./storeTable.scss";
 
-const StoreTable = ({ cartItems, orderTotal, filmDecrease }) => {
+const StoreTable = ({
+  cartItems,
+  orderTotal,
+  filmDecrease,
+  filmIncrease,
+  filmDelete,
+}) => {
   return (
     <div className="store__home_scroll">
       <h3 className="store__home_title">Your Order</h3>
@@ -27,10 +33,10 @@ const StoreTable = ({ cartItems, orderTotal, filmDecrease }) => {
                 <button onClick={() => filmDecrease(item)}>
                   <i className="fas fa-minus fa-lg"></i>
                 </button>
-                <button>
+                <button onClick={() => filmIncrease(item)}>
                   <i className="fas fa-plus fa-lg"></i>
                 </button>
-                <button>
+                <button onClick={() => filmDelete(item)}>
                   <i className="far fa-window-close fa-lg"></i>
                 </button>
               </span>
@@ -53,6 +59,8 @@ const mapStateToProps = ({ cartItems, orderTotal }) => {
 
 const mapDispatchToProps = {
   filmDecrease,
+  filmIncrease,
+  filmDelete,
 };
 
 export default StoreHOC()(

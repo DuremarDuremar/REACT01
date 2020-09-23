@@ -32,4 +32,26 @@ const filmDecrease = (item) => {
   };
 };
 
-export { filmLoaded, filmRequested, filmError, filmDecrease, filmAdd };
+const filmIncrease = (item) => {
+  return {
+    type: "FILM_INCREASE",
+    payload: item,
+  };
+};
+
+const filmDelete = (item) => {
+  return {
+    type: "FILM_DELETE",
+    payload: item,
+  };
+};
+
+export {
+  filmLoaded,
+  filmRequested,
+  filmError,
+  filmDecrease,
+  filmAdd,
+  filmIncrease,
+  filmDelete,
+};

@@ -67,8 +67,6 @@ const reducer = (state = initialState, action) => {
       };
 
     case "FILM_DECREASE":
-      console.log(action.payload);
-      const ff = state.orderTotal - action.payload.price;
       return {
         ...state,
         cartItems: state.cartItems.map((item) => {
@@ -78,8 +76,22 @@ const reducer = (state = initialState, action) => {
           return item;
         }),
         orderTotal:
-          state.orderTotal > 0 && action.payload.count !== 0
+          state.orderTotal > 0 && action.payload.count !== -1
             ? state.orderTotal - action.payload.price
+            : state.orderTotal,
+      };
+    case "FILM_INCREASE":
+      return {
+        ...state,
+        cartItems: state.cartItems.map((item) => {
+          if (item === action.payload && item.count < 100) {
+            item.count = item.count + 1;
+          }
+          return item;
+        }),
+        orderTotal:
+          state.orderTotal < 5000 && action.payload.count !== 100
+            ? state.orderTotal + action.payload.price
             : state.orderTotal,
       };
 
@@ -88,6 +100,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         cartItems: state.cartItems.filter((item) => item !== action.payload),
+        orderTotal:
+          state.orderTotal - action.payload.price * action.payload.count,
       };
     default:
       return state;
