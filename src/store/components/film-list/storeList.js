@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { filmLoaded, filmRequested, filmError } from "../../reducer/action";
+import {
+  filmLoaded,
+  filmRequested,
+  filmError,
+  filmAdd,
+} from "../../reducer/action";
 import StoreHOC from "../../context/storeHOC";
 import { StoreItem1, StoreItem2 } from "../film-item/storeItem";
 import ErrorIndicator from "../../../error/error-indicator";
@@ -15,6 +20,7 @@ const StoreList = ({
   filmLoaded,
   filmRequested,
   filmError,
+  filmAdd,
 }) => {
   useEffect(() => {
     filmRequested();
@@ -39,16 +45,22 @@ const StoreList = ({
       ) : (
         <ul className="store__home_list">
           {films.map((film, index) => {
-            if (index % 2 !== 0) {
+            if (index % 2 === 0) {
               return (
                 <li key={film.id} className="store__home_item1">
-                  <StoreItem1 film={film} />
+                  <StoreItem1
+                    film={film}
+                    onAddedToCart={() => filmAdd(film.id)}
+                  />
                 </li>
               );
             } else {
               return (
                 <li key={film.id} className="store__home_item2">
-                  <StoreItem2 film={film} />
+                  <StoreItem2
+                    film={film}
+                    onAddedToCart={() => filmAdd(film.id)}
+                  />
                 </li>
               );
             }
@@ -68,6 +80,7 @@ const mapDispatchToProps = {
   filmLoaded,
   filmRequested,
   filmError,
+  filmAdd,
 };
 
 export default StoreHOC()(

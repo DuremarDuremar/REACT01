@@ -5,8 +5,6 @@ import StoreHOC from "../../context/storeHOC";
 import "./storeTable.scss";
 
 const StoreTable = ({ cartItems, orderTotal, filmDecrease }) => {
-  console.log(cartItems);
-
   return (
     <div className="store__home_scroll">
       <h3 className="store__home_title">Your Order</h3>
@@ -26,9 +24,15 @@ const StoreTable = ({ cartItems, orderTotal, filmDecrease }) => {
               <span>{item.count}</span>
               <span>${item.price * item.count}</span>
               <span className="store__home_wrap-btn">
-                <button onClick={() => filmDecrease(11)}> 1</button>
-                <button>2</button>
-                <button>3</button>
+                <button onClick={() => filmDecrease(item)}>
+                  <i className="fas fa-minus fa-lg"></i>
+                </button>
+                <button>
+                  <i className="fas fa-plus fa-lg"></i>
+                </button>
+                <button>
+                  <i className="far fa-window-close fa-lg"></i>
+                </button>
               </span>
             </li>
           );

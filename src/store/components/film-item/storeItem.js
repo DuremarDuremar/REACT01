@@ -1,7 +1,7 @@
 import React from "react";
 import "./storeItem.scss";
 
-const StoreItem1 = ({ film }) => {
+const StoreItem2 = ({ film, onAddedToCart }) => {
   return (
     <>
       <img src={film.image} alt="" />
@@ -12,13 +12,15 @@ const StoreItem1 = ({ film }) => {
         </div>
         <div>{film.country}</div>
         <h4>$ {film.price}</h4>
-        <button className="store__home_btn-item">Add to Cart</button>
+        <button onClick={onAddedToCart} className="store__home_btn-item">
+          Add to Cart
+        </button>
       </div>
     </>
   );
 };
 
-const StoreItem2 = ({ film }) => {
+const StoreItem1 = ({ film, onAddedToCart }) => {
   return (
     <>
       <div className="store__home_info">
@@ -28,7 +30,9 @@ const StoreItem2 = ({ film }) => {
         </div>
         <div>{film.country}</div>
         <h4>$ {film.price}</h4>
-        <button className="store__home_btn-item">Add to Cart</button>
+        <button onClick={onAddedToCart} className="store__home_btn-item">
+          Add to Cart
+        </button>
       </div>
       <img src={film.image} alt="" />
     </>
