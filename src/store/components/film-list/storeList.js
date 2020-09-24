@@ -72,7 +72,7 @@ const StoreList = ({
   );
 };
 
-const mapStateToProps = ({ films, loading, error }) => {
+const mapStateToProps = ({ filmList: { films, loading, error } }) => {
   return { films, loading, error };
 };
 

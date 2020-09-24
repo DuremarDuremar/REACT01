@@ -53,7 +53,7 @@ const StoreTable = ({
   );
 };
 
-const mapStateToProps = ({ cartItems, orderTotal }) => {
+const mapStateToProps = ({ filmCart: { cartItems, orderTotal } }) => {
   return { cartItems, orderTotal };
 };
 
