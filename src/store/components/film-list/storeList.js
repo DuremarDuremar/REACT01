@@ -42,7 +42,7 @@ const StoreList = ({
     return <ErrorIndicator />;
   }
 
-  console.log(page);
+  // console.log(page);
 
   return (
     <>

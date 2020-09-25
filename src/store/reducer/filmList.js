@@ -6,8 +6,12 @@ const updateFilmList = (state, action) => {
       loading: true,
       error: null,
       page: 1,
+      allPage: 1,
     };
   }
+
+  console.log(state.filmList.allPage);
+  console.log(state.filmList.page);
 
   switch (action.type) {
     case "FILMS_REQUESTED":
@@ -18,8 +22,7 @@ const updateFilmList = (state, action) => {
         error: null,
       };
     case "FILMS_LOADED":
-      // const allLength = action.payload.length;
-      // const allPage = Math.ceil(allLength / 2);
+      const allLength = action.payload.length;
 
       let filmViev = [];
       let str = state.filmList.page;
@@ -35,18 +38,25 @@ const updateFilmList = (state, action) => {
         films: filmViev,
         loading: false,
         error: null,
+        allPage: Math.ceil(allLength / 2),
       };
 
     case "FILM_NEXT":
       return {
         ...state.filmList,
-        page: state.filmList.page + 1,
+        page:
+          state.filmList.allPage > state.filmList.page
+            ? state.filmList.page + 1
+            : 1,
       };
 
     case "FILM_PREV":
       return {
         ...state.filmList,
-        page: state.filmList.page - 1,
+        page:
+          state.filmList.page !== 1
+            ? state.filmList.page - 1
+            : state.filmList.allPage,
       };
 
     case "FILMS_ERROR":
