@@ -6,6 +6,18 @@ const filmLoaded = (newFilm, str) => {
   };
 };
 
+const filmNext = () => {
+  return {
+    type: "FILM_NEXT",
+  };
+};
+
+const filmPrev = () => {
+  return {
+    type: "FILM_PREV",
+  };
+};
+
 const filmRequested = () => {
   return {
     type: "FILMS_REQUESTED",
@@ -55,4 +67,6 @@ export {
   filmAdd,
   filmIncrease,
   filmDelete,
+  filmNext,
+  filmPrev,
 };

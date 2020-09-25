@@ -5,6 +5,8 @@ import {
   filmRequested,
   filmError,
   filmAdd,
+  filmNext,
+  filmPrev,
 } from "../../reducer/action";
 import StoreHOC from "../../context/storeHOC";
 import { StoreItem1, StoreItem2 } from "../film-item/storeItem";
@@ -15,29 +17,32 @@ const StoreList = ({
   films,
   loading,
   error,
+  page,
   StoreServer,
   filmLoaded,
   filmRequested,
   filmError,
   filmAdd,
+  filmNext,
+  filmPrev,
 }) => {
   useEffect(() => {
     filmRequested();
     StoreServer.getStoreServer()
       .then((data) => {
-        filmLoaded(data, 1);
+        filmLoaded(data);
       })
       .catch((err) => {
         filmError(err);
       });
-  }, [StoreServer, filmLoaded, filmRequested, filmError]);
+  }, [StoreServer, filmLoaded, filmRequested, filmError, page]);
 
   if (error) {
     console.log(error);
     return <ErrorIndicator />;
   }
 
-  console.log(films);
+  console.log(page);
 
   return (
     <>
@@ -45,6 +50,10 @@ const StoreList = ({
         <div>Loaded</div>
       ) : (
         <ul className="store__home_list">
+          <i
+            className="fas fa-chevron-circle-left"
+            onClick={() => filmPrev()}
+          ></i>
           {films.map((film, index) => {
             if (index % 2 === 0) {
               return (
@@ -66,14 +75,18 @@ const StoreList = ({
               );
             }
           })}
+          <i
+            className="fas fa-chevron-circle-right"
+            onClick={() => filmNext()}
+          ></i>
         </ul>
       )}
     </>
   );
 };
 
-const mapStateToProps = ({ filmList: { films, loading, error } }) => {
-  return { films, loading, error };
+const mapStateToProps = ({ filmList: { films, loading, error, page } }) => {
+  return { films, loading, error, page };
 };
 
 const mapDispatchToProps = {
@@ -81,6 +94,8 @@ const mapDispatchToProps = {
   filmRequested,
   filmError,
   filmAdd,
+  filmNext,
+  filmPrev,
 };
 
 export default StoreHOC()(
