@@ -15,10 +15,21 @@ const updateFilmList = (state, action) => {
         error: null,
       };
     case "FILMS_LOADED":
+      // const allLength = action.payload.length;
+      // const allPage = Math.ceil(allLength / 2);
+
+      let filmViev = [];
+      if (action.str === 1) {
+        filmViev = action.payload.slice(0, 2);
+      } else {
+        filmViev = action.payload.slice(action.str, action.str + 2);
+      }
+
       return {
-        films: action.payload,
+        films: filmViev,
         loading: false,
         error: null,
+        str: action.str,
       };
     case "FILMS_ERROR":
       return {

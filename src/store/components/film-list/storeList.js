@@ -9,7 +9,6 @@ import {
 import StoreHOC from "../../context/storeHOC";
 import { StoreItem1, StoreItem2 } from "../film-item/storeItem";
 import ErrorIndicator from "../../../error/error-indicator";
-import StoreTable from "../film-table/storeTable";
 import "./storeList.scss";
 
 const StoreList = ({
@@ -26,7 +25,7 @@ const StoreList = ({
     filmRequested();
     StoreServer.getStoreServer()
       .then((data) => {
-        filmLoaded(data);
+        filmLoaded(data, 1);
       })
       .catch((err) => {
         filmError(err);
@@ -37,6 +36,8 @@ const StoreList = ({
     console.log(error);
     return <ErrorIndicator />;
   }
+
+  console.log(films);
 
   return (
     <>
@@ -67,7 +68,6 @@ const StoreList = ({
           })}
         </ul>
       )}
-      <StoreTable />
     </>
   );
 };
