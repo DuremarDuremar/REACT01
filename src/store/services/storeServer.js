@@ -47,7 +47,7 @@ export default class StoreServer {
       setTimeout(() => {
         // reject(new Error("ssss")),
         resolve(this.data);
-      }, 1000);
+      }, 200);
     });
   }
 }

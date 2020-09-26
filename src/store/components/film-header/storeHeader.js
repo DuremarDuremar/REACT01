@@ -1,8 +1,16 @@
 import React from "react";
-import "./storeHeader.scss";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import StoreHOC from "../../context/storeHOC";
+import "./storeHeader.scss";
 
-const StoreHeader = () => {
+const StoreHeader = ({ cartItems, orderTotal }) => {
+  console.log(cartItems);
+
+  let itemCart = cartItems.reduce(function (total, item) {
+    return total + item.count;
+  }, 0);
+
   return (
     <div className="store__header">
       <Link to="/store">
@@ -11,11 +19,17 @@ const StoreHeader = () => {
       <Link to="/store/cart">
         <div className="store__header_cart">
           <i className="fas fa-shopping-cart fa-lg"></i>
-          <p>5 items ($200)</p>
+          <p>
+            {itemCart} items (${orderTotal})
+          </p>
         </div>
       </Link>
     </div>
   );
 };
 
-export default StoreHeader;
+const mapStateToProps = ({ filmCart: { cartItems, orderTotal } }) => {
+  return { cartItems, orderTotal };
+};
+
+export default StoreHOC()(connect(mapStateToProps)(StoreHeader));

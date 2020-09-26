@@ -1,0 +1,30 @@
+.store__cart {
+  .store__cart_slider {
+    display: flex;
+    .store__cart_item {
+      h4 {
+        text-align: center;
+      }
+      .store__cart_img {
+        position: relative;
+        img {
+          width: 200px;
+          height: 300px;
+        }
+        .store__cart_price {
+          background-color: black;
+          color: blanchedalmond;
+          position: absolute;
+          border-radius: 5px;
+          font-size: 18px;
+        }
+        .store__cart_count {
+          position: absolute;
+          right: 0;
+          background-color: blanchedalmond;
+          color: black;
+        }
+      }
+    }
+  }
+}

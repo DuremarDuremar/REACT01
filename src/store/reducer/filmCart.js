@@ -35,6 +35,7 @@ const updateFilmCart = (state, action) => {
           name: film.title,
           count: 1,
           price: film.price,
+          image: film.image,
         };
       }
 
