@@ -6,10 +6,14 @@ import "./storeCart.scss";
 
 const StoreCart = ({ cartItems, orderTotal, filmDelete }) => {
   const [cart, setCart] = useState([]);
-  const [number, setNumber] = useState(null);
+  const [number, setNumber] = useState(0);
 
   const cartActive = useCallback(
     (arr) => {
+      if (arr.length < 4) {
+        setNumber(0);
+      }
+
       const newArr = arr.filter((item, index) => {
         return index >= number && index < number + 3;
       });
@@ -18,25 +22,34 @@ const StoreCart = ({ cartItems, orderTotal, filmDelete }) => {
     [number]
   );
 
-  console.log(cart);
+  // console.log(cartItems.length);
+  // console.log(number);
 
   useEffect(() => {
-    setNumber(0);
-
     setCart(cartActive(cartItems));
-  }, [setCart, setNumber, cartActive, cartItems]);
+  }, [setCart, cartActive, cartItems]);
 
   const cartDelete = (item) => {
     filmDelete(item);
+
     const cart2 = cartItems.filter((elem) => {
       return elem.id !== item.id;
     });
+
     setCart(cartActive(cart2));
   };
 
   return (
     <div className="store__cart">
       <div className="store__cart_slider">
+        {cartItems.length > 3 && (
+          <i
+            className="fas fa-chevron-circle-left"
+            onClick={() => {
+              number > 1 ? setNumber(-1) : setNumber(0);
+            }}
+          ></i>
+        )}
         {cart.map((item, index) => {
           return (
             <div className="store__cart_item" key={item.id}>
@@ -57,6 +70,12 @@ const StoreCart = ({ cartItems, orderTotal, filmDelete }) => {
             </div>
           );
         })}
+        {cartItems.length > 3 && (
+          <i
+            className="fas fa-chevron-circle-right"
+            onClick={() => setNumber(+1)}
+          ></i>
+        )}
       </div>
       <div className="store__cart_total">
         <button>
