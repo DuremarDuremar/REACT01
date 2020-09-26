@@ -1,5 +1,5 @@
 const updateFilmList = (state, action) => {
-  console.log(action.type);
+  // console.log(action.type);
   if (state === undefined) {
     return {
       films: [],
@@ -10,8 +10,8 @@ const updateFilmList = (state, action) => {
     };
   }
 
-  console.log(state.filmList.allPage);
-  console.log(state.filmList.page);
+  // console.log(state.filmList.allPage);
+  // console.log(state.filmList.page);
 
   switch (action.type) {
     case "FILMS_REQUESTED":

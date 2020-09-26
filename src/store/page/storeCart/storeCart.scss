@@ -24,7 +24,21 @@
           background-color: blanchedalmond;
           color: black;
         }
+        .store__cart_delete {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          background-color: red;
+          color: black;
+          i {
+            padding: 6px;
+          }
+        }
       }
     }
   }
+}
+
+.store__cart_item.none {
+  display: none;
 }

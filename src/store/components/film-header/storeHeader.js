@@ -5,8 +5,6 @@ import StoreHOC from "../../context/storeHOC";
 import "./storeHeader.scss";
 
 const StoreHeader = ({ cartItems, orderTotal }) => {
-  console.log(cartItems);
-
   let itemCart = cartItems.reduce(function (total, item) {
     return total + item.count;
   }, 0);
