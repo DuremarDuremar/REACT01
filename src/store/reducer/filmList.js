@@ -23,15 +23,10 @@ const updateFilmList = (state, action) => {
       };
     case "FILMS_LOADED":
       const allLength = action.payload.length;
-      console.log(action.payload);
-      // let filmViev = [];
+      // console.log(action.payload);
       let str = state.filmList.page;
 
       let Slice = str * 2;
-
-      console.log("before", Slice - 2);
-      console.log("after", Slice);
-      console.log("str", str);
 
       let filmViev = action.payload.slice(Slice - 2, Slice);
 
