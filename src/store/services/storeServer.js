@@ -40,6 +40,46 @@ export default class StoreServer {
       image:
         "https://st.kp.yandex.net/im/poster/6/0/7/kinopoisk.ru-L_27eclisse-607301.jpg",
     },
+    {
+      id: 5,
+      title: "Смерть в Венеции",
+      author: "Лукино Висконти",
+      year: 1971,
+      price: 10,
+      country: "Италия, Франция",
+      image:
+        "https://st.kp.yandex.net/im/poster/1/6/0/kinopoisk.ru-Morte-a-Venezia-1608185.jpg",
+    },
+    {
+      id: 6,
+      title: "Гражданин Кейн",
+      author: "Орсон Уэллс",
+      year: 1941,
+      price: 14,
+      country: "США",
+      image:
+        "https://st.kp.yandex.net/im/poster/6/3/8/kinopoisk.ru-Citizen-Kane-638967.jpg",
+    },
+    {
+      id: 7,
+      title: "Трамвай «Желание»",
+      author: "Элиа Казан",
+      year: 1951,
+      price: 11,
+      country: "США",
+      image:
+        "https://st.kp.yandex.net/im/poster/1/5/2/kinopoisk.ru-A-Streetcar-Named-Desire-1522223.jpg",
+    },
+    {
+      id: 8,
+      title: "Похитители велосипедов",
+      author: "Витторио Де Сика",
+      year: 1948,
+      price: 10,
+      country: "Италия",
+      image:
+        "https://st.kp.yandex.net/im/poster/1/7/3/kinopoisk.ru-Ladri-di-biciclette-1736437.jpg",
+    },
   ];
 
   getStoreServer() {

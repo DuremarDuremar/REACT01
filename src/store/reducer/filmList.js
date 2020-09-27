@@ -10,7 +10,7 @@ const updateFilmList = (state, action) => {
     };
   }
 
-  // console.log(state.filmList.allPage);
+  // console.log(state.filmList.films);
   // console.log(state.filmList.page);
 
   switch (action.type) {
@@ -23,15 +23,17 @@ const updateFilmList = (state, action) => {
       };
     case "FILMS_LOADED":
       const allLength = action.payload.length;
-
-      let filmViev = [];
+      console.log(action.payload);
+      // let filmViev = [];
       let str = state.filmList.page;
 
-      if (str === 1) {
-        filmViev = action.payload.slice(0, 2);
-      } else {
-        filmViev = action.payload.slice(str, str + 2);
-      }
+      let Slice = str * 2;
+
+      console.log("before", Slice - 2);
+      console.log("after", Slice);
+      console.log("str", str);
+
+      let filmViev = action.payload.slice(Slice - 2, Slice);
 
       return {
         ...state.filmList,
