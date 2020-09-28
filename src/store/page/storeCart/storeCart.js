@@ -15,22 +15,23 @@ const StoreCart = ({ cartItems, orderTotal, filmDelete }) => {
 
   const cartActive = useCallback(
     (arr) => {
-      if (arr.length < 4) {
+      if (arr.length < 6) {
         setNumber(0);
       }
 
       const newArr = arr.filter((item, index) => {
         console.log("arr", arr.length);
-        // console.log("index", index + 1);
-        // if (arr.length === index + 1) {
-        //   console.log(55);
-        // }
-        if (number === arr.length - 2) {
+        if (number === arr.length - 4) {
           setNumber(0);
         }
 
-        return index >= number && index < number + 3;
+        if (number < 0) {
+          setNumber(Math.round(arr.length / 5));
+        }
+
+        return index >= number && index < number + 5;
       });
+
       return newArr;
     },
     [number]
@@ -56,12 +57,10 @@ const StoreCart = ({ cartItems, orderTotal, filmDelete }) => {
   return (
     <div className="store__cart">
       <div className="store__cart_slider">
-        {cartItems.length > 3 && (
+        {cartItems.length > 5 && (
           <i
             className="fas fa-chevron-circle-left"
-            onClick={() => {
-              number > 1 ? setNumber(number - 1) : setNumber(0);
-            }}
+            onClick={() => setNumber(number - 1)}
           ></i>
         )}
         {cart.map((item, index) => {
@@ -84,7 +83,7 @@ const StoreCart = ({ cartItems, orderTotal, filmDelete }) => {
             </div>
           );
         })}
-        {cartItems.length > 3 && (
+        {cartItems.length > 5 && (
           <i
             className="fas fa-chevron-circle-right"
             onClick={() => setNumber(number + 1)}
