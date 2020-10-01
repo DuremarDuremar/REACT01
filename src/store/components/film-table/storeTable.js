@@ -15,7 +15,7 @@ const StoreTable = ({
     <div className="store__home_scroll">
       <h3 className="store__home_title">Your Order</h3>
       <ul className="store__home_table">
-        <li>
+        <li className="store__home_li">
           <span>#</span>
           <span>Item</span>
           <span>Count</span>

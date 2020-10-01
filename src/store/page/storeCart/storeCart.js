@@ -21,12 +21,13 @@ const StoreCart = ({ cartItems, orderTotal, filmDelete }) => {
 
       const newArr = arr.filter((item, index) => {
         console.log("arr", arr.length);
-        if (number === arr.length - 4) {
+        if (number >= arr.length - 4) {
           setNumber(0);
+          // return index <= number - 4 || index >= number;
         }
 
         if (number < 0) {
-          setNumber(Math.round(arr.length / 5));
+          setNumber(Math.round(arr.length - 5));
         }
 
         return index >= number && index < number + 5;

@@ -1,41 +1,13 @@
-.store__home_item1 {
+.store__home_item {
   margin-top: 1rem;
   display: inline-flex;
-  font-family: "Playfair Display", serif;
+  font-family: "Fira Sans", serif;
 
   img {
     width: 200px;
-    height: 280px;
-  }
-  .store__home_info {
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    text-align: start;
-    margin-left: 1rem;
-    .store__home_btn-item {
-      width: 100px;
-      padding: 10px 0;
-      font-family: "Playfair Display", serif;
-      background-color: #f7f1e3;
-      border: 2px solid #d1ccc0;
-    }
-    h4 {
-      font-size: 20px;
-    }
-  }
-}
-
-.store__home_item2 {
-  margin-top: 1rem;
-  display: inline-flex;
-  font-family: "Playfair Display", serif;
-
-  img {
-    width: 200px;
-    height: 280px;
-    display: block;
+    height: 290px;
+    border: 2px solid #596275;
+    border-radius: 8px;
   }
   .store__home_info {
     width: 200px;
@@ -44,18 +16,41 @@
     justify-content: space-around;
     text-align: end;
     margin-right: 1rem;
+    font-style: italic;
+    font-size: 18px;
+    h3 {
+      font-style: normal;
+    }
+    h4 {
+      font-size: 20px;
+      font-style: normal;
+    }
     .store__home_btn-item {
       width: 100px;
       padding: 10px 0;
       font-family: "Playfair Display", serif;
       background-color: #f7f1e3;
       border: 2px solid #d1ccc0;
+      &:hover {
+        background-color: #596275;
+      }
+    }
+  }
+}
+
+.store__home_item1 {
+  .store__home_info {
+    text-align: start;
+  }
+}
+
+.store__home_item2 {
+  .store__home_info {
+    text-align: end;
+    .store__home_btn-item {
       display: block;
       margin-left: auto;
       margin-right: 0;
-    }
-    h4 {
-      font-size: 20px;
     }
   }
 }

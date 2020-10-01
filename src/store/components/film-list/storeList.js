@@ -51,13 +51,16 @@ const StoreList = ({
       ) : (
         <ul className="store__home_list">
           <i
-            className="fas fa-chevron-circle-left"
+            className="fas fa-chevron-circle-left fa-2x"
             onClick={() => filmPrev()}
           ></i>
           {films.map((film, index) => {
             if (index % 2 === 0) {
               return (
-                <li key={film.id} className="store__home_item1">
+                <li
+                  key={film.id}
+                  className="store__home_item1 store__home_item"
+                >
                   <StoreItem1
                     film={film}
                     onAddedToCart={() => filmAdd(film.id)}
@@ -66,7 +69,10 @@ const StoreList = ({
               );
             } else {
               return (
-                <li key={film.id} className="store__home_item2">
+                <li
+                  key={film.id}
+                  className="store__home_item2 store__home_item"
+                >
                   <StoreItem2
                     film={film}
                     onAddedToCart={() => filmAdd(film.id)}
@@ -76,7 +82,7 @@ const StoreList = ({
             }
           })}
           <i
-            className="fas fa-chevron-circle-right"
+            className="fas fa-chevron-circle-right fa-2x"
             onClick={() => filmNext()}
           ></i>
         </ul>

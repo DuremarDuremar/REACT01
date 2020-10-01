@@ -4,20 +4,27 @@
     margin: 2rem 0;
   }
   .store__home_table {
-    width: 650px;
+    width: 700px;
     margin: 0px auto;
+
+    .store__home_li {
+      font-weight: 700;
+      border-radius: 0;
+      border: 4px solid black;
+      margin-bottom: 4px;
+    }
     li {
       display: flex;
       justify-content: space-between;
       border: 1px solid black;
-
+      border-radius: 10px;
       span {
         text-align: center;
-        width: 150px;
+        width: 130px;
 
-        // &:not(:last-child) {
-        //   border-right: 1px solid black;
-        // }
+        &:nth-child(2) {
+          width: 260px;
+        }
         &:first-child {
           width: 50px;
         }

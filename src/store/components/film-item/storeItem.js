@@ -6,7 +6,7 @@ const StoreItem2 = ({ film, onAddedToCart }) => {
     <>
       <img src={film.image} alt="" />
       <div className="store__home_info">
-        <div>{film.title}</div>
+        <h3>{film.title}</h3>
         <div>
           {film.year}, {film.author}
         </div>
@@ -24,7 +24,7 @@ const StoreItem1 = ({ film, onAddedToCart }) => {
   return (
     <>
       <div className="store__home_info">
-        <div>{film.title}</div>
+        <h3>{film.title}</h3>
         <div>
           {film.year}, {film.author}
         </div>
