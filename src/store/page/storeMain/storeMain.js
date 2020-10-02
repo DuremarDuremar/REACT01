@@ -16,7 +16,7 @@ const StoreMain = () => {
             <Route path="/store" component={StoreHome} exact />
             <Route path="/store/cart" component={StoreCart} />
             <Route path="/store/login" component={StoreLogin} />
-            {/* <Route path="/store/register" component={StoreHome} exact /> */}
+            <Route path="/store/register" component={StoreLogin} exact />
           </Switch>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import StoreHOC from "../../context/storeHOC";
 import "./storeHeader.scss";
@@ -9,7 +9,7 @@ const StoreHeader = ({ cartItems, orderTotal, isLogin }) => {
     return total + item.count;
   }, 0);
 
-  console.log(isLogin);
+  // console.log(isLogin);
 
   return (
     <div className="store__header">
@@ -26,9 +26,14 @@ const StoreHeader = ({ cartItems, orderTotal, isLogin }) => {
           </div>
         </Link>
       ) : (
-        <Link to="/store/login">
-          <h6>Sign in</h6>
-        </Link>
+        <>
+          <NavLink className="store__navLink" to="/store/login">
+            <h6>Sign in</h6>
+          </NavLink>
+          <NavLink className="store__navLink" to="/store/register">
+            <h6>Sign up</h6>
+          </NavLink>
+        </>
       )}
     </div>
   );

@@ -5,7 +5,8 @@
   border-bottom: 1px solid black;
   h3 {
     color: black;
-    font-size: 24px;
+    font-size: 28px;
+    border-bottom: 8px solid black;
   }
   .store__header_cart {
     display: flex;
@@ -17,7 +18,13 @@
   }
 
   h6 {
-    color: black;
+    color: #84817a;
     font-size: 24px;
+  }
+
+  .store__navLink.active {
+    h6 {
+      color: black;
+    }
   }
 }
