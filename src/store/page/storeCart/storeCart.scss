@@ -1,5 +1,5 @@
 .store__cart {
-  min-height: 100vh;
+  // min-height: 100vh;
   .store__cart_slider {
     display: flex;
     justify-content: center;
@@ -67,6 +67,9 @@
       height: 60px;
       border-bottom-left-radius: 26px;
       border-top-left-radius: 26px;
+      display: block;
+      margin-left: auto;
+      margin-right: 0;
       &:hover {
         background-color: green;
         color: #fff;
