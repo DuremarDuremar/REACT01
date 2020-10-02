@@ -60,7 +60,7 @@ const StoreCart = ({ cartItems, orderTotal, filmDelete }) => {
       <div className="store__cart_slider">
         {cartItems.length > 5 && (
           <i
-            className="fas fa-chevron-circle-left"
+            className="fas fa-chevron-circle-left fa-2x"
             onClick={() => setNumber(number - 1)}
           ></i>
         )}
@@ -86,7 +86,7 @@ const StoreCart = ({ cartItems, orderTotal, filmDelete }) => {
         })}
         {cartItems.length > 5 && (
           <i
-            className="fas fa-chevron-circle-right"
+            className="fas fa-chevron-circle-right fa-2x"
             onClick={() => setNumber(number + 1)}
           ></i>
         )}
