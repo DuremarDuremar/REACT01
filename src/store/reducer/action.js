@@ -59,6 +59,12 @@ const filmDelete = (item) => {
   };
 };
 
+const login = () => {
+  return {
+    type: "LOGIN",
+  };
+};
+
 export {
   filmLoaded,
   filmRequested,
@@ -69,4 +75,5 @@ export {
   filmDelete,
   filmNext,
   filmPrev,
+  login,
 };

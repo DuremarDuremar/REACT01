@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { connect } from "react-redux";
-import { filmDelete } from "../../reducer/action";
+import { filmDelete, login } from "../../reducer/action";
 import StoreHOC from "../../context/storeHOC";
+import { Link } from "react-router-dom";
 import "./storeCart.scss";
 
-const StoreCart = ({ cartItems, orderTotal, filmDelete }) => {
+const StoreCart = ({ cartItems, orderTotal, filmDelete, login }) => {
   const [cart, setCart] = useState([]);
   const [number, setNumber] = useState(0);
 
@@ -91,8 +92,13 @@ const StoreCart = ({ cartItems, orderTotal, filmDelete }) => {
           ></i>
         )}
       </div>
-      <div className="store__cart_total">
-        <button>
+      <div className="store__cart_button">
+        <Link to="/store">
+          <button className="store__cart_exit" onClick={() => login()}>
+            exit
+          </button>
+        </Link>
+        <button className="store__cart_total">
           buy <br />${orderTotal}
         </button>
       </div>
@@ -106,6 +112,7 @@ const mapStateToProps = ({ filmCart: { cartItems, orderTotal } }) => {
 
 const mapDispatchToProps = {
   filmDelete,
+  login,
 };
 
 export default StoreHOC()(
