@@ -65,6 +65,13 @@ const login = () => {
   };
 };
 
+const submit = (sub) => {
+  return {
+    type: "SUBMIT",
+    payload: sub,
+  };
+};
+
 export {
   filmLoaded,
   filmRequested,
@@ -76,4 +83,5 @@ export {
   filmNext,
   filmPrev,
   login,
+  submit,
 };

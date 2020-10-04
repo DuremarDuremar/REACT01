@@ -1,26 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { login } from "../../reducer/action";
+import { login, submit } from "../../reducer/action";
 import { Link } from "react-router-dom";
 import StoreHOC from "../../context/storeHOC";
+import axios from "axios";
 import "./storeLogin.scss";
 
 const StoreLogin = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
 
   const loginTrue = props.match.path === "/store/login";
+  const user = loginTrue ? { email, password } : { username, email, password };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("data", email, password);
     // window.open("/store");
     // <Link to="/store"></Link>;
-    props.login();
+    // props.login();
+    props.submit(true);
   };
 
-  console.log(loginTrue);
+  useEffect(() => {
+    if (!props.isSubmit) {
+      return;
+    }
+    axios(
+      `https://conduit.productionready.io/api${
+        loginTrue ? "/users/login" : "/users"
+      }`,
+      {
+        method: "post",
+        data: {
+          user: user,
+        },
+      }
+    )
+      .then((res) => {
+        console.log("res", res);
+        props.submit(false);
+      })
+      .catch((error) => {
+        console.log("err", error);
+        props.submit(false);
+      });
+  });
+
+  console.log("sub", props.isSubmit);
 
   return (
     <div className="store__authentication">
@@ -34,8 +62,8 @@ const StoreLogin = (props) => {
             className="store__authentication_name"
             type="text"
             placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           ></input>
         )}
         <input
@@ -53,18 +81,21 @@ const StoreLogin = (props) => {
           onChange={(e) => setPassword(e.target.value)}
         ></input>
 
-        <button type="submit">{loginTrue ? "Sign in" : "Sign up"}</button>
+        <button type="submit" disabled={props.isSubmit}>
+          {loginTrue ? "Sign in" : "Sign up"}
+        </button>
       </form>
     </div>
   );
 };
 
-const mapStateToProps = ({ authentication: { isLogin } }) => {
-  return { isLogin };
+const mapStateToProps = ({ authentication: { isLogin, isSubmit } }) => {
+  return { isLogin, isSubmit };
 };
 
 const mapDispatchToProps = {
   login,
+  submit,
 };
 
 export default StoreHOC()(

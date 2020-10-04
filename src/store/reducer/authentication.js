@@ -2,6 +2,7 @@ const updateAuthentication = (state, action) => {
   if (state === undefined) {
     return {
       isLogin: false,
+      isSubmit: false,
     };
   }
 
@@ -10,6 +11,11 @@ const updateAuthentication = (state, action) => {
       return {
         isLogin: !state.authentication.isLogin,
       };
+    case "SUBMIT":
+      return {
+        isSubmit: action.payload,
+      };
+
     default:
       return state.authentication;
   }
