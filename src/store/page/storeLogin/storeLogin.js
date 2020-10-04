@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { login, submit } from "../../reducer/action";
+import { login, submit, loginResponse, loginError } from "../../reducer/action";
 import { Link } from "react-router-dom";
 import StoreHOC from "../../context/storeHOC";
 import axios from "axios";
@@ -38,17 +38,24 @@ const StoreLogin = (props) => {
         },
       }
     )
-      .then((res) => {
-        console.log("res", res);
+      .then((data) => {
+        props.loginResponse(data);
         props.submit(false);
       })
       .catch((error) => {
-        console.log("err", error);
+        props.loginError(error);
         props.submit(false);
       });
-  });
+  }, [props, user, loginTrue]);
 
-  console.log("sub", props.isSubmit);
+  useEffect(() => {
+    if (!props.response) {
+      return;
+    }
+    localStorage.setItem("token", props.response.data.user.token);
+  }, [props.response]);
+
+  console.log("res", props.response);
 
   return (
     <div className="store__authentication">
@@ -89,13 +96,17 @@ const StoreLogin = (props) => {
   );
 };
 
-const mapStateToProps = ({ authentication: { isLogin, isSubmit } }) => {
-  return { isLogin, isSubmit };
+const mapStateToProps = ({
+  authentication: { isLogin, isSubmit, error, response },
+}) => {
+  return { isLogin, isSubmit, response, error };
 };
 
 const mapDispatchToProps = {
   login,
   submit,
+  loginResponse,
+  loginError,
 };
 
 export default StoreHOC()(

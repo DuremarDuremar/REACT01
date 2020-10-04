@@ -3,17 +3,31 @@ const updateAuthentication = (state, action) => {
     return {
       isLogin: false,
       isSubmit: false,
+      response: null,
+      error: null,
     };
   }
 
   switch (action.type) {
     case "LOGIN":
       return {
+        ...state.authentication,
         isLogin: !state.authentication.isLogin,
       };
     case "SUBMIT":
       return {
+        ...state.authentication,
         isSubmit: action.payload,
+      };
+    case "RESPONSE":
+      return {
+        ...state.authentication,
+        response: action.payload,
+      };
+    case "ERROR":
+      return {
+        ...state.authentication,
+        error: action.payload,
       };
 
     default:

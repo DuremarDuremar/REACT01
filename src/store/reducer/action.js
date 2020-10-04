@@ -72,6 +72,20 @@ const submit = (sub) => {
   };
 };
 
+const loginResponse = (res) => {
+  return {
+    type: "RESPONSE",
+    payload: res,
+  };
+};
+
+const loginError = (err) => {
+  return {
+    type: "ERROR",
+    payload: err,
+  };
+};
+
 export {
   filmLoaded,
   filmRequested,
@@ -84,4 +98,6 @@ export {
   filmPrev,
   login,
   submit,
+  loginResponse,
+  loginError,
 };
