@@ -24,7 +24,9 @@ const StoreLogin = (props) => {
 
   return (
     <div className="store__authentication">
-      <p>Need an account?</p>
+      <Link to={loginTrue ? "/store/register" : "/store/login"}>
+        <p>{loginTrue ? "Need an account?" : "Have an account?"}</p>
+      </Link>
 
       <form onSubmit={handleSubmit}>
         {!loginTrue && (
@@ -51,7 +53,7 @@ const StoreLogin = (props) => {
           onChange={(e) => setPassword(e.target.value)}
         ></input>
 
-        <button type="submit">Sign in</button>
+        <button type="submit">{loginTrue ? "Sign in" : "Sign up"}</button>
       </form>
     </div>
   );

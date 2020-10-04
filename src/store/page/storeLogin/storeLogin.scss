@@ -4,6 +4,10 @@
     text-align: center;
     font-weight: 700;
     margin-bottom: 24px;
+    color: #84817a;
+    &:hover {
+      color: black;
+    }
   }
   form {
     max-width: 900px;
