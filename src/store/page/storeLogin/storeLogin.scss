@@ -3,6 +3,7 @@
     margin-top: 8px;
     text-align: center;
     font-weight: 700;
+    margin-bottom: 24px;
   }
   form {
     max-width: 900px;
@@ -17,8 +18,13 @@
       padding-left: 6px;
       //   margin-top: 12px;
     }
+
+    .store__authentication_name {
+      margin-bottom: 12px;
+    }
+
     .store__authentication_email {
-      margin-top: 24px;
+      // margin-top: 24px;
     }
     .store__authentication_password {
       margin-top: 12px;
