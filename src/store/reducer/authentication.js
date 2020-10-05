@@ -3,6 +3,9 @@ const updateAuthentication = (state, action) => {
     return {
       isLogin: false,
       isSubmit: false,
+      // userName: {
+      //   username: "user",
+      // },
       userName: null,
       error: null,
     };

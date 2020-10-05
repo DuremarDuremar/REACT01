@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { login, submit, loginUser, loginError } from "../../reducer/action";
 import { Link, Redirect } from "react-router-dom";
 import StoreHOC from "../../context/storeHOC";
+import useStorage from "../../utils/useStorage";
 import axios from "axios";
 import "./storeLogin.scss";
 
@@ -20,7 +21,11 @@ const StoreLogin = ({
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
+  const [token, setToken] = useStorage("token");
+
   const loginTrue = match.path === "/store/login";
+
+  console.log("token", token);
 
   const user = useCallback(() => {
     if (loginTrue) {
@@ -64,9 +69,9 @@ const StoreLogin = ({
     if (!userName) {
       return;
     }
-    localStorage.setItem("token", userName.token);
+    setToken(userName.token);
     login(true);
-  }, [userName, login]);
+  }, [userName, login, setToken]);
 
   // console.log("token", userName);
   // console.log("log", isLogin);

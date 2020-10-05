@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import StoreHOC from "../../context/storeHOC";
 import "./storeHeader.scss";
 
-const StoreHeader = ({ cartItems, orderTotal, isLogin }) => {
+const StoreHeader = ({ cartItems, orderTotal, isLogin, userName }) => {
   let itemCart = cartItems.reduce(function (total, item) {
     return total + item.count;
   }, 0);
@@ -18,6 +18,7 @@ const StoreHeader = ({ cartItems, orderTotal, isLogin }) => {
       </Link>
       {isLogin === true ? (
         <Link to="/store/cart">
+          <h2>{userName.username}</h2>
           <div className="store__header_cart">
             <i className="fas fa-shopping-cart fa-lg"></i>
             <p>
@@ -41,9 +42,9 @@ const StoreHeader = ({ cartItems, orderTotal, isLogin }) => {
 
 const mapStateToProps = ({
   filmCart: { cartItems, orderTotal },
-  authentication: { isLogin },
+  authentication: { isLogin, userName },
 }) => {
-  return { cartItems, orderTotal, isLogin };
+  return { cartItems, orderTotal, isLogin, userName };
 };
 
 export default StoreHOC()(connect(mapStateToProps)(StoreHeader));
