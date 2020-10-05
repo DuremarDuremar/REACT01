@@ -59,9 +59,10 @@ const filmDelete = (item) => {
   };
 };
 
-const login = () => {
+const login = (log) => {
   return {
     type: "LOGIN",
+    payload: log,
   };
 };
 
@@ -72,10 +73,10 @@ const submit = (sub) => {
   };
 };
 
-const loginResponse = (res) => {
+const loginUser = (name) => {
   return {
-    type: "RESPONSE",
-    payload: res,
+    type: "USERNAME",
+    payload: name,
   };
 };
 
@@ -98,6 +99,6 @@ export {
   filmPrev,
   login,
   submit,
-  loginResponse,
+  loginUser,
   loginError,
 };

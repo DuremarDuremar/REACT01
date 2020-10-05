@@ -3,7 +3,7 @@ const updateAuthentication = (state, action) => {
     return {
       isLogin: false,
       isSubmit: false,
-      response: null,
+      userName: null,
       error: null,
     };
   }
@@ -19,10 +19,10 @@ const updateAuthentication = (state, action) => {
         ...state.authentication,
         isSubmit: action.payload,
       };
-    case "RESPONSE":
+    case "USERNAME":
       return {
         ...state.authentication,
-        response: action.payload,
+        userName: action.payload,
       };
     case "ERROR":
       return {

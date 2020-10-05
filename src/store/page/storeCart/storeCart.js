@@ -94,7 +94,7 @@ const StoreCart = ({ cartItems, orderTotal, filmDelete, login }) => {
       </div>
       <div className="store__cart_button">
         <Link to="/store">
-          <button className="store__cart_exit" onClick={() => login()}>
+          <button className="store__cart_exit" onClick={() => login(false)}>
             exit
           </button>
         </Link>

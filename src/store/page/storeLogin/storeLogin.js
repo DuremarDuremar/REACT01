@@ -1,30 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { connect } from "react-redux";
-import { login, submit, loginResponse, loginError } from "../../reducer/action";
-import { Link } from "react-router-dom";
+import { login, submit, loginUser, loginError } from "../../reducer/action";
+import { Link, Redirect } from "react-router-dom";
 import StoreHOC from "../../context/storeHOC";
 import axios from "axios";
 import "./storeLogin.scss";
 
-const StoreLogin = (props) => {
+const StoreLogin = ({
+  match,
+  submit,
+  isSubmit,
+  loginError,
+  loginUser,
+  userName,
+  login,
+  isLogin,
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
-  const loginTrue = props.match.path === "/store/login";
-  const user = loginTrue ? { email, password } : { username, email, password };
+  const loginTrue = match.path === "/store/login";
+
+  const user = useCallback(() => {
+    if (loginTrue) {
+      return { email, password };
+    } else {
+      return { username, email, password };
+    }
+  }, [loginTrue, username, email, password]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("data", email, password);
-    // window.open("/store");
-    // <Link to="/store"></Link>;
-    // props.login();
-    props.submit(true);
+    submit(true);
   };
 
   useEffect(() => {
-    if (!props.isSubmit) {
+    if (!isSubmit) {
       return;
     }
     axios(
@@ -34,28 +46,35 @@ const StoreLogin = (props) => {
       {
         method: "post",
         data: {
-          user: user,
+          user: user(),
         },
       }
     )
-      .then((data) => {
-        props.loginResponse(data);
-        props.submit(false);
+      .then((response) => {
+        loginUser(response.data.user);
+        submit(false);
       })
       .catch((error) => {
-        props.loginError(error);
-        props.submit(false);
+        loginError(error);
+        submit(false);
       });
-  }, [props, user, loginTrue]);
+  }, [user, loginTrue, submit, isSubmit, loginError, loginUser]);
 
   useEffect(() => {
-    if (!props.response) {
+    if (!userName) {
       return;
     }
-    localStorage.setItem("token", props.response.data.user.token);
-  }, [props.response]);
+    localStorage.setItem("token", userName.token);
+    login(true);
+  }, [userName, login]);
 
-  console.log("res", props.response);
+  // console.log("token", userName);
+  // console.log("log", isLogin);
+  // console.log("user", userName);
+
+  if (isLogin) {
+    return <Redirect to="/store/" />;
+  }
 
   return (
     <div className="store__authentication">
@@ -88,7 +107,7 @@ const StoreLogin = (props) => {
           onChange={(e) => setPassword(e.target.value)}
         ></input>
 
-        <button type="submit" disabled={props.isSubmit}>
+        <button type="submit" disabled={isSubmit}>
           {loginTrue ? "Sign in" : "Sign up"}
         </button>
       </form>
@@ -97,15 +116,15 @@ const StoreLogin = (props) => {
 };
 
 const mapStateToProps = ({
-  authentication: { isLogin, isSubmit, error, response },
+  authentication: { isLogin, isSubmit, error, userName },
 }) => {
-  return { isLogin, isSubmit, response, error };
+  return { isLogin, isSubmit, userName, error };
 };
 
 const mapDispatchToProps = {
   login,
   submit,
-  loginResponse,
+  loginUser,
   loginError,
 };
 
