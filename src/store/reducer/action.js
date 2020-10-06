@@ -6,6 +6,13 @@ const filmLoaded = (newFilm, str) => {
   };
 };
 
+const filmDecst = (foo) => {
+  return {
+    type: "FILM_DECST",
+    payload: foo,
+  };
+};
+
 const filmNext = () => {
   return {
     type: "FILM_NEXT",
@@ -93,6 +100,7 @@ export {
   filmError,
   filmDecrease,
   filmAdd,
+  filmDecst,
   filmIncrease,
   filmDelete,
   filmNext,

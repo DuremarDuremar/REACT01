@@ -8,6 +8,7 @@ import {
   filmAdd,
   filmNext,
   filmPrev,
+  filmDecst,
 } from "../../reducer/action";
 import StoreHOC from "../../context/storeHOC";
 import { StoreItem1, StoreItem2 } from "../film-item/storeItem";
@@ -19,16 +20,21 @@ const StoreList = ({
   loading,
   error,
   page,
+  decst,
   StoreServer,
   filmLoaded,
   filmRequested,
   filmError,
+  filmDecst,
   filmAdd,
   filmNext,
   filmPrev,
 }) => {
+  const isDecst = useMediaQuery({ query: "(min-width: 992px)" });
+
   useEffect(() => {
     filmRequested();
+    filmDecst(isDecst);
     StoreServer.getStoreServer()
       .then((data) => {
         filmLoaded(data);
@@ -36,15 +42,25 @@ const StoreList = ({
       .catch((err) => {
         filmError(err);
       });
-  }, [StoreServer, filmLoaded, filmRequested, filmError, page]);
+  }, [
+    StoreServer,
+    filmLoaded,
+    filmRequested,
+    filmError,
+    filmDecst,
+    page,
+    isDecst,
+  ]);
 
-  const isTabletOrMobile = useMediaQuery({ query: "(min-width: 992px)" });
+  // console.log("isDecst", isDecst);
 
   if (error) {
     console.log(error);
     return <ErrorIndicator />;
   }
 
+  console.log(films);
+  // console.log("decst", decst);
   return (
     <>
       {loading ? (
@@ -55,7 +71,7 @@ const StoreList = ({
             className="fas fa-chevron-circle-left fa-2x"
             onClick={() => filmPrev()}
           ></i>
-          {isTabletOrMobile &&
+          {isDecst &&
             films.map((film, index) => {
               if (index % 2 === 0) {
                 return (
@@ -83,6 +99,20 @@ const StoreList = ({
                 );
               }
             })}
+          {!isDecst &&
+            films.map((film, index) => {
+              return (
+                <li
+                  key={film.id}
+                  className="store__home_item1 store__home_item"
+                >
+                  <StoreItem1
+                    film={film}
+                    onAddedToCart={() => filmAdd(film.id)}
+                  />
+                </li>
+              );
+            })}
 
           <i
             className="fas fa-chevron-circle-right fa-2x"
@@ -94,8 +124,10 @@ const StoreList = ({
   );
 };
 
-const mapStateToProps = ({ filmList: { films, loading, error, page } }) => {
-  return { films, loading, error, page };
+const mapStateToProps = ({
+  filmList: { films, loading, error, page, decst },
+}) => {
+  return { films, loading, error, page, decst };
 };
 
 const mapDispatchToProps = {
@@ -105,6 +137,7 @@ const mapDispatchToProps = {
   filmAdd,
   filmNext,
   filmPrev,
+  filmDecst,
 };
 
 export default StoreHOC()(

@@ -1,3 +1,6 @@
+import React from "react";
+import { useMediaQuery } from "react-responsive";
+
 const updateFilmList = (state, action) => {
   // console.log(action.type);
   if (state === undefined) {
@@ -7,6 +10,7 @@ const updateFilmList = (state, action) => {
       error: null,
       page: 1,
       allPage: 1,
+      decst: null,
     };
   }
 
@@ -21,21 +25,32 @@ const updateFilmList = (state, action) => {
         loading: true,
         error: null,
       };
+    case "FILM_DECST":
+      console.log("11", action.payload);
+
+      return {
+        ...state.filmList,
+        decst: action.payload,
+      };
     case "FILMS_LOADED":
       const allLength = action.payload.length;
-      // console.log(action.payload);
+      console.log("allFilms", action.payload);
       let str = state.filmList.page;
 
-      let Slice = str * 2;
+      let Slice = state.filmList.decst ? str * 2 : str;
 
-      let filmViev = action.payload.slice(Slice - 2, Slice);
+      let filmViev = state.filmList.decst
+        ? action.payload.slice(Slice - 2, Slice)
+        : action.payload.slice(Slice - 1, Slice);
+
+      console.log("filmViev", filmViev);
 
       return {
         ...state.filmList,
         films: filmViev,
         loading: false,
         error: null,
-        allPage: Math.ceil(allLength / 2),
+        allPage: state.filmList.decst ? Math.ceil(allLength / 2) : allLength,
       };
 
     case "FILM_NEXT":
