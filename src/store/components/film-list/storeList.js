@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 import { connect } from "react-redux";
 import {
   filmLoaded,
@@ -37,12 +38,12 @@ const StoreList = ({
       });
   }, [StoreServer, filmLoaded, filmRequested, filmError, page]);
 
+  const isTabletOrMobile = useMediaQuery({ query: "(min-width: 992px)" });
+
   if (error) {
     console.log(error);
     return <ErrorIndicator />;
   }
-
-  // console.log(page);
 
   return (
     <>
@@ -54,33 +55,35 @@ const StoreList = ({
             className="fas fa-chevron-circle-left fa-2x"
             onClick={() => filmPrev()}
           ></i>
-          {films.map((film, index) => {
-            if (index % 2 === 0) {
-              return (
-                <li
-                  key={film.id}
-                  className="store__home_item1 store__home_item"
-                >
-                  <StoreItem1
-                    film={film}
-                    onAddedToCart={() => filmAdd(film.id)}
-                  />
-                </li>
-              );
-            } else {
-              return (
-                <li
-                  key={film.id}
-                  className="store__home_item2 store__home_item"
-                >
-                  <StoreItem2
-                    film={film}
-                    onAddedToCart={() => filmAdd(film.id)}
-                  />
-                </li>
-              );
-            }
-          })}
+          {isTabletOrMobile &&
+            films.map((film, index) => {
+              if (index % 2 === 0) {
+                return (
+                  <li
+                    key={film.id}
+                    className="store__home_item1 store__home_item"
+                  >
+                    <StoreItem1
+                      film={film}
+                      onAddedToCart={() => filmAdd(film.id)}
+                    />
+                  </li>
+                );
+              } else {
+                return (
+                  <li
+                    key={film.id}
+                    className="store__home_item2 store__home_item"
+                  >
+                    <StoreItem2
+                      film={film}
+                      onAddedToCart={() => filmAdd(film.id)}
+                    />
+                  </li>
+                );
+              }
+            })}
+
           <i
             className="fas fa-chevron-circle-right fa-2x"
             onClick={() => filmNext()}
