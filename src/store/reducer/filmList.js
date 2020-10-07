@@ -26,7 +26,8 @@ const updateFilmList = (state, action) => {
         error: null,
       };
     case "FILM_DECST":
-      console.log("11", action.payload);
+      // console.log("decst", action.payload);
+      // console.log("allPage decst", state.filmList.allPage);
 
       return {
         ...state.filmList,
@@ -34,7 +35,7 @@ const updateFilmList = (state, action) => {
       };
     case "FILMS_LOADED":
       const allLength = action.payload.length;
-      console.log("allFilms", action.payload);
+      // console.log("allFilms", action.payload);
       let str = state.filmList.page;
 
       let Slice = state.filmList.decst ? str * 2 : str;
@@ -43,14 +44,17 @@ const updateFilmList = (state, action) => {
         ? action.payload.slice(Slice - 2, Slice)
         : action.payload.slice(Slice - 1, Slice);
 
-      console.log("filmViev", filmViev);
+      // console.log("filmViev", filmViev);
+      // console.log("allPage", state.filmList.allPage);
+      // console.log("Page", state.filmList.page);
+      // console.log("dd", state.filmList.decst);
 
       return {
         ...state.filmList,
+        allPage: state.filmList.decst ? Math.ceil(allLength / 2) : allLength,
         films: filmViev,
         loading: false,
         error: null,
-        allPage: state.filmList.decst ? Math.ceil(allLength / 2) : allLength,
       };
 
     case "FILM_NEXT":

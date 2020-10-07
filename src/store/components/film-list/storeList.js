@@ -11,7 +11,7 @@ import {
   filmDecst,
 } from "../../reducer/action";
 import StoreHOC from "../../context/storeHOC";
-import { StoreItem1, StoreItem2 } from "../film-item/storeItem";
+import { StoreItem1, StoreItem2, StoreItemAdap } from "../film-item/storeItem";
 import ErrorIndicator from "../../../error/error-indicator";
 import "./storeList.scss";
 
@@ -30,11 +30,12 @@ const StoreList = ({
   filmNext,
   filmPrev,
 }) => {
-  const isDecst = useMediaQuery({ query: "(min-width: 992px)" });
+  const is992 = useMediaQuery({ query: "(min-width: 992px)" });
+  const is531 = useMediaQuery({ query: "(min-width: 531px)" });
 
   useEffect(() => {
     filmRequested();
-    filmDecst(isDecst);
+    filmDecst(is992);
     StoreServer.getStoreServer()
       .then((data) => {
         filmLoaded(data);
@@ -49,7 +50,7 @@ const StoreList = ({
     filmError,
     filmDecst,
     page,
-    isDecst,
+    is992,
   ]);
 
   // console.log("isDecst", isDecst);
@@ -59,7 +60,7 @@ const StoreList = ({
     return <ErrorIndicator />;
   }
 
-  console.log(films);
+  // console.log(films);
   // console.log("decst", decst);
   return (
     <>
@@ -106,10 +107,17 @@ const StoreList = ({
                   key={film.id}
                   className="store__home_item1 store__home_item"
                 >
-                  <StoreItem1
-                    film={film}
-                    onAddedToCart={() => filmAdd(film.id)}
-                  />
+                  {is531 ? (
+                    <StoreItem1
+                      film={film}
+                      onAddedToCart={() => filmAdd(film.id)}
+                    />
+                  ) : (
+                    <StoreItemAdap
+                      film={film}
+                      onAddedToCart={() => filmAdd(film.id)}
+                    />
+                  )}
                 </li>
               );
             })}

@@ -12,9 +12,9 @@ const StoreTable = ({
   filmIncrease,
   filmDelete,
 }) => {
-  const isTable = useMediaQuery({ query: "(min-width: 530px)" });
+  const isTable = useMediaQuery({ query: "(min-width: 531px)" });
 
-  console.log("is", isTable);
+  // console.log("is", isTable);
 
   return (
     <div className="store__home_scroll">
@@ -33,25 +33,49 @@ const StoreTable = ({
         )}
 
         {cartItems.map((item, index) => {
-          return (
-            <li key={item.id}>
-              <span>{index + 1}</span>
-              <span>{item.name}</span>
-              <span>{item.count}</span>
-              <span>${item.price * item.count}</span>
-              <span className="store__home_wrap-btn">
-                <button onClick={() => filmDecrease(item)}>
-                  <i className="fas fa-minus fa-lg"></i>
-                </button>
-                <button onClick={() => filmIncrease(item)}>
-                  <i className="fas fa-plus fa-lg"></i>
-                </button>
-                <button onClick={() => filmDelete(item)}>
-                  <i className="far fa-window-close fa-lg"></i>
-                </button>
-              </span>
-            </li>
-          );
+          if (isTable) {
+            return (
+              <li key={item.id}>
+                <span>{index + 1}</span>
+                <span>{item.name}</span>
+                <span>{item.count}</span>
+                <span>${item.price * item.count}</span>
+                <span className="store__home_wrap-btn">
+                  <button onClick={() => filmDecrease(item)}>
+                    <i className="fas fa-minus fa-lg"></i>
+                  </button>
+                  <button onClick={() => filmIncrease(item)}>
+                    <i className="fas fa-plus fa-lg"></i>
+                  </button>
+                  <button onClick={() => filmDelete(item)}>
+                    <i className="far fa-window-close fa-lg"></i>
+                  </button>
+                </span>
+              </li>
+            );
+          } else {
+            return (
+              <li key={item.id}>
+                <div>
+                  <p>№{index + 1}</p>
+                  <p>/ {item.name} /</p>
+                  <p>count {item.count} /</p>
+                  <p>${item.price * item.count}</p>
+                </div>
+                <div className="store__home_wrap-btn">
+                  <button onClick={() => filmDecrease(item)}>
+                    <i className="fas fa-minus fa-lg"></i>
+                  </button>
+                  <button onClick={() => filmIncrease(item)}>
+                    <i className="fas fa-plus fa-lg"></i>
+                  </button>
+                  <button onClick={() => filmDelete(item)}>
+                    <i className="far fa-window-close fa-lg"></i>
+                  </button>
+                </div>
+              </li>
+            );
+          }
         })}
 
         <div className="store__home_total">
