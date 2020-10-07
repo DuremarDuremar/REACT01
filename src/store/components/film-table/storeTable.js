@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { filmDecrease, filmIncrease, filmDelete } from "../../reducer/action";
+import { useMediaQuery } from "react-responsive";
 import StoreHOC from "../../context/storeHOC";
 import "./storeTable.scss";
 
@@ -11,17 +12,26 @@ const StoreTable = ({
   filmIncrease,
   filmDelete,
 }) => {
+  const isTable = useMediaQuery({ query: "(min-width: 530px)" });
+
+  console.log("is", isTable);
+
   return (
     <div className="store__home_scroll">
       <h3 className="store__home_title">Your Order</h3>
       <ul className="store__home_table">
-        <li className="store__home_li">
-          <span>#</span>
-          <span>Item</span>
-          <span>Count</span>
-          <span>Price</span>
-          <span>Action</span>
-        </li>
+        {isTable ? (
+          <li className="store__home_li">
+            <span>#</span>
+            <span>Item</span>
+            <span>Count</span>
+            <span>Price</span>
+            <span>Action</span>
+          </li>
+        ) : (
+          <div className="store__home_li_adap">Films</div>
+        )}
+
         {cartItems.map((item, index) => {
           return (
             <li key={item.id}>

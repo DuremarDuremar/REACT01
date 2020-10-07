@@ -71,7 +71,7 @@ const StoreList = ({
             className="fas fa-chevron-circle-left fa-2x"
             onClick={() => filmPrev()}
           ></i>
-          {isDecst &&
+          {decst &&
             films.map((film, index) => {
               if (index % 2 === 0) {
                 return (
@@ -99,7 +99,7 @@ const StoreList = ({
                 );
               }
             })}
-          {!isDecst &&
+          {!decst &&
             films.map((film, index) => {
               return (
                 <li

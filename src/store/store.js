@@ -4,8 +4,8 @@ import { Provider } from "react-redux";
 import { StoreProvider } from "./context/storeContext";
 import StoreServer from "./services/storeServer";
 import StoreMain from "./page/storeMain/storeMain";
-
 import store from "./reducer/createStore";
+import "./storeAdaptive.scss";
 
 const storeServer = new StoreServer();
 
