@@ -58,6 +58,13 @@
     text-align: right;
   }
 
+  .store__home_buttton_active {
+    &:hover {
+      background-color: green;
+      color: #fff;
+    }
+  }
+
   button {
     background-color: #84817a;
     padding: 10px 5px;

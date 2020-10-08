@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { connect } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 import { filmDelete, login } from "../../reducer/action";
 import StoreHOC from "../../context/storeHOC";
 import { Link } from "react-router-dom";
@@ -9,11 +10,13 @@ const StoreCart = ({ cartItems, orderTotal, filmDelete, login }) => {
   const [cart, setCart] = useState([]);
   const [number, setNumber] = useState(0);
 
-  // let Allpage = Math.ceil(cartItems.length / 2 + 1);
+  const is1200 = useMediaQuery({ query: "(min-width: 1200px)" });
+  const is760 = useMediaQuery({ query: "(min-width: 760px)" });
 
-  // console.log(Allpage);
   console.log("number", number);
 
+  let cartNumber = is1200 ? 5 : is760 ? 3 : 1;
+  console.log(cartNumber);
   const cartActive = useCallback(
     (arr) => {
       if (arr.length < 6) {
@@ -22,25 +25,24 @@ const StoreCart = ({ cartItems, orderTotal, filmDelete, login }) => {
 
       const newArr = arr.filter((item, index) => {
         console.log("arr", arr.length);
-        if (number >= arr.length - 4) {
+        if (number >= arr.length - (cartNumber - 1)) {
           setNumber(0);
           // return index <= number - 4 || index >= number;
         }
 
         if (number < 0) {
-          setNumber(Math.round(arr.length - 5));
+          setNumber(Math.round(arr.length - cartNumber));
         }
 
-        return index >= number && index < number + 5;
+        return index >= number && index < number + cartNumber;
       });
 
       return newArr;
     },
-    [number]
+    [number, cartNumber]
   );
 
   // console.log(cartItems.length);
-  // console.log(number);
 
   useEffect(() => {
     setCart(cartActive(cartItems));
@@ -59,7 +61,7 @@ const StoreCart = ({ cartItems, orderTotal, filmDelete, login }) => {
   return (
     <div className="store__cart">
       <div className="store__cart_slider">
-        {cartItems.length > 5 && (
+        {cartItems.length > cartNumber && (
           <i
             className="fas fa-chevron-circle-left fa-2x"
             onClick={() => setNumber(number - 1)}
@@ -85,7 +87,7 @@ const StoreCart = ({ cartItems, orderTotal, filmDelete, login }) => {
             </div>
           );
         })}
-        {cartItems.length > 5 && (
+        {cartItems.length > cartNumber && (
           <i
             className="fas fa-chevron-circle-right fa-2x"
             onClick={() => setNumber(number + 1)}

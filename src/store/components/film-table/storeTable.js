@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { filmDecrease, filmIncrease, filmDelete } from "../../reducer/action";
 import { useMediaQuery } from "react-responsive";
 import StoreHOC from "../../context/storeHOC";
@@ -8,13 +9,18 @@ import "./storeTable.scss";
 const StoreTable = ({
   cartItems,
   orderTotal,
+  isLogin,
   filmDecrease,
   filmIncrease,
   filmDelete,
 }) => {
   const isTable = useMediaQuery({ query: "(min-width: 531px)" });
 
-  // console.log("is", isTable);
+  console.log("is", isLogin);
+
+  const alertReg = () => {
+    alert("please login");
+  };
 
   return (
     <div className="store__home_scroll">
@@ -80,15 +86,24 @@ const StoreTable = ({
 
         <div className="store__home_total">
           <h5>${orderTotal}</h5>
-          <button>Checkout</button>
+          {isLogin ? (
+            <Link to="/store/cart">
+              <button className="store__home_buttton_active">Checkout</button>
+            </Link>
+          ) : (
+            <button onClick={alertReg}>Checkout</button>
+          )}
         </div>
       </ul>
     </div>
   );
 };
 
-const mapStateToProps = ({ filmCart: { cartItems, orderTotal } }) => {
-  return { cartItems, orderTotal };
+const mapStateToProps = ({
+  filmCart: { cartItems, orderTotal },
+  authentication: { isLogin },
+}) => {
+  return { cartItems, orderTotal, isLogin };
 };
 
 const mapDispatchToProps = {
