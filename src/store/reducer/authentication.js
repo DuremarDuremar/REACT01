@@ -8,6 +8,8 @@ const updateAuthentication = (state, action) => {
       // },
       userName: null,
       error: null,
+      token: null,
+      name: null,
     };
   }
 
@@ -15,12 +17,22 @@ const updateAuthentication = (state, action) => {
     case "LOGIN":
       return {
         ...state.authentication,
-        isLogin: !state.authentication.isLogin,
+        isLogin: action.payload,
       };
     case "SUBMIT":
       return {
         ...state.authentication,
         isSubmit: action.payload,
+      };
+    case "TOKEN":
+      return {
+        ...state.authentication,
+        token: action.payload,
+      };
+    case "NAME":
+      return {
+        ...state.authentication,
+        name: action.payload,
       };
     case "USERNAME":
       return {

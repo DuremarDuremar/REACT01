@@ -1,12 +1,19 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { connect } from "react-redux";
 import { useMediaQuery } from "react-responsive";
-import { filmDelete, login } from "../../reducer/action";
+import { filmDelete, login, setToken, setName } from "../../reducer/action";
 import StoreHOC from "../../context/storeHOC";
 import { Link } from "react-router-dom";
 import "./storeCart.scss";
 
-const StoreCart = ({ cartItems, orderTotal, filmDelete, login }) => {
+const StoreCart = ({
+  cartItems,
+  orderTotal,
+  filmDelete,
+  login,
+  setToken,
+  setName,
+}) => {
   const [cart, setCart] = useState([]);
   const [number, setNumber] = useState(0);
 
@@ -95,7 +102,7 @@ const StoreCart = ({ cartItems, orderTotal, filmDelete, login }) => {
         )}
       </div>
       <div className="store__cart_button">
-        <Link to="/store">
+        <Link to="/store" onClick={() => localStorage.clear()}>
           <button className="store__cart_exit" onClick={() => login(false)}>
             exit
           </button>
@@ -115,6 +122,8 @@ const mapStateToProps = ({ filmCart: { cartItems, orderTotal } }) => {
 const mapDispatchToProps = {
   filmDelete,
   login,
+  setToken,
+  setName,
 };
 
 export default StoreHOC()(

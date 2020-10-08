@@ -16,7 +16,7 @@ const StoreTable = ({
 }) => {
   const isTable = useMediaQuery({ query: "(min-width: 531px)" });
 
-  console.log("is", isLogin);
+  // console.log("is", isLogin);
 
   const alertReg = () => {
     alert("please login");

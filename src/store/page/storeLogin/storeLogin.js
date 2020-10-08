@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { connect } from "react-redux";
-import { login, submit, loginUser, loginError } from "../../reducer/action";
+import {
+  login,
+  submit,
+  loginUser,
+  loginError,
+  setToken,
+} from "../../reducer/action";
 import { Link, Redirect } from "react-router-dom";
 import StoreHOC from "../../context/storeHOC";
 import useStorage from "../../utils/useStorage";
@@ -16,12 +22,14 @@ const StoreLogin = ({
   userName,
   login,
   isLogin,
+  setToken,
+  token,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
-  const [token, setToken] = useStorage("token");
+  // const [token, setToken] = useStorage("token");
 
   const loginTrue = match.path === "/store/login";
 
@@ -60,7 +68,7 @@ const StoreLogin = ({
         submit(false);
       })
       .catch((error) => {
-        loginError(error);
+        loginUser(error);
         submit(false);
       });
   }, [user, loginTrue, submit, isSubmit, loginError, loginUser]);
@@ -69,7 +77,10 @@ const StoreLogin = ({
     if (!userName) {
       return;
     }
+    localStorage.setItem("token", userName.token);
+    localStorage.setItem("name", userName.username);
     setToken(userName.token);
+
     login(true);
   }, [userName, login, setToken]);
 
@@ -121,9 +132,9 @@ const StoreLogin = ({
 };
 
 const mapStateToProps = ({
-  authentication: { isLogin, isSubmit, error, userName },
+  authentication: { isLogin, isSubmit, error, userName, token },
 }) => {
-  return { isLogin, isSubmit, userName, error };
+  return { isLogin, isSubmit, userName, error, token };
 };
 
 const mapDispatchToProps = {
@@ -131,6 +142,7 @@ const mapDispatchToProps = {
   submit,
   loginUser,
   loginError,
+  setToken,
 };
 
 export default StoreHOC()(

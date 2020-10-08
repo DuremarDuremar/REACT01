@@ -94,6 +94,20 @@ const loginError = (err) => {
   };
 };
 
+const setName = (name) => {
+  return {
+    type: "NAME",
+    payload: name,
+  };
+};
+
+const setToken = (token) => {
+  return {
+    type: "TOKEN",
+    payload: token,
+  };
+};
+
 export {
   filmLoaded,
   filmRequested,
@@ -109,4 +123,6 @@ export {
   submit,
   loginUser,
   loginError,
+  setToken,
+  setName,
 };

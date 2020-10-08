@@ -9,6 +9,9 @@ import {
   filmNext,
   filmPrev,
   filmDecst,
+  setToken,
+  login,
+  setName,
 } from "../../reducer/action";
 import StoreHOC from "../../context/storeHOC";
 import { StoreItem1, StoreItem2, StoreItemAdap } from "../film-item/storeItem";
@@ -29,11 +32,19 @@ const StoreList = ({
   filmAdd,
   filmNext,
   filmPrev,
+  token,
+  setToken,
+  isLogin,
+  login,
+  setName,
+  name,
 }) => {
   const is992 = useMediaQuery({ query: "(min-width: 992px)" });
   const is531 = useMediaQuery({ query: "(min-width: 531px)" });
 
   useEffect(() => {
+    setToken(localStorage.getItem("token"));
+    setName(localStorage.getItem("name"));
     filmRequested();
     filmDecst(is992);
     StoreServer.getStoreServer()
@@ -51,9 +62,19 @@ const StoreList = ({
     filmDecst,
     page,
     is992,
+    setToken,
+    setName,
   ]);
 
-  // console.log("isDecst", isDecst);
+  console.log("homeToken", token);
+
+  useEffect(() => {
+    if (token && name) {
+      login(true);
+    } else {
+      login(false);
+    }
+  }, [token, name, login]);
 
   if (error) {
     console.log(error);
@@ -134,8 +155,9 @@ const StoreList = ({
 
 const mapStateToProps = ({
   filmList: { films, loading, error, page, decst },
+  authentication: { token, isLogin, name },
 }) => {
-  return { films, loading, error, page, decst };
+  return { films, loading, error, page, decst, token, isLogin, name };
 };
 
 const mapDispatchToProps = {
@@ -146,6 +168,9 @@ const mapDispatchToProps = {
   filmNext,
   filmPrev,
   filmDecst,
+  setToken,
+  login,
+  setName,
 };
 
 export default StoreHOC()(
