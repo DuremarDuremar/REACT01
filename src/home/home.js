@@ -35,20 +35,20 @@ class Home extends React.Component {
                 <p>Cinema Festivals</p>
               </Link>
 
-              <Link className="home__main_block" to="/store">
+              <Link className="home__main_block store__main_block" to="/store">
                 <p>Store</p>
               </Link>
 
-              <Link className="home__main_block" to="/red">
+              {/* <Link className="home__main_block" to="/red">
                 <p>red</p>
-              </Link>
-
+              </Link> */}
+              {/* 
               <Link className="home__main_block" to="/vlad">
                 <p>5</p>
               </Link>
               <Link className="home__main_block" to="/vl">
                 <p>6</p>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

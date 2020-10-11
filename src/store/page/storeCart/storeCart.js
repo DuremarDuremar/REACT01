@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import "./storeCart.scss";
 
 const StoreCart = ({
+  history,
   cartItems,
   orderTotal,
   filmDelete,
@@ -19,7 +20,7 @@ const StoreCart = ({
 
   const is1200 = useMediaQuery({ query: "(min-width: 1200px)" });
   const is760 = useMediaQuery({ query: "(min-width: 760px)" });
-
+  console.log("his", history);
   console.log("number", number);
 
   let cartNumber = is1200 ? 5 : is760 ? 3 : 1;
@@ -104,10 +105,13 @@ const StoreCart = ({
       <div className="store__cart_button">
         <Link to="/store" onClick={() => localStorage.clear()}>
           <button className="store__cart_exit" onClick={() => login(false)}>
-            exit
+            exit account
           </button>
         </Link>
-        <button className="store__cart_total">
+        <button
+          className="store__cart_total"
+          // onClick={window.history.pushState(null, "/state")}
+        >
           buy <br />${orderTotal}
         </button>
       </div>

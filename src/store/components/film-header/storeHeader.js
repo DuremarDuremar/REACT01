@@ -9,10 +9,17 @@ const StoreHeader = ({ cartItems, orderTotal, isLogin, name }) => {
     return total + item.count;
   }, 0);
 
-  // console.log(isLogin);
+  // console.log("gg", match);
+
+  // const restartStore = () => {
+  //   setTimeout(window.location.reload(), 1500);
+  // };
 
   return (
     <div className="store__header">
+      <Link to="/">
+        <button className="store__exit">Back</button>
+      </Link>
       <Link to="/store">
         <h3 className="store__header_title">FilmsStore</h3>
       </Link>

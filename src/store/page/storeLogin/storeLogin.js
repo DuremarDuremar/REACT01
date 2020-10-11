@@ -33,7 +33,7 @@ const StoreLogin = ({
 
   const loginTrue = match.path === "/store/login";
 
-  console.log("token", token);
+  // console.log("token", token);
 
   const user = useCallback(() => {
     if (loginTrue) {

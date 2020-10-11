@@ -296,8 +296,11 @@
 
 .home__main_wrapper {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "a b"
+    "c c";
   height: 100vh;
   grid-gap: 6px;
   padding: 40px 0 20px;
@@ -313,6 +316,7 @@
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   cursor: pointer;
   display: flex;
+  max-height: 200px;
   p {
     margin: auto;
     font-size: 24px;
@@ -320,6 +324,7 @@
 }
 
 .todo__main_block {
+  grid-area: a;
   p {
     border-bottom: 8px double rgba(123, 145, 24, 1);
     border-radius: 10%;
@@ -383,6 +388,7 @@
 }
 
 .cinema__main_block {
+  grid-area: b;
   background-color: #2f3542;
   color: #dfe4ea;
   font-family: Consolas;
@@ -391,5 +397,18 @@
     -webkit-box-shadow: 19px 14px 0px 1px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 19px 14px 0px 1px rgba(0, 0, 0, 0.75);
     box-shadow: 19px 14px 0px 1px rgba(0, 0, 0, 0.75);
+  }
+}
+
+.store__main_block {
+  grid-area: c;
+  background-color: grey;
+  p {
+    font-style: italic;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 50px 80px;
+    border-radius: 100%;
+    background-color: black;
   }
 }
