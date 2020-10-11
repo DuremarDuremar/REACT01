@@ -23,7 +23,7 @@ function App() {
           <Route path="/todo" component={Todo} exact />
           <Route path="/cinema" component={Cinema} exact />
           <Route path="/red" component={Red} />
-          <Route path="/store" component={Store} />
+          <Route path="/store" component={Store} exact />
           <Redirect to="/" />
         </Switch>
       </div>

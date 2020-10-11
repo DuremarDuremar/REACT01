@@ -12,14 +12,14 @@ const StoreHeader = ({ cartItems, orderTotal, isLogin, name }) => {
   // console.log("gg", match);
 
   // const restartStore = () => {
-  //   setTimeout(window.location.reload(), 1500);
+  //   setTimeout(window.location.reload(), 4500);
   // };
 
   return (
     <div className="store__header">
-      <Link to="/">
+      {/* <Link to="/">
         <button className="store__exit">Back</button>
-      </Link>
+      </Link> */}
       <Link to="/store">
         <h3 className="store__header_title">FilmsStore</h3>
       </Link>

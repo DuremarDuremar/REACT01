@@ -6,15 +6,7 @@ import StoreHOC from "../../context/storeHOC";
 import { Link } from "react-router-dom";
 import "./storeCart.scss";
 
-const StoreCart = ({
-  history,
-  cartItems,
-  orderTotal,
-  filmDelete,
-  login,
-  setToken,
-  setName,
-}) => {
+const StoreCart = ({ history, cartItems, orderTotal, filmDelete, login }) => {
   const [cart, setCart] = useState([]);
   const [number, setNumber] = useState(0);
 
@@ -24,12 +16,12 @@ const StoreCart = ({
   console.log("number", number);
 
   let cartNumber = is1200 ? 5 : is760 ? 3 : 1;
-  console.log(cartNumber);
+  // console.log(cartNumber);
   const cartActive = useCallback(
     (arr) => {
-      if (arr.length < 6) {
-        setNumber(0);
-      }
+      // if (arr.length < 6) {
+      //   setNumber(0);
+      // }
 
       const newArr = arr.filter((item, index) => {
         console.log("arr", arr.length);
@@ -108,10 +100,7 @@ const StoreCart = ({
             exit account
           </button>
         </Link>
-        <button
-          className="store__cart_total"
-          // onClick={window.history.pushState(null, "/state")}
-        >
+        <button className="store__cart_total">
           buy <br />${orderTotal}
         </button>
       </div>
@@ -126,8 +115,6 @@ const mapStateToProps = ({ filmCart: { cartItems, orderTotal } }) => {
 const mapDispatchToProps = {
   filmDelete,
   login,
-  setToken,
-  setName,
 };
 
 export default StoreHOC()(
